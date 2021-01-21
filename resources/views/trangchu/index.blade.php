@@ -164,15 +164,25 @@
                                     <div class="product-card">
                                         <div class="product-header">
                                             <a href="" class="author">
-                                                {{$sp->id_type}}
+
                                             </a>
-                                            <h3><a href="product-details.html">{{$sp->name}}</a></h3>
+                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->name}}</a></h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
+                                                @if($sp->promotion_price != 0)
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon-sale">Sale</div>
+                                                    </div>
+                                                @endif
                                                 <img src="images\products\{{$sp->image}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
-                                                    <a href="product-details.html" class="hover-image">
+                                                    @if($sp->promotion_price != 0)
+                                                        <div class="ribbon-wrapper">
+                                                            <div class="ribbon-sale">Sale</div>
+                                                        </div>
+                                                    @endif
+                                                    <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                         <img src="images\products\{{$sp->images}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
@@ -232,14 +242,14 @@
                                         <a href="" class="author">
                                             jpple
                                         </a>
-                                        <h3><a href="product-details.html">Bpple iPad with Retina Display
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Bpple iPad with Retina Display
                                                 MD510LL/A</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -272,14 +282,14 @@
                                         <a href="" class="author">
                                             Bpple
                                         </a>
-                                        <h3><a href="product-details.html">Koss KPH7 Lightweight Portable
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Koss KPH7 Lightweight Portable
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-2.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -312,14 +322,14 @@
                                         <a href="" class="author">
                                             Cpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats EP Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats EP Wired On-Ear
                                                 Headphone-Black</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-1.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -352,14 +362,14 @@
                                         <a href="" class="author">
                                             Dpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo2 Solo 2 Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo2 Solo 2 Wired On-Ear
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-4.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -392,14 +402,14 @@
                                         <a href="" class="author">
                                             Lpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo3 Wireless On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo3 Wireless On-Ear
                                                 Headphones 2</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-7.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -432,14 +442,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">3 Ways To Have (A) More Appealing
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">3 Ways To Have (A) More Appealing
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-6.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -472,14 +482,14 @@
                                         <a href="" class="author">
                                             Epple
                                         </a>
-                                        <h3><a href="product-details.html">In 10 Minutes, I'll Give You The
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">In 10 Minutes, I'll Give You The
                                                 Truth About</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-5.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -512,14 +522,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">5 Ways To Get Through To Your
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">5 Ways To Get Through To Your
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-8.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -552,14 +562,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">What Can You Do To Save Your BOOK</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">What Can You Do To Save Your BOOK</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -592,14 +602,14 @@
                                         <a href="" class="author">
                                             Hpple
                                         </a>
-                                        <h3><a href="product-details.html">From Destruction By Social Media?</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">From Destruction By Social Media?</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-9.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -632,14 +642,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">Find Out More About BOOK By Social
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Find Out More About BOOK By Social
                                                 Media?</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-10.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -672,14 +682,14 @@
                                         <a href="" class="author">
                                             Apple
                                         </a>
-                                        <h3><a href="product-details.html">Read This Controversial BOOK By
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Read This Controversial BOOK By
                                                 Social Media?</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-9.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -727,14 +737,14 @@
                                         <a href="" class="author">
                                             jpple
                                         </a>
-                                        <h3><a href="product-details.html">Zpple fPad with Retina Display
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Zpple fPad with Retina Display
                                                 MD510LL/A</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-1.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -767,14 +777,14 @@
                                         <a href="" class="author">
                                             Bpple
                                         </a>
-                                        <h3><a href="product-details.html">Koss KPH7 Lightweight Portable
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Koss KPH7 Lightweight Portable
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-4.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -807,14 +817,14 @@
                                         <a href="" class="author">
                                             Cpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats EP Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats EP Wired On-Ear
                                                 Headphone-Black</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -847,14 +857,14 @@
                                         <a href="" class="author">
                                             Dpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo2 Solo 2 Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo2 Solo 2 Wired On-Ear
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-1.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -887,14 +897,14 @@
                                         <a href="" class="author">
                                             Lpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo3 Wireless On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo3 Wireless On-Ear
                                                 Headphones 2</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-11.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -927,14 +937,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">3 Ways To Have (A) More Appealing
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">3 Ways To Have (A) More Appealing
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-10.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -967,14 +977,14 @@
                                         <a href="" class="author">
                                             Epple
                                         </a>
-                                        <h3><a href="product-details.html">In 10 Minutes, I'll Give You The
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">In 10 Minutes, I'll Give You The
                                                 Truth About</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-9.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1007,14 +1017,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">5 Ways To Get Through To Your
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">5 Ways To Get Through To Your
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-8.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1047,14 +1057,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">What Can You Do To Save Your BOOK</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">What Can You Do To Save Your BOOK</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-5.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1087,14 +1097,14 @@
                                         <a href="" class="author">
                                             Hpple
                                         </a>
-                                        <h3><a href="product-details.html">From Destruction By Social Media?</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">From Destruction By Social Media?</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1127,14 +1137,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">Find Out More About BOOK By Social
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Find Out More About BOOK By Social
                                                 Media?</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-11.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1167,7 +1177,7 @@
                                         <a href="" class="author">
                                             Apple
                                         </a>
-                                        <h3><a href="product-details.html">Read This Controversial BOOK By
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Read This Controversial BOOK By
                                                 Social Media? Out More</a>
                                         </h3>
                                     </div>
@@ -1175,7 +1185,7 @@
                                         <div class="card-image">
                                             <img src="image\products\product-12.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1206,7 +1216,8 @@
                     </div>
                 </div>
                 <div class="promo-section-heading">
-                    <h2>Sale Products</h2>
+                    <h2>SẢN PHẨM KHUYẾN MÃI</h2>
+                    <p>Tìm thấy {{count($pro_product)}} sản phẩm khuyến mãi</p>
                 </div>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
@@ -1232,13 +1243,24 @@
                                             <a href="" class="author">
                                                 {{$sp->id_type}}
                                             </a>
-                                            <h3><a href="product-details.html">{{$sp->name}}</a></h3>
+                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->name}}</a></h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
+                                                @if($sp->promotion_price != 0)
+                                                    <div class="ribbon-wrapper">
+                                                        <div class="ribbon-sale">Sale</div>
+                                                    </div>
+                                                @endif
                                                 <img src="images\products\{{$sp->image}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
-                                                    <a href="product-details.html" class="hover-image">
+                                                    @if($sp->promotion_price != 0)
+                                                        <div class="ribbon-wrapper">
+                                                            <div class="ribbon-sale">Sale</div>
+                                                        </div>
+                                                    @endif
+                                                    <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
+
                                                         <img src="images\products\{{$sp->images}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
@@ -1279,7 +1301,7 @@
 
 
                         </div>
-                        <div class="row">{{$pro_product->links()}}</div>
+
                     </div>
                     <div class="tab-pane" id="men" role="tabpanel" aria-labelledby="men-tab">
                         <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
@@ -1300,14 +1322,14 @@
                                         <a href="" class="author">
                                             jpple
                                         </a>
-                                        <h3><a href="product-details.html">Bpple iPad with Retina Display
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Bpple iPad with Retina Display
                                                 MD510LL/A</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1340,14 +1362,14 @@
                                         <a href="" class="author">
                                             Bpple
                                         </a>
-                                        <h3><a href="product-details.html">Koss KPH7 Lightweight Portable
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Koss KPH7 Lightweight Portable
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-2.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1380,14 +1402,14 @@
                                         <a href="" class="author">
                                             Cpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats EP Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats EP Wired On-Ear
                                                 Headphone-Black</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-1.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1420,14 +1442,14 @@
                                         <a href="" class="author">
                                             Dpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo2 Solo 2 Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo2 Solo 2 Wired On-Ear
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-4.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1460,14 +1482,14 @@
                                         <a href="" class="author">
                                             Lpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo3 Wireless On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo3 Wireless On-Ear
                                                 Headphones 2</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-7.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1500,14 +1522,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">3 Ways To Have (A) More Appealing
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">3 Ways To Have (A) More Appealing
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-6.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1540,14 +1562,14 @@
                                         <a href="" class="author">
                                             Epple
                                         </a>
-                                        <h3><a href="product-details.html">In 10 Minutes, I'll Give You The
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">In 10 Minutes, I'll Give You The
                                                 Truth About</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-5.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1580,14 +1602,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">5 Ways To Get Through To Your
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">5 Ways To Get Through To Your
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-8.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1620,14 +1642,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">What Can You Do To Save Your BOOK</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">What Can You Do To Save Your BOOK</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1660,14 +1682,14 @@
                                         <a href="" class="author">
                                             Hpple
                                         </a>
-                                        <h3><a href="product-details.html">From Destruction By Social Media?</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">From Destruction By Social Media?</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-9.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1700,14 +1722,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">Find Out More About BOOK By Social
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Find Out More About BOOK By Social
                                                 Media?</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-10.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1740,14 +1762,14 @@
                                         <a href="" class="author">
                                             Apple
                                         </a>
-                                        <h3><a href="product-details.html">Read This Controversial BOOK By
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Read This Controversial BOOK By
                                                 Social Media?</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-9.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1795,14 +1817,14 @@
                                         <a href="" class="author">
                                             jpple
                                         </a>
-                                        <h3><a href="product-details.html">Zpple fPad with Retina Display
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Zpple fPad with Retina Display
                                                 MD510LL/A</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-1.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1835,14 +1857,14 @@
                                         <a href="" class="author">
                                             Bpple
                                         </a>
-                                        <h3><a href="product-details.html">Koss KPH7 Lightweight Portable
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Koss KPH7 Lightweight Portable
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-4.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1875,14 +1897,14 @@
                                         <a href="" class="author">
                                             Cpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats EP Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats EP Wired On-Ear
                                                 Headphone-Black</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1915,14 +1937,14 @@
                                         <a href="" class="author">
                                             Dpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo2 Solo 2 Wired On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo2 Solo 2 Wired On-Ear
                                                 Headphone</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-1.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1955,14 +1977,14 @@
                                         <a href="" class="author">
                                             Lpple
                                         </a>
-                                        <h3><a href="product-details.html">Beats Solo3 Wireless On-Ear
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Beats Solo3 Wireless On-Ear
                                                 Headphones 2</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-11.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -1995,14 +2017,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">3 Ways To Have (A) More Appealing
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">3 Ways To Have (A) More Appealing
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-10.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2035,14 +2057,14 @@
                                         <a href="" class="author">
                                             Epple
                                         </a>
-                                        <h3><a href="product-details.html">In 10 Minutes, I'll Give You The
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">In 10 Minutes, I'll Give You The
                                                 Truth About</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-9.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2075,14 +2097,14 @@
                                         <a href="" class="author">
                                             Fpple
                                         </a>
-                                        <h3><a href="product-details.html">5 Ways To Get Through To Your
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">5 Ways To Get Through To Your
                                                 BOOK</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-8.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2115,14 +2137,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">What Can You Do To Save Your BOOK</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">What Can You Do To Save Your BOOK</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-5.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2155,14 +2177,14 @@
                                         <a href="" class="author">
                                             Hpple
                                         </a>
-                                        <h3><a href="product-details.html">From Destruction By Social Media?</a>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">From Destruction By Social Media?</a>
                                         </h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-3.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2195,14 +2217,14 @@
                                         <a href="" class="author">
                                             Gpple
                                         </a>
-                                        <h3><a href="product-details.html">Find Out More About BOOK By Social
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Find Out More About BOOK By Social
                                                 Media?</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="image\products\product-11.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2235,7 +2257,7 @@
                                         <a href="" class="author">
                                             Apple
                                         </a>
-                                        <h3><a href="product-details.html">Read This Controversial BOOK By
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Read This Controversial BOOK By
                                                 Social Media? Out More</a>
                                         </h3>
                                     </div>
@@ -2243,7 +2265,7 @@
                                         <div class="card-image">
                                             <img src="image\products\product-12.jpg" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
@@ -2285,7 +2307,8 @@
     <section class="section-margin">
         <div class="container-fluid">
             <div class="promo-section-heading">
-                <h2>Deal of the day up to 20% off Special offer</h2>
+                <h2>ƯU ĐÃI SẢN PHẨM THỨC ĂN GIA CẦM</h2>
+                <p>Tìm thấy {{count($sale_product)}} sản phẩm</p>
             </div>
             <div class="product-slider with-countdown  slider-border-single-row sb-slick-slider" data-slick-setting='{
                 "autoplay": true,
@@ -2299,22 +2322,24 @@
                 {"breakpoint":575, "settings": {"slidesToShow": 2} },
                 {"breakpoint":490, "settings": {"slidesToShow": 1} }
             ]'>
+                @foreach($sale_product as $sp)
+
                 <div class="single-slide">
                     <div class="product-card">
                         <div class="product-header">
                             <a href="" class="author">
-                                Ypple
+                                {{$sp->name}}
                             </a>
-                            <h3><a href="product-details.html">Do You Really Need It? This Will Help You
+                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}
                                 </a>
                             </h3>
                         </div>
                         <div class="product-card--body">
                             <div class="card-image">
-                                <img src="image\products\product-2.jpg" alt="">
+                                <img src="images\products\{{$sp->image}}" alt="">
                                 <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-1.jpg" alt="">
+                                    <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
+                                        <img src="images\products\{{$sp->images}}" alt="">
                                     </a>
                                     <div class="hover-btns">
                                         <a href="cart.html" class="single-btn">
@@ -2332,272 +2357,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
+                            x
                             <div class="count-down-block">
                                 <div class="product-countdown" data-countdown="01/05/2020"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Upple
-                            </a>
-                            <h3><a href="product-details.html">Here Is A Quick Cure For Book</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-1.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                            <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Ypple
-                            </a>
-                            <h3><a href="product-details.html">a Half Very Simple Things You To Save</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-3.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-2.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                            <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Epple
-                            </a>
-                            <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-5.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                            <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Rpple
-                            </a>
-                            <h3><a href="product-details.html">Create Better BOOK With The Help Of Your</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-6.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                            <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Tpple
-                            </a>
-                            <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-8.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-7.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                            <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Mpple
-                            </a>
-                            <h3><a href="product-details.html">Revolutionize Your BOOK With These Easy
-                                </a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-13.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-11.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                            <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                @endforeach
             </div>
         </div>
     </section>
@@ -2607,7 +2375,7 @@
     <section class="section-margin bg-image section-padding-top section-padding" data-bg="image/bg-images/best-seller-bg.jpg">
         <div class="container">
             <div class="section-title section-title--bordered mb-0">
-                <h2>Best BEST SELLER BOOKS</h2>
+                <h2>SẢN PHẨM HOT</h2>
             </div>
             <div class="best-seller-block">
                 <div class="row align-items-center">
@@ -2630,145 +2398,33 @@
                                     {"breakpoint":575, "settings": {"slidesToShow": 1} },
                                     {"breakpoint":490, "settings": {"slidesToShow": 1} }
                                 ]'>
+
+                            @foreach($new_product as $sp)
                             <div class="single-slide">
                                 <div class="product-card card-style-list">
                                     <div class="card-image">
-                                        <img src="image\products\product-6.jpg" alt="">
+                                        <img src="images\products\{{$sp->image}}" alt="">
                                     </div>
                                     <div class="product-card--body">
                                         <div class="product-header">
                                             <a href="#" class="author">
-                                                Rpple
+                                                {{$sp->name}}
                                             </a>
-                                            <h3><a href="product-details.html">Do You Really Need It? This
-                                                    Will Help You
+                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}
                                                 </a></h3>
                                         </div>
                                         <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
+                                            @if($sp->promotion_price == 0)
+                                                <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
+                                            @else
+                                                <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
+                                                <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-slide">
-                                <div class="product-card card-style-list">
-                                    <div class="card-image">
-                                        <img src="image\products\product-1.jpg" alt="">
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="product-header">
-                                            <a href="#" class="author">
-                                                Epple
-                                            </a>
-                                            <h3><a href="product-details.html">Here Is Quick Cure BOOK This
-                                                    Will Help
-
-                                                </a></h3>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card card-style-list">
-                                    <div class="card-image">
-                                        <img src="image\products\product-2.jpg" alt="">
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="product-header">
-                                            <a href="#" class="author">
-                                                Wpple
-                                            </a>
-                                            <h3><a href="product-details.html">Do You Really Need It? This
-                                                    Will Help You
-
-                                                </a></h3>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card card-style-list">
-                                    <div class="card-image">
-                                        <img src="image\products\product-3.jpg" alt="">
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="product-header">
-                                            <a href="#" class="author">
-                                                Ypple
-                                            </a>
-                                            <h3><a href="product-details.html">Very Simple Things You
-                                                    Can Save BOOK
-
-
-
-                                                </a>
-                                            </h3>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card card-style-list">
-                                    <div class="card-image">
-                                        <img src="image\products\product-5.jpg" alt="">
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="product-header">
-                                            <a href="#" class="author">
-                                                Mople
-                                            </a>
-                                            <h3><a href="product-details.html">What You Can Learn From Bill Gates
-
-                                                </a></h3>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card card-style-list">
-                                    <div class="card-image">
-                                        <img src="image\products\product-4.jpg" alt="">
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="product-header">
-                                            <a href="#" class="author">
-                                                Cpple
-                                            </a>
-                                            <h3><a href="product-details.html">3 Ways Create Better BOOK With
-                                                    Help
-
-                                                </a></h3>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -2781,7 +2437,7 @@
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>CHILDREN’S BOOKS</h2>
+                <h2>SẢN PHẨM DÀNH CHO CÁ</h2>
             </div>
             <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
                                             "autoplay": true,
@@ -2796,177 +2452,47 @@
                                             {"breakpoint":575, "settings": {"slidesToShow": 1} },
                                             {"breakpoint":490, "settings": {"slidesToShow": 1} }
                                         ]'>
+                @foreach($new_product as $sp)
+
                 <div class="single-slide">
                     <div class="product-card card-style-list">
                         <div class="card-image">
-                            <img src="image\products\product-2.jpg" alt="">
+                            <img src="images\products\{{$sp->image}}" alt="">
                         </div>
                         <div class="product-card--body">
                             <div class="product-header">
                                 <a href="#" class="author">
-                                    Rpple
+                                    {{$sp->name}}
                                 </a>
-                                <h3><a href="product-details.html">Revolutionize Your BOOK With</a></h3>
+                                <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
                             </div>
                             <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
+                                @if($sp->promotion_price == 0)
+                                    <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
+                                @else
+                                    <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
+                                    <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="image\products\product-1.jpg" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="#" class="author">
-                                    Dpple
-                                </a>
-                                <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a>
-                                </h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="image\products\product-3.jpg" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="#" class="author">
-                                    Epple
-                                </a>
-                                <h3><a href="product-details.html">BOOK: Do You Really Need It? This </a></h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="image\products\product-4.jpg" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="#" class="author">
-                                    Ppple
-                                </a>
-                                <h3><a href="product-details.html">Here Is A Quick Cure For Book</a>
-                                </h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="image\products\product-5.jpg" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="#" class="author">
-                                    Ypple
-                                </a>
-                                <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
-                                </h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card card-style-list">
-                        <div class="card-image">
-                            <img src="image\products\product-6.jpg" alt="">
-                        </div>
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="#" class="author">
-                                    Wpple
-                                </a>
-                                <h3><a href="product-details.html">3 Ways Create Better BOOK With</a></h3>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!--=================================
         Promotion Section Two
         ===================================== -->
-    <div class="section-margin">
-        <div class="container">
-            <div class="row space-db--30">
-                <div class="col-lg-8 mb--30">
-                    <div class="promo-wrapper promo-type-one">
-                        <a href="#" class="promo-image  promo-overlay bg-image" data-bg="image/bg-images/promo-banner-mid.jpg">
-                            <!-- <img src="image/bg-images/promo-banner-mid.jpg" alt=""> -->
-                        </a>
-                        <div class="promo-text">
-                            <div class="promo-text-inner">
-                                <h2>Buy 3. Get Free 1.</h2>
-                                <h3>50% off for selected products in Pustok.</h3>
-                                <a href="#" class="btn btn-outlined--red-faded">See More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb--30">
-                    <div class="promo-wrapper promo-type-two ">
-                        <a href="#" class="promo-image promo-overlay bg-image" data-bg="image/bg-images/promo-banner-small.jpg">
-                            <!-- <img src="image/bg-images/promo-banner-small.jpg" alt=""> -->
-                        </a>
-                        <div class="promo-text">
-                            <div class="promo-text-inner">
-                                <span class="d-block price">$26.00</span>
-                                <h2>Praise for <br>
-                                    The Night Child</h2>
-                                <a href="#" class="btn btn-outlined--primary">Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!--=================================
         ARTS & PHOTOGRAPHY BOOKS
         ===================================== -->
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>ARTS & PHOTOGRAPHY BOOKS</h2>
+                <h2>THỨC ĂN DÀNH CHO CÁ</h2>
+                <p>Tìm thấy {{count($botca_product)}} sản phẩm</p>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                 "autoplay": true,
@@ -2980,308 +2506,61 @@
                 {"breakpoint":480, "settings": {"slidesToShow": 1} },
                 {"breakpoint":320, "settings": {"slidesToShow": 1} }
             ]'>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Lpple
-                            </a>
-                            <h3><a href="product-details.html">Revolutionize Your BOOK With These Easy
-                                </a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Jpple
-                            </a>
-                            <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Wpple
-                            </a>
-                            <h3><a href="product-details.html">Create Better BOOK With The Help Of Your</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-3.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-2.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Epple
-                            </a>
-                            <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-5.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Hpple
-                            </a>
-                            <h3><a href="product-details.html">a Half Very Simple Things You To Save</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-6.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Bpple
-                            </a>
-                            <h3><a href="product-details.html">Here Is A Quick Cure For Book</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-8.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-7.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                zpple
-                            </a>
-                            <h3><a href="product-details.html">Do You Really Need It? This Will Help You
+                @foreach($botca_product as $sp)
+                    <div class="single-slide">
+                        <div class="product-card">
+                            <div class="product-header">
+                                <a href="{{route('detail_product',$sp->id)}}" class="author">
+                                <a href="{{route('detail_product',$sp->id)}}" class="author">
+                                   {{$sp->name}}
                                 </a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image\products\product-13.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image\products\product-11.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
+                                <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}
+                                    </a></h3>
+                            </div>
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="images\products\{{$sp->image}}"  height="330px" alt="">
+                                    <div class="hover-contents">
+                                        <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
+                                            <img src="images\products\{{$sp->images}}" height="330px" alt="">
                                         </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                                        <div class="hover-btns">
+                                            <a href="cart.html" class="single-btn">
+                                                <i class="fas fa-shopping-basket"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="single-btn">
+                                                <i class="fas fa-heart"></i>
+                                            </a>
+                                            <a href="compare.html" class="single-btn">
+                                                <i class="fas fa-random"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="price-block">
+                                    <div class="price-block">
+                                        @if($sp->promotion_price == 0)
+                                            <span class="price">{{number_format($sp->unit_price)}}</span>
+                                        @else
+                                            <span class="price-old">{{number_format($sp->unit_price)}}</span>
+                                            <span class="price-discount">{{number_format($sp->promotion_price)}}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!--=================================
             Promotion Section Three
         ===================================== -->
-    <section class="section-margin">
-        <div class="promo-wrapper promo-type-three">
-            <a href="#" class="promo-image promo-overlay bg-image" data-bg="image/bg-images/promo-banner-full.jpg">
-            </a>
-            <div class="promo-text w-100 ml-0">
-                <div class="container">
-                    <div class="row w-100">
-                        <div class="col-lg-7">
-                            <h2>I Love This Idea!</h2>
-                            <h3>Cover up front of book and
-                                leave summary</h3>
-                            <a href="#" class="btn btn--yellow">$78.09 - Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!--=================================
         Home Blog Slider
         ===================================== -->
@@ -3522,51 +2801,11 @@
             </div>
         </div>
     </div>
-    </div>
+
     <!--=================================
         Brands Slider
         ===================================== -->
-    <section class="section-margin">
-        <h2 class="sr-only">Brand Slider</h2>
-        <div class="container">
-            <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 6
-                                            }' data-slick-responsive='[
-                {"breakpoint":992, "settings": {"slidesToShow": 4} },
-                {"breakpoint":768, "settings": {"slidesToShow": 3} },
-                {"breakpoint":575, "settings": {"slidesToShow": 3} },
-                {"breakpoint":480, "settings": {"slidesToShow": 2} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-                <div class="single-slide">
-                    <img src="image\others\brand-1.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-2.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-3.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-4.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-5.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-6.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-1.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-2.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
+
 
 @endsection
 

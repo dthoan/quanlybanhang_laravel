@@ -75,7 +75,7 @@ Route::get("/trangchu/html", "Baitap@getHtml");
 Route::get("/trangchu/php", "Baitap@getPhp");
 /// website bán hàng
 Route::get("/trangchu/index", "quanlybanhangController@getIndex")->name("trangchu");
-Route::get("/trangchu/product_details", "quanlybanhangController@getProductDetails")->name("oneproduct");
+Route::get("/trangchu/product_details/{id}", "quanlybanhangController@getProductDetails")->name("detail_product");
 Route::get("/trangchu/blog", "quanlybanhangController@getBlog")->name("blog");
 Route::get("/trangchu/cart", "quanlybanhangController@getCart")->name("cart");
 Route::get("/trangchu/type-product/{type}", "quanlybanhangController@getTypeProduct")->name("typecatelory");

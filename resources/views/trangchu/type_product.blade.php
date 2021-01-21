@@ -138,16 +138,16 @@
                             <div class="product-card">
                                 <div class="product-grid-content">
                                     <div class="product-header">
-                                        <a href="" class="author">
+                                        <a href="{{route('detail_product',$sp->id)}}" class="author">
                                            {{$sp->name}}
                                         </a>
-                                        <h3><a href="product-details.html">{{$sp->description}}</a></h3>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
                                             <img src="images\products\{{$sp->image}}" alt="">
                                             <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
+                                                <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
                                                     <img src="images\products\{{$sp->images}}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
