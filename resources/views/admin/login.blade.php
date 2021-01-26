@@ -9,39 +9,56 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="admin/images/icon/logo.png" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="{{route('login')}}" method="post" >
+                                {{csrf_field()}}
+
+                             @if(Session::has('matb'))
+                                @if(Session::get('matb')=='1')
+                                    <label class="alert">{{Session::get('thongbao')}}</label>
+                                @else
+                                    <label class="alert">{{Session::get('thongbao')}}</label>
+                                @endif
+                             @endif
+
                                 <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <label>Email </label>
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Nhập Email">  @if($errors->has("email"))
+                                        <label class="text-danger">{{$errors->first('email')}}</label>
+                                    @endif
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <label>Mật Khẩu</label>
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Nhập Password">
+                                    @if($errors->has("password"))
+                                        <label class="text-danger">{{$errors->first('password')}}</label>
+                                    @endif
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember">Remember Me
+                                        <input type="checkbox" name="remember">Nhớ Mật Khẩu
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a href="#">Lấy Lại Mật Khẩu</a>
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Đăng Nhập</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
+                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">Đăng nhập với facebook</button>
+                                        <button class="au-btn au-btn--block au-btn--blue2">Đăng nhập với twitter</button>
                                     </div>
                                 </div>
                             </form>
+
+
                             <div class="register-link">
                                 <p>
-                                    Don't you have account?
-                                    <a href="#">Sign Up Here</a>
+                                Bạn có tài khoản không?
+                                    <a href="{{route('register')}}">Đăng Ký</a>
                                 </p>
                             </div>
                         </div>
@@ -52,29 +69,6 @@
 
     </div>
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
-
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
 
     </body>
 @endsection

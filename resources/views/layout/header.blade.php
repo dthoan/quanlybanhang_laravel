@@ -126,10 +126,21 @@
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
                             <div class="login-block">
-                                <a href="login-register.html" class="font-weight-bold">Đăng Nhập</a> <br>
-                                <span>Hoặc</span><a href="login-register.html">Đăng Ký</a>
-                            </div>
 
+
+
+                        @if(Auth::check())
+                                <a href="{{route('logout')}}" class="font-weight-bold">Chào Bạn {{Auth::user()->full_name}}</a><br>
+                                    <span>Hoặc</span><a href="{{route('logout')}}">Đăn Xuất</a>
+                        @else
+                                 <a href="{{route('login')}}" class="font-weight-bold">Đăng Nhập</a> <br>
+                                 <span>Hoặc</span><a href="{{route('register')}}">Đăng Ký</a>
+
+                        @endif
+
+
+
+                            </div>
                             <div class="cart-block">
                                 <div class="cart-total">
                                             <span class="text-number">
@@ -161,7 +172,7 @@
                                             <div class="content">
                                                 <h3 class="title"><a href="product-details.html">{{$sp['item']['name']}}</a></h3>
                                                 <p class="price">
-                                                    <span class="qty">{{$sp['item']['qty']}} × </span>
+                                                    <span class="price">{{$sp['qty']}} × </span>
                                                     @if($sp['item']['promotion_price'] == 0)
                                                         {{number_format($sp['item']['unit_price'])}}
                                                     @else

@@ -87,11 +87,14 @@ Route::get("/trangchu/type-product/{type}", "quanlybanhangController@getTypeProd
 Route::get("/trangchu/add-to-cart/{id}","quanlybanhangController@getAddtoCart")->name("themgiohang");
 Route::get("/trangchu/del-item/{id}","quanlybanhangController@getDelItemCart")->name("delItem");
 
-// admin
+// admin đăng nhập
 Route::get("/login", "quanlybanhangController@getLogin")->name('login');
 Route::post("/login", "quanlybanhangController@postLogin")->name('login');
+// đăng ký
 Route::get("/register", "quanlybanhangController@getRegister")->name('register');
 Route::post("/register", "quanlybanhangController@postRegister")->name('register');
+// đăng xuất
+Route::get("/logout", "quanlybanhangController@getLogout")->name('logout');
 
 
 
