@@ -96,6 +96,8 @@ Route::post("/register", "quanlybanhangController@postRegister")->name('register
 // đăng xuất
 Route::get("/logout", "quanlybanhangController@getLogout")->name('logout');
 
+Route::get("/search", "quanlybanhangController@getResearch")->name('search');
+
 
 
 

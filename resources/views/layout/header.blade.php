@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
-                    <a href="index.html" class="site-brand">
+                    <a href="{{route('trangchu')}}" class="site-brand">
                         <img src="image\logo.png" alt="">
                     </a>
                 </div>
@@ -117,10 +117,10 @@
                     </nav>
                 </div>
                 <div class="col-lg-5">
-                    <div class="header-search-block">
-                        <input type="text" placeholder="Nhập Sản Phẩm Cần Tìm..">
-                        <button>Tìm Kiếm</button>
-                    </div>
+                    <form action="{{route('search')}}" method="get" class="header-search-block">
+                        <input type="text" name="key" placeholder="Nhập Sản Phẩm Cần Tìm..">
+                        <button type="submit">Tìm Kiếm</button>
+                    </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="main-navigation flex-lg-right">
@@ -131,7 +131,7 @@
 
                         @if(Auth::check())
                                 <a href="{{route('logout')}}" class="font-weight-bold">Chào Bạn {{Auth::user()->full_name}}</a><br>
-                                    <span>Hoặc</span><a href="{{route('logout')}}">Đăn Xuất</a>
+                                    <span>Hoặc</span><a href="{{route('logout')}}">Đăng Xuất</a>
                         @else
                                  <a href="{{route('login')}}" class="font-weight-bold">Đăng Nhập</a> <br>
                                  <span>Hoặc</span><a href="{{route('register')}}">Đăng Ký</a>

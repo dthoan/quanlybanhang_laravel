@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/trangchu/search.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/registration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/registration.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -204,7 +202,7 @@
       <workItem from="1611376870725" duration="469000" />
       <workItem from="1611379258908" duration="15827000" />
       <workItem from="1611640983685" duration="11709000" />
-      <workItem from="1611659789633" duration="8771000" />
+      <workItem from="1611659789633" duration="11367000" />
     </task>
     <servers />
   </component>
@@ -236,10 +234,10 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="460" y="119" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1611386577251" />
-    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1611642996925">
+    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1611673923749">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1611642996925" />
+    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1611673923749" />
     <state x="388" y="72" width="583" height="656" key="find.popup" timestamp="1611394605874">
       <screen x="0" y="0" width="1360" height="728" />
     </state>

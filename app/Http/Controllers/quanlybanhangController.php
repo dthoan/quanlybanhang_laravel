@@ -198,5 +198,19 @@ class quanlybanhangController extends Controller
         Auth::logout();
         return redirect()->route('trangchu');
     }
+    // tìm kiếm trang chủ
+    public function getResearch(Request $rq ){
+        if($rq->key=="khuyen mai"){
+            $product = products::where("promotion_price",">",0)->paginate(8);
+        }
+        else if($rq->key=="khong khuyen mai")
+            $product = products::where("promotion_price",0)->paginate(8);
+        else
+            $product = products::where("name", "like", "%", $rq->key)
+                                ->orwhere("unit_price", $rq->key)
+                                ->orwhere("promotion_price", $rq->key)
+                                ->paginate(8);
+        return view("trangchu.search", compact("product"));
+    }
 
 }
