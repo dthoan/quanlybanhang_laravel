@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\bill_detail;
+use App\Cart;
+use App\customer;
 use App\products;
 use App\type_products;
 use Illuminate\Http\Request;
 use App\slide;
+use App\bills;
 use Illuminate\Support\Facades\DB;
+use Session;
 
 
 class quanlybanhangController extends Controller
@@ -40,9 +45,81 @@ class quanlybanhangController extends Controller
     public function getBlog(){
         return view("trangchu.blog");
     }
+    public function getCheckout(){
+        return view("trangchu.checkout");
+    }
     public function getCart(){
         return view("trangchu.cart");
     }
+    public function getAddtoCart(Request $rq, $id){
+        $product = products::find($id);
+        $oldCart = Session('cart') ? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $id);
+        $rq->session()->put('cart', $cart);
+        return redirect()->back();
+    }
 
+    public function getDelItemCart($id){
+        $oldCart =  Session('cart') ? Session::get('cart'): null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        if(count($cart->items)>0){
+            Session::put('cart', $cart);
+        }
+        else{
+            Session::forget('cart');
+        }
+        return redirect()->back();
+    }
+
+    public function postCheckout(Request $req){
+        $cart = Session::get('cart');
+
+        // add customer
+        $cus = new customer;
+        $cus->name = $req->name;
+        $cus->gender = $req->gender;
+        $cus->email = $req->email;
+        $cus->address = $req->address;
+        $cus->phone_number = $req->phone_number;
+
+        $cus->save();
+
+        // add bill
+        $bill = new bills;
+        $bill->id_customer = $cus->id;
+        $bill->time_order = date('Y-m-d');
+        $bill->total =$cart->totalPrice;
+        $bill->payment = $req->payment_method;
+//        $bill->note = $req->note;
+        $bill->save();
+
+        foreach ($cart->items as $keys=>$value){
+            $db = new bill_detail;
+            $db->id_bill = $bill->id;
+            $db->id_product = $keys;
+            $db->quanlity = $value["qty"];
+            $db->unit_price = $value["price"] / $value["qty"];
+            $db->save();
+        }
+        Session::forget('cart');
+        return view('trangchu.thongbao');
+    }
+// admin
+    public function getLogin(){
+        return view("admin.login");
+    }
+    public function postLogin(){
+        return view("admin.login");
+    }
+    public function getRegister(){
+        return view("admin.registration");
+    }
+    public function postRegister(Request $rq){
+
+
+        return view("admin.registration");
+    }
 
 }

@@ -186,7 +186,7 @@
                                                         <img src="images\products\{{$sp->images}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
-                                                        <a href="cart.html" class="single-btn">
+                                                        <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                             <i class="fas fa-shopping-basket"></i>
                                                         </a>
                                                         <a href="wishlist.html" class="single-btn">
@@ -253,7 +253,7 @@
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -293,7 +293,7 @@
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -333,7 +333,7 @@
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -373,7 +373,7 @@
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -413,7 +413,7 @@
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -453,7 +453,7 @@
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -493,7 +493,7 @@
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -533,7 +533,7 @@
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -573,7 +573,7 @@
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -613,7 +613,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -653,7 +653,7 @@
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -693,7 +693,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -748,7 +748,7 @@
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -788,7 +788,7 @@
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -828,7 +828,7 @@
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -868,7 +868,7 @@
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -908,7 +908,7 @@
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -948,7 +948,7 @@
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -988,7 +988,7 @@
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1028,7 +1028,7 @@
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1068,7 +1068,7 @@
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1108,7 +1108,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1148,7 +1148,7 @@
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1189,7 +1189,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1264,7 +1264,7 @@
                                                         <img src="images\products\{{$sp->images}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
-                                                        <a href="cart.html" class="single-btn">
+                                                        <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                             <i class="fas fa-shopping-basket"></i>
                                                         </a>
                                                         <a href="wishlist.html" class="single-btn">
@@ -1333,7 +1333,7 @@
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1373,7 +1373,7 @@
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1413,7 +1413,7 @@
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1453,7 +1453,7 @@
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1493,7 +1493,7 @@
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1533,7 +1533,7 @@
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1573,7 +1573,7 @@
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1613,7 +1613,7 @@
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1653,7 +1653,7 @@
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1693,7 +1693,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1733,7 +1733,7 @@
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1773,7 +1773,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1828,7 +1828,7 @@
                                                     <img src="image\products\product-1.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1868,7 +1868,7 @@
                                                     <img src="image\products\product-3.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1908,7 +1908,7 @@
                                                     <img src="image\products\product-2.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1948,7 +1948,7 @@
                                                     <img src="image\products\product-5.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -1988,7 +1988,7 @@
                                                     <img src="image\products\product-4.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2028,7 +2028,7 @@
                                                     <img src="image\products\product-7.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2068,7 +2068,7 @@
                                                     <img src="image\products\product-6.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2108,7 +2108,7 @@
                                                     <img src="image\products\product-9.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2148,7 +2148,7 @@
                                                     <img src="image\products\product-8.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2188,7 +2188,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2228,7 +2228,7 @@
                                                     <img src="image\products\product-10.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2269,7 +2269,7 @@
                                                     <img src="image\products\product-11.jpg" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
                                                     <a href="wishlist.html" class="single-btn">
@@ -2342,7 +2342,7 @@
                                         <img src="images\products\{{$sp->images}}" alt="">
                                     </a>
                                     <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
+                                        <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                             <i class="fas fa-shopping-basket"></i>
                                         </a>
                                         <a href="wishlist.html" class="single-btn">
@@ -2525,7 +2525,7 @@
                                             <img src="images\products\{{$sp->images}}" height="330px" alt="">
                                         </a>
                                         <div class="hover-btns">
-                                            <a href="cart.html" class="single-btn">
+                                            <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                 <i class="fas fa-shopping-basket"></i>
                                             </a>
                                             <a href="wishlist.html" class="single-btn">

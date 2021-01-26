@@ -129,40 +129,78 @@
                                 <a href="login-register.html" class="font-weight-bold">Đăng Nhập</a> <br>
                                 <span>Hoặc</span><a href="login-register.html">Đăng Ký</a>
                             </div>
+
                             <div class="cart-block">
                                 <div class="cart-total">
                                             <span class="text-number">
-                                                1
+                                               @if(Session::has('cart')){{Session('cart')->totalQty}} @else  0 @endif
                                             </span>
                                     <span class="text-item">
                                                 Giỏ Hàng
                                             </span>
                                     <span class="price">
-                                                £0.00
+                                        @if(Session::has('cart'))
+                                                ${{number_format(Session('cart')->totalPrice)}}
+                                        @else
+                                            $0
+                                        @endif
                                                 <i class="fas fa-chevron-down"></i>
                                             </span>
                                 </div>
+
+
+                                @if(Session::has('cart'))
                                 <div class="cart-dropdown-block">
+
+                                    @foreach($product as $sp)
                                     <div class=" single-cart-block ">
                                         <div class="cart-product">
-                                            <a href="product-details.html" class="image">
-                                                <img src="image\products\cart-product-1.jpg" alt="">
+                                            <a href="{{route('cart')}}" class="image">
+                                                <img src="images\products\{{$sp['item']['image']}}" alt="">
                                             </a>
                                             <div class="content">
-                                                <h3 class="title"><a href="product-details.html">Admin</a></h3>
-                                                <p class="price"><span class="qty">1 ×</span> £87.34</p>
-                                                <button class="cross-btn"><i class="fas fa-times"></i></button>
+                                                <h3 class="title"><a href="product-details.html">{{$sp['item']['name']}}</a></h3>
+                                                <p class="price">
+                                                    <span class="qty">{{$sp['item']['qty']}} × </span>
+                                                    @if($sp['item']['promotion_price'] == 0)
+                                                        {{number_format($sp['item']['unit_price'])}}
+                                                    @else
+                                                        {{number_format($sp['item']['promotion_price'])}}
+                                                    @endif
+                                                </p>
+
+
                                             </div>
+                                            <button class="pull-right"     >
+
+                                                <a href="{{route('delItem',$sp['item']['id'] )}}" style="margin-left: 5px;" class="fas fa-times"></a>
+                                                <a href="{{route('themgiohang',$sp['item']['id'] )}}" class="fas fa-plus"></a>
+
+
+                                            </button>
                                         </div>
+
                                     </div>
+                                    @endforeach
+                                            <p>Tổng tiền: {{number_format(Session('cart')->totalPrice)}}</p>
                                     <div class=" single-cart-block ">
                                         <div class="btn-block">
-                                            <a href="{{route("cart")}}" class="btn">Xem Giỏ Hàng<i class="fas fa-chevron-right"></i></a>
-                                            <a href="checkout.html" class="btn btn--primary">Đăng Xuất<i class="fas fa-chevron-right"></i></a>
+                                            <a href="{{route("cart")}}" class="btn">
+
+                                                Giỏ Hàng (@if(Session::has('cart')){{Session('cart')->totalQty}}) @else  Giỏ Hàng(0) @endif
+
+                                                <i class="fas fa-chevron-right"></i></a>
+                                            <a href="{{route('checkout')}}" class="btn btn--primary">Đặt Hàng<i class="fas fa-chevron-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
+
+                                @endif
+
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>

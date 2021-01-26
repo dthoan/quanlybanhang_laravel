@@ -77,9 +77,21 @@ Route::get("/trangchu/php", "Baitap@getPhp");
 Route::get("/trangchu/index", "quanlybanhangController@getIndex")->name("trangchu");
 Route::get("/trangchu/product_details/{id}", "quanlybanhangController@getProductDetails")->name("detail_product");
 Route::get("/trangchu/blog", "quanlybanhangController@getBlog")->name("blog");
+// cart
 Route::get("/trangchu/cart", "quanlybanhangController@getCart")->name("cart");
+// đặt hàng
+Route::get("/trangchu/ckeckout", "quanlybanhangController@getCheckout")->name("checkout");
+Route::post("/trangchu/ckeckout", "quanlybanhangController@postCheckout")->name("checkout");
 Route::get("/trangchu/type-product/{type}", "quanlybanhangController@getTypeProduct")->name("typecatelory");
+// giỏ hàng
+Route::get("/trangchu/add-to-cart/{id}","quanlybanhangController@getAddtoCart")->name("themgiohang");
+Route::get("/trangchu/del-item/{id}","quanlybanhangController@getDelItemCart")->name("delItem");
 
+// admin
+Route::get("/login", "quanlybanhangController@getLogin")->name('login');
+Route::post("/login", "quanlybanhangController@postLogin")->name('login');
+Route::get("/register", "quanlybanhangController@getRegister")->name('register');
+Route::post("/register", "quanlybanhangController@postRegister")->name('register');
 
 
 
