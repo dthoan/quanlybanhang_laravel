@@ -212,5 +212,9 @@ class quanlybanhangController extends Controller
                                 ->paginate(8);
         return view("trangchu.search", compact("product"));
     }
+    // trang quản trị
+    public function getAdminIndex(){
+        return view('admin.index');
+    }
 
 }

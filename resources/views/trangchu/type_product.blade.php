@@ -1,4 +1,5 @@
 @extends("layout.layout")
+@section("title","Pustok - Type Product")
 @section("content")
     <section class="breadcrumb-section">
         <h2 class="sr-only">{{$tenloai[0]->name}}</h2>

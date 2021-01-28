@@ -1,6 +1,7 @@
 
 
 @extends("layout.layout")
+@section("title","Pustok - Search")
 @section("content")
 
 

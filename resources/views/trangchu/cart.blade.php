@@ -1,4 +1,5 @@
 @extends("layout.layout")
+@section("title","Pustok - Cart")
 @section("content")
     <main class="cart-page-main-block inner-page-sec-padding-bottom">
         <div class="cart_area cart-area-padding  ">

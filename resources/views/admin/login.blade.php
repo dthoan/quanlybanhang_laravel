@@ -1,4 +1,5 @@
 @extends("admin.layout_login")
+@section("title","Login")
 @section("content")
 
     <body class="animsition">

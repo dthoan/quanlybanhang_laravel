@@ -2,6 +2,7 @@
 
 @extends("layout.layout")
 @section("content")
+@section("title","Pustok - Book Store")
     <section class="hero-area hero-slider-1">
         <div class="sb-slick-slider" data-slick-setting='{
                             "autoplay": true,

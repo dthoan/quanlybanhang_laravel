@@ -98,6 +98,9 @@ Route::get("/logout", "quanlybanhangController@getLogout")->name('logout');
 
 Route::get("/search", "quanlybanhangController@getResearch")->name('search');
 
+// trang quản trị
+Route::get("/admin/index", "quanlybanhangController@getAdminIndex")->name('index');
+
 
 
 
