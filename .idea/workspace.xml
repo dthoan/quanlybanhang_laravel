@@ -20,20 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/product/add_update.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/product/list_product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/layout_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout_admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/registration.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/registration.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/cart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/checkout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/product_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/product_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/thongbao.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/thongbao.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/type_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/type_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout_login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout_login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,16 +161,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\app\Http" />
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\public\images\products" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\public\admin" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views\layout" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\app\Http" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\public" />
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\css" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\app\Http" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\public\images\products" />
     </key>
   </component>
   <component name="RunManager">
@@ -214,7 +207,8 @@
       <workItem from="1611640983685" duration="11709000" />
       <workItem from="1611659789633" duration="11367000" />
       <workItem from="1611675615524" duration="56000" />
-      <workItem from="1611813884678" duration="1050000" />
+      <workItem from="1611813884678" duration="15036000" />
+      <workItem from="1611841596213" duration="3593000" />
     </task>
     <servers />
   </component>
@@ -246,14 +240,18 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="460" y="119" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1611386577251" />
-    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1611814030746">
+    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1611826749505">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1611814030746" />
+    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1611826749505" />
     <state x="388" y="72" width="583" height="656" key="find.popup" timestamp="1611394605874">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="388" y="72" width="583" height="656" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1611394605874" />
+    <state x="336" y="162" key="run.anything.popup" timestamp="1611829777550">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="336" y="162" key="run.anything.popup/0.0.1360.728@0.0.1360.728" timestamp="1611829777550" />
     <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1610788604998">
       <screen x="0" y="0" width="1360" height="728" />
     </state>

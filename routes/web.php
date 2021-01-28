@@ -100,6 +100,12 @@ Route::get("/search", "quanlybanhangController@getResearch")->name('search');
 
 // trang quản trị
 Route::get("/admin/index", "quanlybanhangController@getAdminIndex")->name('index');
+// product
+Route::get("/admin/list-product", "quanlybanhangController@getAllProduct")->name('listProduct');
+Route::get("/admin/add-update", "quanlybanhangController@getaddUpdadeProduct")->name('Product');
+Route::post("/admin/add-update", "quanlybanhangController@postaddUpdadeProduct")->name('Product');
+
+
 
 
 

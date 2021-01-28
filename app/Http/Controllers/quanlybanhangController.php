@@ -154,36 +154,46 @@ class quanlybanhangController extends Controller
         return view("admin.login");
     }
 
-    public function postLogin(Request $rq){
+    public function postLogin(Request $rq)
+    {
         $rq->validate(
             [
-                'email'     => 'required|email',
-                'password'  => 'required|min:6|max:20'
+                'email' => 'required|email',
+                'password' => 'required|min:6|max:20'
             ],
             [
-                'email.required'    => 'Vui lòng nhập email!',
-                'email.email'       => 'Địa chỉ thư không đúng định dạng!',
-
+                'email.required' => 'Vui lòng nhập email!',
+                'email.email' => 'Địa chỉ thư không đúng định dạng!',
                 'password.required' => 'Chưa nhập mật khẩu',
-                'password.min'      => 'Password ít nhất 6 ký tự',
-                'password.max'      => 'Password tối đa 20 tự',
+                'password.min' => 'Password ít nhất 6 ký tự',
+                'password.max' => 'Password tối đa 20 tự',
             ]
         );
 
         $arrLogin = array(
-            'email'     => $rq->email,
-            'password'  => $rq->password
+            'email' => $rq->email,
+            'password' => $rq->password
         );
+        $role = users::where("email",$rq->email)->select("role")->get();
 
-        if(Auth::attempt($arrLogin)){
-            $sl_images      = slide::all();
-            $new_product    = products::where("new",1)->get();
-            $pro_product    = products::where("promotion_price","!=0",0)->paginate(2);
-            $sale_product   = products::where("new",0)->get();
-            $botca_product  = products::where("id_type",1)->get();
 //        $get_tenloai = type_products::where("id", "=", $type)->get();
-            return view("trangchu.index", compact("sl_images","new_product","pro_product","sale_product", "botca_product", "get_tenloai"));
+
+        if (Auth::attempt($arrLogin)) {
+            // nếu là 1 thì retunt trang chủ
+            if ($role=='1') {
+                $sl_images = slide::all();
+                $new_product = products::where("new", 1)->get();
+                $pro_product = products::where("promotion_price", "!=0", 0)->paginate(2);
+                $sale_product = products::where("new", 0)->get();
+                $botca_product = products::where("id_type", 1)->get();
+                return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "get_tenloai"));
+            }
+           else
+            {
+                return view("admin.index");
+            }
         }
+
         else
         {
             return redirect()->back()->with([
@@ -216,5 +226,53 @@ class quanlybanhangController extends Controller
     public function getAdminIndex(){
         return view('admin.index');
     }
+
+    public function getAllProduct(){
+        $ListProduct = products::all();
+        return view('product.list_product',compact('ListProduct'));
+    }
+
+    public function getaddUpdadeProduct()
+    {
+        return view('product.add_update');
+    }
+    public function PostaddUpdadeProduct(Request $rq ){
+
+        $rq->validate([
+                'name'=> 'required',
+                'id_type'=> 'required',
+
+                'unit_price'=> 'required',
+                'promotion_price'=> 'required'
+
+
+        ],
+        $messges = [
+            'name.required' => 'Vui lòng nhập tên sản phẩm!',
+            'id_type.required' => 'Vui lòng nhập loại sản phẩm!',
+            'unit_price.required' => 'Vui lòng nhập giá gốc!',
+            'promotion_price.required' => 'Vui lòng nhập giá khuyến mãi!',
+
+
+        ]
+        );
+
+        // add user
+        $data = new products;
+        $data->name            = $rq->name;
+        $data->id_type         = (int)$rq->id_type;
+        $data->description     = $rq->description;
+        $data->unit_price      = (double)$rq->unit_price;
+        $data->promotion_price = (double)$rq->promotion_price;
+        $data->new             = $rq->new;
+        $data->image           = $rq->image;
+        $data->images          = $rq->images;
+        $data->create_at         = $rq->create_at->format('d/m/Y');
+        $data->save();
+
+        return redirect()->back()->with("thongbao","Thêm thành công!");
+
+    }
+
 
 }
