@@ -12,13 +12,14 @@ use Illuminate\Http\Request;
 use App\slide;
 use App\bills;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 use Session;
 
-
+use Carbon\Carbon;
 
 class quanlybanhangController extends Controller
 {
+
 
     public function getIndex(){
         $sl_images      = slide::all();
@@ -229,7 +230,15 @@ class quanlybanhangController extends Controller
 
     public function getAllProduct(){
         $ListProduct = products::all();
+
         return view('product.list_product',compact('ListProduct'));
+    }
+
+    public function getDeleteProduct($id){
+        $delProduct = products::find($id);
+        $delProduct->delete();
+
+        return redirect('http://localhost:81/public/admin/list-product')->with('thongbao', 'Xóa thành công');
     }
 
     public function getaddUpdadeProduct()
@@ -241,19 +250,14 @@ class quanlybanhangController extends Controller
         $rq->validate([
                 'name'=> 'required',
                 'id_type'=> 'required',
-
                 'unit_price'=> 'required',
                 'promotion_price'=> 'required'
-
-
         ],
         $messges = [
             'name.required' => 'Vui lòng nhập tên sản phẩm!',
             'id_type.required' => 'Vui lòng nhập loại sản phẩm!',
             'unit_price.required' => 'Vui lòng nhập giá gốc!',
             'promotion_price.required' => 'Vui lòng nhập giá khuyến mãi!',
-
-
         ]
         );
 
@@ -267,12 +271,64 @@ class quanlybanhangController extends Controller
         $data->new             = $rq->new;
         $data->image           = $rq->image;
         $data->images          = $rq->images;
-        $data->create_at         = $rq->create_at->format('d/m/Y');
+
         $data->save();
 
         return redirect()->back()->with("thongbao","Thêm thành công!");
 
     }
+    /// order
+    public function getListOrder(){
+        $data=[];
+        $data['item'] = bill_detail::all();
 
+        return view('order.list_order',$data);
+    }
+
+    public function getaddOrder(){
+        return view('order.add_updata');
+    }
+
+    public function getUpdateOrder($id){
+        $theloai = type_products::find($id);
+        return view('order.add_update',compact('theloai'));
+    }
+    public function postUpdateOrder(Request $rq, $id){
+        $data = type_products::find($id);
+        $rq->validate([
+            'id_bill' => 'required',
+            'id_product' => 'required',
+            'quanlity' => 'required',
+            'unit_price' => 'required',
+            'create_at' => 'required',
+            'update_at' => 'required',
+
+        ],
+        [
+            'id_bill.required' => 'Vui lòng nhập mã đơn hàng!',
+            'id_product.required' => 'Vui lòng nhập sản phẩm!',
+            'quanlity.required' => 'Vui lòng nhập số lượng sản phẩm!',
+            'unit_price.required' => 'Vui lòng nhập tổng tiền!',
+            'create_at.required' => 'Vui lòng nhập thời gian tạo đơn hàng!',
+            'update_at.required' => 'Vui lòng nhập thời gian sửa đơn hàng!',
+        ]
+        );
+        $data->id_bill = $rq->id_bill;
+        $data->id_product = $rq->id_product;
+        $data->quanlity = $rq->quanlity;
+        $data->unit_price = $rq->unit_price;
+        $data->create_at = $rq->create_at;
+        $data->update_at = $rq->update_at;
+        $data->save();
+
+        return redirect('order.add_update', $id)->with('thongbao','Sửa Đơn hàng thành công!');
+    }
+
+    public function getDeleteOrder($id){
+        $data = type_products::find($id);
+        $data->delete();
+
+        return redirect('order.list-order')->with('thongbao', 'Xóa thành công');
+    }
 
 }

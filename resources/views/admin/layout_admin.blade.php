@@ -68,10 +68,10 @@
                         </a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                             <li>
-                                <a href="{{route('listProduct')}}">Danh Sách Sản Phẩm</a>
+                                <a href="{{route('list_product')}}">Danh Sách Sản Phẩm</a>
                             </li>
                             <li>
-                                <a href="{{route('Product')}}">Thêm Sản Phẩm</a>
+                                <a href="{{route('add_product')}}">Thêm Sản Phẩm</a>
                             </li>
 
                         </ul>
@@ -86,10 +86,10 @@
                         </a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
                             <li>
-                                <a href="{{route('listProduct')}}">Danh Sách Đơn Hàng</a>
+                                <a href="{{route('list_order')}}">Danh Sách Đơn Hàng</a>
                             </li>
                             <li>
-                                <a href="{{route('Product')}}">Duyệt Đơn Hàng</a>
+                                <a href="{{route('add_order')}}">Duyệt Đơn Hàng</a>
                             </li>
 
                         </ul>

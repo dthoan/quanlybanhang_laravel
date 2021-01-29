@@ -28,6 +28,15 @@
             </div>
         </div>
     </section>
+
+    <div class="center">
+        @if(Session::has("thongbao"))
+            <div class="alert alert-success">
+                {{Session::get("thongbao")}}
+            </div>
+        @endif
+    </div>
+
     <!-- END BREADCRUMB-->
 <div class="row m-t-5">
     <div class="col-md-12">
@@ -57,18 +66,26 @@
                     <td>{{$sp->description}}</td>
                     <td>{{$sp->unit_price}}</td>
                     <td>{{$sp->promotion_price}}</td>
-                    <td><img  src="..\images\products\{{$sp->image}}" alt="" height="90px" width="90px"></td>
+                    <td><img  src=".\images\products\{{$sp->image}}" alt="" height="90px" width="90px"></td>
                     <td>{{$sp->create_at}}</td>
                     <td>
                         <div class="table-data-feature">
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                <i class="zmdi zmdi-mail-send"></i>
+
+                                    <i class="zmdi zmdi-mail-send"   >
+
+                                    </i>
+
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="zmdi zmdi-edit"></i>
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                <i class="zmdi zmdi-delete"></i>
+                                <a class="zmdi zmdi-delete"
+                                   href="{{route('del_product',$sp->id)}}"
+                                   onclick="return confirm('Are you sure delete this category?????')">
+
+                                </a>
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                 <i class="zmdi zmdi-more"></i>

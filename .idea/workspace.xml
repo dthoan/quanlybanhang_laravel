@@ -20,13 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/product/add_update.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/product/list_product.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/order/add_update.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/order/update_order.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bill_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/bill_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/vendor/fullcalendar-3.10.0/locale-all.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/vendor/fullcalendar-3.10.0/locale-all.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/layout_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout_admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout_login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout_login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/order/list_order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/list_order.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/list_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/list_product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +210,8 @@
       <workItem from="1611659789633" duration="11367000" />
       <workItem from="1611675615524" duration="56000" />
       <workItem from="1611813884678" duration="15036000" />
-      <workItem from="1611841596213" duration="3593000" />
+      <workItem from="1611841596213" duration="10165000" />
+      <workItem from="1611903129680" duration="8951000" />
     </task>
     <servers />
   </component>
@@ -240,14 +243,14 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="460" y="119" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1611386577251" />
-    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1611826749505">
+    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1611907732172">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1611826749505" />
-    <state x="388" y="72" width="583" height="656" key="find.popup" timestamp="1611394605874">
+    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1611907732172" />
+    <state x="388" y="72" width="583" height="656" key="find.popup" timestamp="1611913235832">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="388" y="72" width="583" height="656" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1611394605874" />
+    <state x="388" y="72" width="583" height="656" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1611913235832" />
     <state x="336" y="162" key="run.anything.popup" timestamp="1611829777550">
       <screen x="0" y="0" width="1360" height="728" />
     </state>

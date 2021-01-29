@@ -41,8 +41,8 @@
                         <th>Mã Sản Phẩm</th>
                         <th>Số Lượng</th>
                         <th>Thành Tiền</th>
-{{--                        <th>Ngày Tạo</th>--}}
-{{--                        <th>Ngày Sủa</th>--}}
+                        {{--                        <th>Ngày Tạo</th>--}}
+                        {{--                        <th>Ngày Sủa</th>--}}
                         <th>Thao Tác</th>
 
 
@@ -52,15 +52,15 @@
                     @foreach($item as $sp)
                         <tr>
                             <?php
-
+                            $end = date('d - m - Y',strtotime($sp->create_at))
                             ?>
-                           <th>{{$sp->id_bill}}</th>
-                           <th>{{$sp->id_product}}</th>
-                           <th>{{$sp->quanlity}}</th>
-                           <th>{{$sp->unit_price}}</th>
+                            <th>{{$sp->id_bill}}</th>
+                            <th>{{$sp->id_product}}</th>
+                            <th>{{$sp->quanlity}}</th>
+                            <th>{{$sp->unit_price}}</th>
 
-{{--                           <th>{{$sp->update_at}}</th>--}}
-{{--                            <th>{{$sp->create_at}}</th>--}}
+                            {{--                           <th>{{$sp->update_at}}</th>--}}
+                            {{--                            <th>{{$sp->create_at}}</th>--}}
                             <th>
                                 <div class="table-data-feature">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Send">

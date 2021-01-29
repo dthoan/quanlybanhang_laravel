@@ -101,9 +101,16 @@ Route::get("/search", "quanlybanhangController@getResearch")->name('search');
 // trang quản trị
 Route::get("/admin/index", "quanlybanhangController@getAdminIndex")->name('index');
 // product
-Route::get("/admin/list-product", "quanlybanhangController@getAllProduct")->name('listProduct');
-Route::get("/admin/add-update", "quanlybanhangController@getaddUpdadeProduct")->name('Product');
-Route::post("/admin/add-update", "quanlybanhangController@postaddUpdadeProduct")->name('Product');
+Route::get("/admin/list-product", "quanlybanhangController@getAllProduct")->name('list_product');
+Route::get("/admin/add-product", "quanlybanhangController@getaddUpdadeProduct")->name('add_product');
+Route::post("/admin/update-order", "quanlybanhangController@postaddUpdadeProduct")->name('update_product');
+Route::get("/admin/delete-product/{id}", "quanlybanhangController@getDeleteProduct")->name('del_product');
+// order
+Route::get("/admin/list-order", "quanlybanhangController@getListOrder")->name('list_order');
+Route::get("/admin/add-order", "quanlybanhangController@getAddOrder")->name('add_order');
+Route::get("/admin/update-order", "quanlybanhangController@getAddOrder")->name('update_order');
+Route::get("/admin/delete-order/{id}", "quanlybanhangController@getDeleteOrder")->name('del_order');
+
 
 
 

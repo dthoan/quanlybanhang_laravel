@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,5 +15,11 @@ class bill_detail extends Model
 
     public function products(){
         return $this->belongsTo("App\products", "id_product", "id");
+    }
+
+    public function getDateAttribute($date){
+
+        return Carbon::createFromFormat('Y-m-d', $date)->toDateTimeString();
+
     }
 }
