@@ -24,7 +24,6 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('layout.header', function($view){
             $type_pro = type_products::all();
-
             $view->with('type_pro', $type_pro);
         });
 

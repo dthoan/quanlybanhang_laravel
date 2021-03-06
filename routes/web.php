@@ -76,7 +76,10 @@ Route::get("/trangchu/php", "Baitap@getPhp");
 /// website bán hàng
 Route::get("/trangchu/index", "quanlybanhangController@getIndex")->name("trangchu");
 Route::get("/trangchu/product_details/{id}", "quanlybanhangController@getProductDetails")->name("detail_product");
+//blog-contact-about
 Route::get("/trangchu/blog", "quanlybanhangController@getBlog")->name("blog");
+Route::get("/trangchu/contact", "quanlybanhangController@getContact")->name("contact");
+Route::get("/trangchu/about", "quanlybanhangController@getabout")->name("about");
 // cart
 Route::get("/trangchu/cart", "quanlybanhangController@getCart")->name("cart");
 // đặt hàng
@@ -102,14 +105,22 @@ Route::get("/search", "quanlybanhangController@getResearch")->name('search');
 Route::get("/admin/index", "quanlybanhangController@getAdminIndex")->name('index');
 // product
 Route::get("/admin/list-product", "quanlybanhangController@getAllProduct")->name('list_product');
-Route::get("/admin/add-product", "quanlybanhangController@getaddUpdadeProduct")->name('add_product');
-Route::post("/admin/update-order", "quanlybanhangController@postaddUpdadeProduct")->name('update_product');
+Route::get("/admin/add-product", "quanlybanhangController@getAddProduct")->name('add_product');
+Route::post("/admin/add-product", "quanlybanhangController@postAddProduct")->name('add_product');
 Route::get("/admin/delete-product/{id}", "quanlybanhangController@getDeleteProduct")->name('del_product');
 // order
 Route::get("/admin/list-order", "quanlybanhangController@getListOrder")->name('list_order');
 Route::get("/admin/add-order", "quanlybanhangController@getAddOrder")->name('add_order');
+Route::post("/admin/add-order", "quanlybanhangController@postAddOrder")->name('add_order');
 Route::get("/admin/update-order", "quanlybanhangController@getAddOrder")->name('update_order');
+Route::post("/admin/update-order", "quanlybanhangController@postAddOrder")->name('update_order');
 Route::get("/admin/delete-order/{id}", "quanlybanhangController@getDeleteOrder")->name('del_order');
+Route::get("/admin/detail/{id}", "quanlybanhangController@getDetailOrder")->name('detail_order');
+// customer
+Route::get("/admin/list-customer", "quanlybanhangController@getListCustomer")->name('list_customer');
+Route::get("/admin/detail-customer/{id}", "quanlybanhangController@getDetailCustomer")->name('detail_customer');
+Route::get("/admin/edit_customer/{id}", "quanlybanhangController@getEditCustomer")->name('edit_customer');
+
 
 
 

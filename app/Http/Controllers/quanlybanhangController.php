@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 use App\slide;
 use App\bills;
 use Illuminate\Support\Facades\Auth;
-
 use Session;
+use DB;
 
 use Carbon\Carbon;
 
@@ -49,6 +49,15 @@ class quanlybanhangController extends Controller
     public function getBlog(){
         return view("trangchu.blog");
     }
+
+    public function getAbout(){
+        return view("trangchu.about");
+    }
+
+    public function getContact(){
+        return view("trangchu.contact");
+    }
+
     public function getCheckout(){
         return view("trangchu.checkout");
     }
@@ -241,11 +250,13 @@ class quanlybanhangController extends Controller
         return redirect('http://localhost:81/public/admin/list-product')->with('thongbao', 'Xóa thành công');
     }
 
-    public function getaddUpdadeProduct()
+    public function getAddProduct()
     {
-        return view('product.add_update');
+        $selectType = type_products::all();
+        return view('product.add_product', compact('selectType'));
     }
-    public function PostaddUpdadeProduct(Request $rq ){
+
+    public function PostAddProduct(Request $rq ){
 
         $rq->validate([
                 'name'=> 'required',
@@ -271,6 +282,8 @@ class quanlybanhangController extends Controller
         $data->new             = $rq->new;
         $data->image           = $rq->image;
         $data->images          = $rq->images;
+        $data->created_at          = Carbon::now();
+        $data->updated_at          = Carbon::now();
 
         $data->save();
 
@@ -279,19 +292,19 @@ class quanlybanhangController extends Controller
     }
     /// order
     public function getListOrder(){
-        $data=[];
-        $data['item'] = bill_detail::all();
 
-        return view('order.list_order',$data);
+        $item = bills::all();
+//        dd($item);
+        return view('order.list_order',compact('item'));
     }
 
     public function getaddOrder(){
-        return view('order.add_updata');
+        return view('order.add_order');
     }
 
     public function getUpdateOrder($id){
         $theloai = type_products::find($id);
-        return view('order.add_update',compact('theloai'));
+        return view('order.add_order',compact('theloai'));
     }
     public function postUpdateOrder(Request $rq, $id){
         $data = type_products::find($id);
@@ -300,8 +313,8 @@ class quanlybanhangController extends Controller
             'id_product' => 'required',
             'quanlity' => 'required',
             'unit_price' => 'required',
-            'create_at' => 'required',
-            'update_at' => 'required',
+            'created_at' => 'required',
+            'updated_at' => 'required',
 
         ],
         [
@@ -309,26 +322,73 @@ class quanlybanhangController extends Controller
             'id_product.required' => 'Vui lòng nhập sản phẩm!',
             'quanlity.required' => 'Vui lòng nhập số lượng sản phẩm!',
             'unit_price.required' => 'Vui lòng nhập tổng tiền!',
-            'create_at.required' => 'Vui lòng nhập thời gian tạo đơn hàng!',
-            'update_at.required' => 'Vui lòng nhập thời gian sửa đơn hàng!',
+            'created_at.required' => 'Vui lòng nhập thời gian tạo đơn hàng!',
+            'updated_at.required' => 'Vui lòng nhập thời gian sửa đơn hàng!',
         ]
         );
         $data->id_bill = $rq->id_bill;
         $data->id_product = $rq->id_product;
         $data->quanlity = $rq->quanlity;
         $data->unit_price = $rq->unit_price;
-        $data->create_at = $rq->create_at;
-        $data->update_at = $rq->update_at;
+        $data->created_at = $rq->Carbon::now();
+        $data->updated_at = $rq->Carbon::now();
         $data->save();
 
-        return redirect('order.add_update', $id)->with('thongbao','Sửa Đơn hàng thành công!');
+        return redirect('order.add_order', $id)->with('thongbao','Sửa Đơn hàng thành công!');
     }
 
     public function getDeleteOrder($id){
         $data = type_products::find($id);
         $data->delete();
 
-        return redirect('order.list-order')->with('thongbao', 'Xóa thành công');
+        return redirect('http://localhost:81/public/admin/list-order')->with('thongbao', 'Xóa thành công');
+    }
+
+    public function getDetailOrder($id){
+        $data = [];
+//        $data['tenKH'] = customer::select('name','address')->first($id);
+
+        // lấy nội dung đơn hàng
+        $data['noidung'] = DB::table('bill_detail')->join('products', function ($join) {
+                    $join->on('bill_detail.id_product', '=', 'products.id');
+        })->select(
+            'products.name',
+            'bill_detail.quanlity',
+
+            'bill_detail.id_bill',
+            'bill_detail.unit_price',
+            'bill_detail.id',
+            'bill_detail.created_at'
+        )->first($id);
+        // lấy thông tin khách hàng
+        $data['khachHang'] = DB::table('bills')->join('customer', function ($join) {
+            $join->on('bills.id_customer', '=', 'customer.id');
+        })->select(
+            'bills.id',
+            'customer.name',
+            'customer.address'
+        )->first($id);
+        // lấy tổng tiền
+        $data['hoaDon'] = DB::table('bills')->join('bill_detail', function ($join) {
+            $join->on('bill_detail.id_bill', '=', 'bills.id');
+        })->select('bills.total','bills.id')->first($id);
+
+        return view('order.detail_order', $data);
+    }
+
+    // customer
+
+    public function getListCustomer(){
+        $item = customer::all();
+        return view('layout.customer.list_customer',compact('item'));
+    }
+    public function getDetailCustomer($id){
+        $items = customer::where("id","=",$id)->first();
+        return view('layout.customer.detail_customer', compact('items'));
+    }
+    public function getEditCustomer(Request $rq, $id){
+        $items = customer::find($id);
+        return view('layout.customer.edit_customer',compact('items'));
     }
 
 }

@@ -10,7 +10,7 @@
                 <strong>Thêm</strong> Sản Phẩm
             </div>
             <div class="card-body card-block">
-                <form action="{{route('Product')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{route('add_product')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     {{csrf_field()}}
                     <div class="center">
                         @if(Session::has("thongbao"))
@@ -36,10 +36,20 @@
                             <label for="text-input" class=" form-control-label">Loại Sản Phẩm</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="id_type" placeholder="Nhập Loại Sản Phẩm" class="form-control">
-                            @if($errors->has("id_type"))
-                                <small class="text-danger">{{$errors->first('id_type')}}</small>
-                            @endif
+
+                            <div class="row form-group">
+
+                                <div class="col-12 col-md-9">
+                                    <select name="id_type" id="disabledSelect" disabled="" class="form-control">
+                                        @foreach($selectType as $select)
+                                        <option value="" selected>{{$select->name}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
 

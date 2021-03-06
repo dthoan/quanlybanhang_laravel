@@ -44,50 +44,15 @@
                                 </ul>
                             </li>
                             <!-- Pages -->
-                            <li class="menu-item has-children">
-                                <a href="javascript:void(0)">Pages <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu">
-                                    @foreach($type_pro as $type)
-                                    <li><a href="{{route("typecatelory",$type->id)}}">{{$type->name}}</a></li>
-                                    @endforeach
-
-                                </ul>
+                            <li class="menu-item">
+                                <a href="{{route('blog')}}">Blog</a>
                             </li>
                             <!-- Blog -->
-                            <li class="menu-item has-children mega-menu">
-                                <a href="javascript:void(0)">Blog <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu three-column">
-                                    <li class="cus-col-33">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Blog Grid</a></h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="blog.html">Full Widh (Default)</a></li>
-                                            <li><a href="blog-left-sidebar.html">left Sidebar</a></li>
-                                            <li><a href="blog-right-sidebar.html">Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-33">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Blog List </a></h3>
-                                        <ul class="mega-single-block">
-                                            <!-- <li><a href="blog-list.html">Full Widh (Default)</a></li> -->
-                                            <li><a href="blog-list-left-sidebar.html">left Sidebar</a></li>
-                                            <li><a href="blog-list-right-sidebar.html">Right Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="cus-col-33">
-                                        <h3 class="menu-title"><a href="javascript:void(0)">Blog Details</a>
-                                        </h3>
-                                        <ul class="mega-single-block">
-                                            <li><a href="blog-details.html">Image Format (Default)</a></li>
-                                            <li><a href="blog-details-gallery.html">Gallery Format</a></li>
-                                            <li><a href="blog-details-audio.html">Audio Format</a></li>
-                                            <li><a href="blog-details-video.html">Video Format</a></li>
-                                            <li><a href="blog-details-left-sidebar.html">left Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                            <li class="menu-item">
+                                <a href="{{route('about')}}">About</a>
                             </li>
                             <li class="menu-item">
-                                <a href="contact.html">Contact</a>
+                                <a href="{{route('contact')}}">Contact</a>
                             </li>
                         </ul>
                     </div>

@@ -1,8 +1,8 @@
 
 @extends("admin.layout_admin")
-@section("title","List order")
+@section("title","List Customer")
 @section("content")
-    <!-- BREADCRUMB-->
+
     <section class="au-breadcrumb m-t-75">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
@@ -45,11 +45,12 @@
                 <table class="table table-borderless table-data3">
                     <thead>
                     <tr>
-                        <th>Mã Đơn Hàng</th>
-                        <th>Mã Khách Hàng</th>
-                        <th>Thành Tiền</th>
-                        <th>Ngày Đặt Hàng</th>
-                        <th>Thao Tác</th>
+                        <th>Họ Tên</th>
+                        <th>Email</th>
+                        <th>Giới Tính</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Địa Chỉ</th>
+                        <th>Action</th>
 
 
                     </tr>
@@ -57,10 +58,11 @@
                     <tbody>
                     @foreach($item as $sp)
                         <tr align="center">
-                           <th>{{$sp->id}}</th>
-                           <th>{{$sp->id_customer}}</th>
-                           <th>{{$sp->total}}</th>
-                           <th>{{$sp->created_at->format('d/m/y')}}</th>
+                            <th class="text-left" >{{$sp->name}}</th>
+                            <th class="text-left">{{$sp->email}}</th>
+                            <th>{{$sp->gender}}</th>
+                            <th class="text-left">{{$sp->phone_number}}</th>
+                            <th class="text-left">{{$sp->address}}</th>
                             <th>
                                 <div class="table-data-feature">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Chi Tiết">
@@ -96,4 +98,5 @@
             <!-- END DATA TABLE-->
         </div>
     </div>
+
 @endsection

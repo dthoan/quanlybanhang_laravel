@@ -76,9 +76,11 @@
 @include("layout.footer")
 
 <!-- Use Minified Plugins Version For Fast Page Load -->
-<script src="js\plugins.js"></script>
-<script src="js\ajax-mail.js"></script>
+
+
 <script src="js\custom.js"></script>
+<script src="js\ajax-mail.js"></script>
+<script src="js\plugins.js"></script>
 </body>
 
 </html>
