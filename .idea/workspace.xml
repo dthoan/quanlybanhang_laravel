@@ -20,24 +20,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/layout/customer/detail_customer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layout/customer/edit_customer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/order/detail_order.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/trangchu/about.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/trangchu/contact.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/js/ckeditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image_blog/image1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/khachHang/image.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/products/image1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/customer/add_customer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/Shop.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/accout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/blog.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/blog_details.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/compare.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/orderComplete.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/layout2/thongbao.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/product/edit_product.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/trangchu/blog_details.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/type_product/edit_category.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/type_product/list_category.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bills.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/bills.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/plugins.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/plugins.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/type_products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/type_products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_09_160743_create_news_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_09_160743_create_news_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layout_admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layout_admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/customer/detail_customer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/customer/detail_customer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/customer/edit_customer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/customer/edit_customer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/customer/list_customer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/customer/list_customer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/order/add_update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/add_order.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/order/list_order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/order/list_order.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/product/add_update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/add_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/add_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/add_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/product/list_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/product/list_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/about.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/about.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/trangchu/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/thongbao.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/thongbao.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/product_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/product_details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,22 +191,26 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/admin/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\app\Http" />
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\public\images\products" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\public\admin\js" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views\layout" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views\trangchu" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\public\image_blog" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views\layout\layout2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\app\Http\Controllers" />
+      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views\trangchu" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\public\images" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\public\image" />
       <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views" />
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\public\admin" />
-      <recent name="C:\xampp\htdocs\QuanLyBanHang\resources\views\layout" />
     </key>
   </component>
   <component name="RunManager">
@@ -191,6 +220,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="" />
@@ -228,6 +260,32 @@
       <workItem from="1613446406349" duration="3927000" />
       <workItem from="1614136793355" duration="534000" />
       <workItem from="1614930996521" duration="9213000" />
+      <workItem from="1614994633031" duration="6643000" />
+      <workItem from="1615081219351" duration="5103000" />
+      <workItem from="1615165345754" duration="1038000" />
+      <workItem from="1615218531903" duration="1151000" />
+      <workItem from="1630334904795" duration="50000" />
+      <workItem from="1630335115140" duration="2644000" />
+      <workItem from="1630419232278" duration="6469000" />
+      <workItem from="1630547848342" duration="2545000" />
+      <workItem from="1630660107430" duration="96000" />
+      <workItem from="1630660577306" duration="409000" />
+      <workItem from="1630661128447" duration="423000" />
+      <workItem from="1630668856887" duration="21060000" />
+      <workItem from="1630732724173" duration="1984000" />
+      <workItem from="1630821068326" duration="23427000" />
+      <workItem from="1630846911379" duration="13179000" />
+      <workItem from="1630941281315" duration="8660000" />
+      <workItem from="1631023263715" duration="9688000" />
+      <workItem from="1631192437380" duration="13432000" />
+      <workItem from="1631328580469" duration="9827000" />
+      <workItem from="1631364617180" duration="18836000" />
+      <workItem from="1631434289459" duration="10275000" />
+      <workItem from="1631538649718" duration="12756000" />
+      <workItem from="1631581878147" duration="3772000" />
+      <workItem from="1631629112569" duration="6899000" />
+      <workItem from="1631637071041" duration="4376000" />
+      <workItem from="1631715598883" duration="12791000" />
     </task>
     <servers />
   </component>
@@ -247,37 +305,33 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="410" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1611996706010">
+    <state x="413" y="162" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1630840312076">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="410" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1360.728@0.0.1360.728" timestamp="1611996706010" />
-    <state x="427" y="195" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1610000899315">
+    <state x="413" y="162" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1360.728@0.0.1360.728" timestamp="1630840312076" />
+    <state x="410" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1631439357743">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="427" y="195" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1360.728@0.0.1360.728" timestamp="1610000899315" />
-    <state x="460" y="119" key="FileChooserDialogImpl" timestamp="1611386577251">
+    <state x="410" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1360.728@0.0.1360.728" timestamp="1631439357743" />
+    <state x="460" y="119" key="FileChooserDialogImpl" timestamp="1630682600736">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="460" y="119" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1611386577251" />
-    <state x="440" y="71" key="NewPhpClassDialog" timestamp="1611991532479">
+    <state x="460" y="119" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1630682600736" />
+    <state x="515" y="283" key="NewPhpFileDialog" timestamp="1631436012349">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="440" y="71" key="NewPhpClassDialog/0.0.1360.728@0.0.1360.728" timestamp="1611991532479" />
-    <state x="306" y="192" key="NewPhpFileDialog" timestamp="1614940364831">
+    <state x="515" y="283" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1631436012349" />
+    <state x="181" y="9" key="SettingsEditor" timestamp="1631541885817">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="306" y="192" key="NewPhpFileDialog/0.0.1360.728@0.0.1360.728" timestamp="1614940364831" />
-    <state x="388" y="72" width="583" height="656" key="find.popup" timestamp="1612539116842">
+    <state x="181" y="9" key="SettingsEditor/0.0.1360.728@0.0.1360.728" timestamp="1631541885817" />
+    <state x="336" y="162" key="run.anything.popup" timestamp="1631636366971">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="388" y="72" width="583" height="656" key="find.popup/0.0.1360.728@0.0.1360.728" timestamp="1612539116842" />
-    <state x="336" y="162" key="run.anything.popup" timestamp="1611829777550">
+    <state x="336" y="162" key="run.anything.popup/0.0.1360.728@0.0.1360.728" timestamp="1631636366971" />
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1631723684958">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="336" y="162" key="run.anything.popup/0.0.1360.728@0.0.1360.728" timestamp="1611829777550" />
-    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1610788604998">
-      <screen x="0" y="0" width="1360" height="728" />
-    </state>
-    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1610788604997" />
+    <state x="343" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1631723684958" />
   </component>
 </project>

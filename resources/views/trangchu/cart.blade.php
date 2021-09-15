@@ -1,6 +1,7 @@
 @extends("layout.layout")
 @section("title","Pustok - Cart")
 @section("content")
+
     <main class="cart-page-main-block inner-page-sec-padding-bottom">
         <div class="cart_area cart-area-padding  ">
             <div class="container">
@@ -26,47 +27,43 @@
                                     </thead>
                                     <tbody>
                                     <!-- Product Row -->
+                                    @if(Session::has('cart'))
+                                        @foreach($product as $sp )
                                     <tr>
+
+
                                         <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
                                         </td>
-                                        <td class="pro-thumbnail"><a href="#"><img src="image\products\product-1.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-                                        <td class="pro-price"><span>$395.00</span></td>
+                                        <td class="pro-thumbnail"><a href="#"><img src="images\products\{{$sp['item']['image']}}" alt="Product"></a></td>
+                                        <td class="pro-title"><a href="#">{{$sp['item']['name']}}</a></td>
+                                        <td class="pro-price" value="Norway"><span>{{number_format($sp['price'])}}</span></td>
                                         <td class="pro-quantity">
                                             <div class="pro-qty">
                                                 <div class="count-input-block">
-                                                    <input type="number" class="form-control text-center" value="1">
+                                                    <button><a href="{{route('delItem',$sp['item']['id'] )}}"  class="fas fa-times" ></a></button>
+                                                    <label type="number" class="form-control" readonly value="">{{$sp['qty']}}</label>
+                                                    <button><a href="{{route('themgiohang',$sp['item']['id'] )}}" class="fas fa-plus"></a></button>
+
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="pro-subtotal"><span>$395.00</span></td>
+                                        <td class="pro-subtotal"><span> {{number_format($sp['qty']*$sp['price'])}}</span></td>
+
                                     </tr>
+                                        @endforeach
+                                    @endif
                                     <!-- Product Row -->
-                                    <tr>
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-                                        </td>
-                                        <td class="pro-thumbnail"><a href="#"><img src="image\products\product-2.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-                                        <td class="pro-price"><span>$395.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <div class="count-input-block">
-                                                    <input type="number" class="form-control text-center" value="1">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$395.00</span></td>
-                                    </tr>
+
                                     <!-- Discount Row  -->
                                     <tr>
                                         <td colspan="6" class="actions">
                                             <div class="coupon-block">
                                                 <div class="coupon-text">
                                                     <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
+                                                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã giảm giá">
                                                 </div>
                                                 <div class="coupon-btn">
-                                                    <input type="submit" class="btn btn-outlined" name="apply_coupon" value="Apply coupon">
+                                                    <input type="submit" class="btn btn-outlined" name="apply_coupon" value="Áp dụng phiếu giảm giá">
                                                 </div>
                                             </div>
                                             <div class="update-block text-right">
@@ -306,7 +303,7 @@
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
                                 <h4><span>Cart Summary</span></h4>
-                                <p>Sub Total <span class="text-primary">$1250.00</span></p>
+                                <p>Sub Total <span class="text-primary">{{number_format(Session('cart')->totalPrice)}} </span></p>
                                 <p>Shipping Cost <span class="text-primary">$00.00</span></p>
                                 <h2>Grand Total <span class="text-primary">$1250.00</span></h2>
                             </div>
@@ -320,5 +317,10 @@
             </div>
         </div>
     </main>
+
+
+
+
+
 @endsection
 

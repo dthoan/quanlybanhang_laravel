@@ -18,11 +18,11 @@
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
                                     </li>
-                                    <li class="list-inline-item">List Order</li>
+                                    <li class="list-inline-item">List Customer</li>
                                 </ul>
                             </div>
                             <button class="au-btn au-btn-icon au-btn--green">
-                                <i class="zmdi zmdi-plus"></i>Thêm Đơn Hàng</button>
+                                <i class="zmdi zmdi-plus"></i>Thêm Khách Hàng</button>
                         </div>
                     </div>
                 </div>
@@ -58,6 +58,7 @@
                     <tbody>
                     @foreach($item as $sp)
                         <tr align="center">
+
                             <th class="text-left" >{{$sp->name}}</th>
                             <th class="text-left">{{$sp->email}}</th>
                             <th>{{$sp->gender}}</th>
@@ -67,19 +68,20 @@
                                 <div class="table-data-feature">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Chi Tiết">
                                         <a class="zmdi zmdi-mail-send"
-                                           href="{{route('detail_order',$sp->id)}}"
+                                           href="{{route('detail_customer',$sp->id)}}"
                                         >
 
                                         </a>
 
                                     </button>
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="zmdi zmdi-edit"></i>
+                                        <a class="zmdi zmdi-edit" href="{{route('edit_customer',$sp->id)}}"></a>
+{{--                                            <i class="zmdi zmdi-edit" href="{{route('edit_customer',$sp->id)}}"></i>--}}
                                     </button>
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <a class="zmdi zmdi-delete"
-                                           href="{{route('del_order',$sp->id)}}"
-                                           onclick="return confirm('Are you sure delete this category?????')">
+                                           href="{{route('del_customer',$sp->id)}}"
+                                           onclick="return confirm('Bạn có thật sự muốn xóa?????')">
 
                                         </a>
                                     </button>
@@ -98,5 +100,18 @@
             <!-- END DATA TABLE-->
         </div>
     </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

@@ -24,11 +24,7 @@
                                     <div class="checkout-slidedown-box" id="quick-login">
                                         <form action="./">
                                             <div class="quick-login-form">
-                                                <p>If you have shopped with us before, please enter your details in the
-                                                    boxes below. If you are a new
-                                                    customer
-                                                    please
-                                                    proceed to the Billing & Shipping section.</p>
+                                                <p>BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG</p>
                                                 <div class="form-group">
                                                     <label for="quick-user">Username or email *</label>
                                                     <input type="text" placeholder="" id="quick-user">

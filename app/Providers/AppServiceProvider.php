@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('type_pro', $type_pro);
         });
 
-        view()->composer(['layout.header','trangchu.checkout'], function($view){
+        view()->composer(['layout.header','trangchu.checkout','trangchu.cart'], function($view){
            if(Session('cart')){
                $oldCart = Session::get('cart');
                $cart = new Cart($oldCart);

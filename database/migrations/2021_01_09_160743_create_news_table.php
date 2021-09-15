@@ -34,6 +34,8 @@ class CreateNewsTable extends Migration
             $table->string("name",50);
             $table->text("description");
             $table->string("images",50);
+            $table->string("status",50);
+            $table->string("p_type",50);
             $table->timestamps();
         });
 
@@ -47,6 +49,7 @@ class CreateNewsTable extends Migration
             $table->tinyinteger("new")->unsigned();
             $table->string("unit",50);
             $table->string("image",50);
+
             $table->foreign("id_type")->references("id")->on("type_products");
             $table->timestamps();
         });
@@ -80,6 +83,14 @@ class CreateNewsTable extends Migration
             $table->foreign("id_product")->references("id")->on("products");
             $table->timestamps();
         });
+
+
+        //chỉnh sửa table
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('image')->after('status');
+        });
+
+
     }
 
     /**
@@ -90,5 +101,6 @@ class CreateNewsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('news');
+
     }
 }

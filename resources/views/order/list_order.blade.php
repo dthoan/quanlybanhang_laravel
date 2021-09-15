@@ -77,7 +77,7 @@
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <a class="zmdi zmdi-delete"
                                            href="{{route('del_order',$sp->id)}}"
-                                           onclick="return confirm('Are you sure delete this category?????')">
+                                           onclick="return confirm('Bạn có thật sự muốn xóa?????')">
 
                                         </a>
                                     </button>

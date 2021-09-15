@@ -16,7 +16,7 @@
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
                                     </li>
-                                    <li class="list-inline-item">Detail Order</li>
+                                    <li class="list-inline-item">Detail Customer</li>
                                 </ul>
                             </div>
 
@@ -43,8 +43,9 @@
 
                         <div class="row mb-12">
                             <div class="col-md-5 col-lg-3 col-xl-3">
+
                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                    <img class="img-fluid w-100"
+                                    <img class="img-fluid w-100" id="blah"
                                          src="images/khachHang/{{$items->images}}" alt="Sample">
 
                                 </div>
@@ -52,7 +53,14 @@
                             <div class="col-md-7 col-lg-9 col-xl-9">
                                 <div>
                                     <div class="d-flex justify-content-between">
+{{--                                        <div>--}}
+
+{{--                                            <input  type='file' onchange="readURL(this);" style="padding:10px; background:#2d2d2d;"/>--}}
+{{--                                            <img  id="blah" src="images/khachHang/image.jpeg" alt="your image" style=" max-width:180px;"/>--}}
+
+{{--                                        </div>--}}
                                         <div>
+
                                             <h2 style="padding-bottom: 10px"><input value="{{$items->name}}"></h2>
                                             <p class="mb-3 text-muted text-uppercase">
                                                 Email: <input  class="mb-3 text-muted text-uppercase" value="{{$items->email}}"></p>
@@ -62,6 +70,7 @@
                                                 Địa Chỉ:  <input  class="mb-3 text-muted text-uppercase" value="{{$items->address}}"></p>
                                             <p class="mb-3 text-muted text-uppercase">
                                                 Số đơn hàng: <input  class="mb-3 text-muted text-uppercase" value="1"></p>
+                                            <input  type='file' onchange="readURL(this);" style="padding:10px; background:#2d2d2d;"/>
 
 
 
@@ -99,7 +108,20 @@
 
         </div>
         <!-- Grid row -->
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </section>
     <!--Section: Block Content-->
 

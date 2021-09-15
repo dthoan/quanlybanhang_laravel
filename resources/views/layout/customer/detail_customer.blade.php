@@ -16,7 +16,7 @@
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
                                     </li>
-                                    <li class="list-inline-item">Detail Order</li>
+                                    <li class="list-inline-item">Detail Customer</li>
                                 </ul>
                             </div>
 
@@ -58,8 +58,6 @@
                                             <p class="mb-2 text-muted text-uppercase small">Số Điện Thoại: {{$items->phone_number}}</p>
                                             <p class="mb-3 text-muted text-uppercase small">Địa Chỉ: {{$items->address}}</p>
                                             <p class="mb-3 text-muted text-uppercase small">Số đơn hàng: 1</p>
-<input  class="mb-3 text-muted text-uppercase small" value="{{$items->email}}"> Email: {{$items->email}}<br/>
-<input  class="mb-3 text-muted text-uppercase small"> Email: {{$items->email}}<br/>
 
                                         </div>
 
@@ -69,7 +67,7 @@
                                             <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                                                     class="fas fa-trash-alt mr-1"></i> Chỉnh sửa Thông tin</a>
                                             <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                                                    class="fas fa-heart mr-1"></i> Cập Nhật </a>
+                                                    class="fas fa-list mr-1"></i> danh sách </a>
                                         </div>
 
                                     </div>

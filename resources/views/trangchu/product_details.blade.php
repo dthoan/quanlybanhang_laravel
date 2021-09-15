@@ -10,7 +10,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('trangchu')}}">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active"><a href="">Loại Sản Phẩm {{$product_name[0]->name}}  </a></li>
+                    <li class="breadcrumb-item active"><a href="">Loại Sản Phẩm: {{$ten_chude->name}}  </a></li>
 
                 </ol>
             </nav>
@@ -28,7 +28,7 @@
               "asNavFor": ".product-slider-nav"
               }'>
                     <div class="single-slide">
-                        <img src="images\products\{{$detail_product->image}}" alt="">
+                        <img src="..\storage\app\public\{{$detail_product->image}}" alt="">
                     </div>
 
                 </div>
@@ -45,7 +45,7 @@
               "focusOnSelect": true
               }'>
                     <div class="single-slide">
-                        <img src="image\products\{{$detail_product->images}}" alt="">
+                        <img src="..\storage\app\public\{{$detail_product->images}}" alt="">
                     </div>
 
                 </div>
@@ -63,9 +63,16 @@
                         @endif
 
 
-                        <li>Loại Sản Phẩm:  <span class="list-value ">{{$detail_product->id_type}}</span></li>
+                        <li>Loại Sản Phẩm:  <span class="list-value ">{{$ten_chude->name}} </span></li>
                         <li>Đánh Giá:  <span class="list-value"> 200</span></li>
-                        <li>số Lượng có sẵn:  <span class="list-value">{{$detail_product->quatity}}</span></li>
+                        <li>số Lượng có sẵn:
+                                @if($detail_product->quanlity <= 0)
+                                    <span class="list-value text-danger">Hết hàng</span>
+                                @else
+                                    <span class="list-value">{{$detail_product->quanlity}}</span>
+                                @endif
+
+                            </li>
                     </ul>
                     <div class="price-block">
                         @if($detail_product->promotion_price == 0)
@@ -95,10 +102,11 @@
                     <div class="add-to-cart-row">
                         <div class="count-input-block">
                             <span class="widget-label">Số Lượng</span>
-                            <input type="number" class="form-control text-center" value="1">
+                            <input type="number" class="form-control text-center" min="1"  step="1" value="1" >
+
                         </div>
                         <div class="add-cart-btn">
-                            <a href="" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm Vào Giỏ Hàng</a>
+                            <a href="{{route('themgiohang',$detail_product->id)}}" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm Vào Giỏ Hàng</a>
                         </div>
                     </div>
                     <div class="compare-wishlist-row">
@@ -131,6 +139,8 @@
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
                     <div class="review-wrapper">
                         <h2 class="title-lg mb--20">Đánh Giá của khách hàng</h2>
+
+                        @foreach($show_comment as $noidung_comment)
                         <div class="review-comment mb--20">
                             <div class="avatar">
                                 <img src="image\icon\author-logo.png" alt="">
@@ -143,12 +153,16 @@
                                     <span class="ion-android-star-outline"></span>
                                     <span class="ion-android-star-outline"></span>
                                 </div>
+
                                 <h6 class="author">ADMIN – <span class="font-weight-400">March 23, 2015</span>
                                 </h6>
-                                <p>Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                    quis mi.</p>
+
+                                <p>{{$noidung_comment->body_post}}</p>
+
                             </div>
                         </div>
+
+                        @endforeach
                         <h2 class="title-lg mb--20 pt--15">ADD A REVIEW</h2>
                         <div class="rating-row pt-2">
                             <p class="d-block">Your Rating</p>
@@ -164,13 +178,22 @@
                                         <input type="radio" name="star" id="star5">
                                         <label for="star5"></label>
                                     </span>
-                            <form action="./" class="mt--15 site-form ">
+
+
+                            <form action="{{route('detail_product',$detail_product->id)}}" class="mt--15 site-form " method="POST">
+
+                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                <input type="hidden" name="productId" value="{{$detail_product->id}}"/>
+
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="form-group">
+                                        <div class="form-group"  name="body_post">
+
                                             <label for="message">Comment</label>
-                                            <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                            <textarea name="body_post" id="body_post" cols="30" rows="10" class="form-control"></textarea>
+
                                         </div>
+
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
@@ -191,12 +214,16 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="submit-btn">
-                                            <a href="#" class="btn btn-black">Post Comment</a>
-                                        </div>
+                                        <button type="submit" class="btn btn-black">
+                                            Post Comment
+                                        </button>
                                     </div>
                                 </div>
                             </form>
+
+
+
+
                         </div>
                     </div>
                 </div>

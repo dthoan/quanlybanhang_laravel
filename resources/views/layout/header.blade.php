@@ -25,7 +25,7 @@
                     <div class="main-navigation flex-lg-right">
                         <ul class="main-menu menu-right ">
                             <li class="menu-item has-children">
-                                <a href="javascript:void(0)">Home <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                                <a href="javascript:void(0)">Trang chủ <i class="fas fa-chevron-down dropdown-arrow"></i></a>
                                 <ul class="sub-menu">
                                     <li> <a href="{{route('trangchu')}}">Sản Phẩm Mới</a></li>
                                     <li> <a href="{{route('trangchu')}}">Sản Phẩm Bán Chạy</a></li>
@@ -49,10 +49,10 @@
                             </li>
                             <!-- Blog -->
                             <li class="menu-item">
-                                <a href="{{route('about')}}">About</a>
+                                <a href="{{route('about')}}">Diễn đàn</a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{route('contact')}}">Contact</a>
+                                <a href="{{route('contact')}}">liên hệ</a>
                             </li>
                         </ul>
                     </div>

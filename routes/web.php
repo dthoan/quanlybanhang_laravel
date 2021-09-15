@@ -75,9 +75,17 @@ Route::get("/trangchu/html", "Baitap@getHtml");
 Route::get("/trangchu/php", "Baitap@getPhp");
 /// website bán hàng
 Route::get("/trangchu/index", "quanlybanhangController@getIndex")->name("trangchu");
-Route::get("/trangchu/product_details/{id}", "quanlybanhangController@getProductDetails")->name("detail_product");
+Route::get("/trangchu/product-details/{id}", "quanlybanhangController@getProductDetails")->name("detail_product");
+// comment product
+//Route::post("/trangchu/product_details/{id}", "quanlybanhangController@postComment")->name("detail_product");
+Route::post("/trangchu/product-details/{id}", "quanlybanhangController@postCommentProduct")->name("detail_product");
+
 //blog-contact-about
 Route::get("/trangchu/blog", "quanlybanhangController@getBlog")->name("blog");
+Route::get("/trangchu/blog-detail/{id}", "quanlybanhangController@getBlogDetail")->name("blog_detail");
+// comment blog
+Route::post("/trangchu/blog-detail/{id}", "quanlybanhangController@postCommentBlog")->name("blog_detail");
+
 Route::get("/trangchu/contact", "quanlybanhangController@getContact")->name("contact");
 Route::get("/trangchu/about", "quanlybanhangController@getabout")->name("about");
 // cart
@@ -93,6 +101,11 @@ Route::get("/trangchu/del-item/{id}","quanlybanhangController@getDelItemCart")->
 // admin đăng nhập
 Route::get("/login", "quanlybanhangController@getLogin")->name('login');
 Route::post("/login", "quanlybanhangController@postLogin")->name('login');
+// comment
+//Route::get("/posts/index", "postController@index")->name('comment');
+Route::post("/posts/create", "postController@create")->name('create_comment');
+Route::post("/posts/show/{id}", "postController@show");
+//Route::post("/posts/show", "postController@show");
 // đăng ký
 Route::get("/register", "quanlybanhangController@getRegister")->name('register');
 Route::post("/register", "quanlybanhangController@postRegister")->name('register');
@@ -106,7 +119,9 @@ Route::get("/admin/index", "quanlybanhangController@getAdminIndex")->name('index
 // product
 Route::get("/admin/list-product", "quanlybanhangController@getAllProduct")->name('list_product');
 Route::get("/admin/add-product", "quanlybanhangController@getAddProduct")->name('add_product');
-Route::post("/admin/add-product", "quanlybanhangController@postAddProduct")->name('add_product');
+Route::post("/admin/add-product", "quanlybanhangController@postEditProduct")->name('add_product');
+Route::post("/admin/edit-product/{id}", "quanlybanhangController@postEditProduct")->name('edit_product');
+Route::get("/admin/edit-product/{id}", "quanlybanhangController@getEditProduct")->name('edit_product');
 Route::get("/admin/delete-product/{id}", "quanlybanhangController@getDeleteProduct")->name('del_product');
 // order
 Route::get("/admin/list-order", "quanlybanhangController@getListOrder")->name('list_order');
@@ -119,7 +134,22 @@ Route::get("/admin/detail/{id}", "quanlybanhangController@getDetailOrder")->name
 // customer
 Route::get("/admin/list-customer", "quanlybanhangController@getListCustomer")->name('list_customer');
 Route::get("/admin/detail-customer/{id}", "quanlybanhangController@getDetailCustomer")->name('detail_customer');
-Route::get("/admin/edit_customer/{id}", "quanlybanhangController@getEditCustomer")->name('edit_customer');
+Route::get("/admin/edit-customer/{id}", "quanlybanhangController@getEditCustomer")->name('edit_customer');
+Route::get("/admin/delete-customer/{id}", "quanlybanhangController@getDeleteCustomer")->name('del_customer');
+
+Route::get("/admin/add-customer", "quanlybanhangController@getAddCustomer")->name('add_customer');
+Route::post("/admin/add-customer", "quanlybanhangController@postAddCustomer")->name('add_customer');
+// Danh mục sản phẩm
+Route::get("/admin/list-category", "quanlybanhangController@getListCategory")->name('list_category');
+Route::get("/admin/add-category", "quanlybanhangController@getAddCategory")->name('add_category');
+Route::post("/admin/add-category", "quanlybanhangController@postAddCategory")->name('add_category');
+Route::get("/admin/del-category/{id}", "quanlybanhangController@getDeleteCategory")->name('del_category');
+Route::get("/admin/edit-category/{id}", "quanlybanhangController@getEditCategory")->name('edit_category');
+Route::post("/admin/edit-category/{id}", "quanlybanhangController@postEditCategory")->name('edit_category');
+// blog view là add_blog
+Route::get("/trangchu/cau-hoi", "blogController@getAddBlog")->name('cau_hoi');
+Route::post("/trangchu/cau-hoi", "blogController@postAddBlog")->name('cau_hoi');
+
 
 
 

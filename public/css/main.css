@@ -16725,7 +16725,7 @@ input[type="number"] {
       padding-top: 25px;
       padding-bottom: 25px;
       font-size: 16px;
-      text-transform: uppercase;
+      text-transform: unset;
       font-weight: 400;
       color: #333; } }
     @media (min-width: 992px) and (min-width: 1200px) {

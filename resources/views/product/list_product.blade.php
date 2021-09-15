@@ -21,7 +21,10 @@
                                 </ul>
                             </div>
                             <button class="au-btn au-btn-icon au-btn--green">
-                                <i class="zmdi zmdi-plus"></i>Thêm Sản Phẩm</button>
+                                <a href="{{route('add_product')}}">
+                                    <i class="zmdi zmdi-plus"></i>Thêm Sản Phẩm
+                                </a>
+                               </button>
                         </div>
                     </div>
                 </div>
@@ -48,11 +51,11 @@
                     <th>id</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Loại Sản Phẩm</th>
-                    <th>Mô Tả</th>
+
                     <th>Giá</th>
                     <th>Khuyến Mãi</th>
                     <th>Hình</th>
-                    <th>Ngày Tạo</th>
+
                     <th >Action</th>
 
                 </tr>
@@ -62,12 +65,20 @@
                 <tr>
                     <td>{{$sp->id}}</td>
                     <td>{{$sp->name}}</td>
-                    <td>{{$sp->id_type}}</td>
-                    <td>{{$sp->description}}</td>
+                    <td>
+                    @foreach($category as $cate)
+                        @if($sp->id_type== $cate->id)
+                            {{$cate->name}}
+                        @endif
+                     @endforeach
+                    </td>
+
+{{--                    <td>{{$sp->id_type}}</td>--}}
+
                     <td>{{$sp->unit_price}}</td>
                     <td>{{$sp->promotion_price}}</td>
-                    <td><img  src=".\images\products\{{$sp->image}}" alt="" height="90px" width="90px"></td>
-                    <td>{{$sp->create_at}}</td>
+                    <td><img  src="..\storage\app\public\{{$sp->image}}" alt="" height="90px" width="90px"></td>
+
                     <td>
                         <div class="table-data-feature">
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
@@ -78,13 +89,14 @@
 
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                <i class="zmdi zmdi-edit"></i>
+                                <a href="{{route('edit_product',$sp->id)}}"> <i class="zmdi zmdi-edit"></i></a>
+
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                <a class="zmdi zmdi-delete"
+                                <a
                                    href="{{route('del_product',$sp->id)}}"
-                                   onclick="return confirm('Are you sure delete this category?????')">
-
+                                   onclick="return confirm('Bạn có thật sự muốn xóa?????')">
+                                    <i class="zmdi zmdi-delete"></i>
                                 </a>
                             </button>
                             <button class="item" data-toggle="tooltip" data-placement="top" title="More">
@@ -98,6 +110,7 @@
 
                 </tbody>
             </table>
+            <span>{{$ListProduct->render()}}</span>
         </div>
         <!-- END DATA TABLE-->
     </div>
