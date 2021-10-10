@@ -15,6 +15,7 @@
     <title>@yield('title')</title>
 
 
+
     <!-- Fontfaces CSS-->
     <link href="admin/css/font-face.css" rel="stylesheet" media="all">
 
@@ -24,7 +25,6 @@
 
     <!-- Bootstrap CSS-->
     <script src="admin/js/ckeditor.js"></script>
-
     <!-- Vendor CSS-->
     <link href="admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
@@ -47,9 +47,7 @@
             .then( editor => {
                 window.editor = editor;
             } )
-            .catch( err => {
-                console.error( err.stack );
-            } );
+            ;
     </script>
 
 </head>
@@ -577,6 +575,9 @@
 <script src="admin/vendor/vector-map/jquery.vmap.min.js"></script>
 <script src="admin/vendor/vector-map/jquery.vmap.sampledata.js"></script>
 <script src="admin/vendor/vector-map/jquery.vmap.world.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
 
 <!-- Main JS-->
 <script src="admin/js/main.js"></script>

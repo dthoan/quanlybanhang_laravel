@@ -108,7 +108,9 @@
                             <label for="text-input" class=" form-control-label">Mô Tả</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text"  name="description" id="ckeditor" value="{{$product->description}}" class="form-control">
+                            <textarea type="text"  name="description" id="ckeditor" class="form-control">
+                                {{$product->description}}
+                            </textarea>
                             @if($errors->has("description"))
                                 <small class="text-danger">{{$errors->first('description')}}</small>
                             @endif
@@ -163,7 +165,7 @@
                         </div>
                         <div class="col-12 col-md-9">
                             <img style="width: 100px" src="..\storage\app\public\{{$product->image}}"/>
-                            <input type="file" id="text-input" name="image"  >
+                            <input type="file" id="text-input" name="image[]"  multiple>
                             @if($errors->has("image"))
                                 <small class="text-danger">{{$errors->first('image')}}</small>
                             @endif

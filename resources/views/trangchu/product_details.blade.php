@@ -2,7 +2,9 @@
 @section("title","Pustok - Product Details")
 @section("content")
 
-
+    <style>
+         .review-article a {    color: blue}
+    </style>
 <main class="inner-page-sec-padding-bottom">
     <div class="container">
 
@@ -28,7 +30,7 @@
               "asNavFor": ".product-slider-nav"
               }'>
                     <div class="single-slide">
-                        <img src="..\storage\app\public\{{$detail_product->image}}" alt="">
+                        <img src="..\storage\app\public\{{reset($one_image)}}" alt="">
                     </div>
 
                 </div>
@@ -44,9 +46,12 @@
               "asNavFor": ".product-details-slider",
               "focusOnSelect": true
               }'>
+                    @foreach($one_image as $hinh)
+
                     <div class="single-slide">
-                        <img src="..\storage\app\public\{{$detail_product->images}}" alt="">
+                        <img src="..\storage\app\public\{{$hinh}}" alt="">
                     </div>
+                    @endforeach
 
                 </div>
             </div>
@@ -97,14 +102,13 @@
                     </div>
                     <article class="product-details-article">
                         <h4 class="sr-only">Product Summery</h4>
-                        <p> {{$detail_product->description}} </p>
+                        <p>
+{{--                            {{$detail_product->description}} --}}
+                            Giới thiệu sản phẩm
+                        </p>
                     </article>
                     <div class="add-to-cart-row">
-                        <div class="count-input-block">
-                            <span class="widget-label">Số Lượng</span>
-                            <input type="number" class="form-control text-center" min="1"  step="1" value="1" >
 
-                        </div>
                         <div class="add-cart-btn">
                             <a href="{{route('themgiohang',$detail_product->id)}}" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm Vào Giỏ Hàng</a>
                         </div>
@@ -120,7 +124,8 @@
             <ul class="nav nav-tabs nav-style-2" id="myTab2" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="tab1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
-                        {{$detail_product->description}}
+{{--                        {{$detail_product->description}}--}}
+                        Giới thiệu sản phẩm
                     </a>
                 </li>
                 <li class="nav-item">
@@ -133,7 +138,7 @@
                 <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
                     <article class="review-article">
                         <h1 class="sr-only">Mô tả</h1>
-                        <p> {{$detail_product->description}}</p>
+                        <p class="your_textarea"> {!! $detail_product->description !!}</p>
                     </article>
                 </div>
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
@@ -255,17 +260,21 @@ RELATED PRODUCTS BOOKS
                 <div class="single-slide">
                     <div class="product-card">
                         <div class="product-header">
-                            <a href="{{route('detail_product',$sp->id)}}" class="author">
-                               {{$sp->name}}
-                            </a>
-                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}</a></h3>
+{{--                            <a href="{{route('detail_product',$sp->id)}}" class="author"--}}
+{{--                               style=" width: 500px;--}}
+{{--                                        overflow: hidden;--}}
+{{--                                        white-space: nowrap;--}}
+{{--                                        text-overflow: ellipsis;">--}}
+{{--                               {{$sp->name}}--}}
+{{--                            </a>--}}
+                            <h3><a href="{{route('detail_product',$sp->id)}}"> {{$sp->name}}</a></h3>
                         </div>
                         <div class="product-card--body">
                             <div class="card-image">
-                                <img src="images\products\{{$sp->image}}" alt="" height="340px">
+                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="340px">
                                 <div class="hover-contents">
                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                        <img src="images\products\{{$sp->images}}" alt="" height="340px">
+                                        <img src="..\storage\app\public\{{$sp->image}}" alt="" height="340px">
                                     </a>
                                     <div class="hover-btns">
                                         <a href="cart.html" class="single-btn">

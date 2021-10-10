@@ -22,7 +22,7 @@
                 <div class="shop-toolbar with-sidebar mb--30">
                     <div class="row align-items-center">
                         <div class="col-lg-2 col-md-2 col-sm-6">
-                            <!-- Product View Mode -->
+                            <!-- Product View shop-product-wrap with-pagination row space-db--30 shop-border listMode -->
                             <div class="product-view-mode">
                                 <a href="#" class="sorting-btn active" data-target="grid"><i class="fas fa-th"></i></a>
                                 <a href="#" class="sorting-btn" data-target="grid-four">
@@ -139,17 +139,22 @@
                             <div class="product-card">
                                 <div class="product-grid-content">
                                     <div class="product-header">
-                                        <a href="{{route('detail_product',$sp->id)}}" class="author">
+                                        <a href="{{route('detail_product',$sp->id)}}" class="author"
+                                           style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                        >
                                            {{$sp->name}}
                                         </a>
-                                        <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}</a></h3>
+                                        <h3><a href="{{route('detail_product',$sp->id)}}">Loại sản phẩm</a></h3>
                                     </div>
                                     <div class="product-card--body">
                                         <div class="card-image">
-                                            <img src="images\products\{{$sp->image}}" alt="">
+                                            <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                             <div class="hover-contents">
                                                 <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                                    <img src="images\products\{{$sp->images}}" alt="">
+                                                    <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
                                                     <a href="cart.html" class="single-btn">
@@ -214,13 +219,13 @@
                                     <div class="col-lg-5">
                                         <!-- Product Details Slider Big Image-->
                                         <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
-              "slidesToShow": 1,
-              "arrows": false,
-              "fade": true,
-              "draggable": false,
-              "swipe": false,
-              "asNavFor": ".product-slider-nav"
-              }'>
+                                                  "slidesToShow": 1,
+                                                  "arrows": false,
+                                                  "fade": true,
+                                                  "draggable": false,
+                                                  "swipe": false,
+                                                  "asNavFor": ".product-slider-nav"
+                                                  }'>
                                             <div class="single-slide">
                                                 <img src="image\products\product-details-1.jpg" alt="">
                                             </div>
@@ -344,8 +349,15 @@
                         <ul class="sidebar-menu--shop">
 
 
-                           @foreach($all_category as $sp)
-                                <li><a href="{{route('typecatelory',$sp->id)}}">{{$sp->name}} </a></li>
+                           @foreach($type_pro as $sp)
+                               @if($sp->id != 2)
+                                <li><a href="{{route('typecatelory',$sp->id)}}"
+                                       style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                    >{{$sp->name}} </a></li>
+                                @endif
                             @endforeach
 
 
@@ -376,47 +388,7 @@
 <!--=================================
 Brands Slider
 ===================================== -->
-<section class="section-margin">
-    <h2 class="sr-only">Brand Slider</h2>
-    <div class="container">
-        <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 6
-                                            }' data-slick-responsive='[
-                {"breakpoint":992, "settings": {"slidesToShow": 4} },
-                {"breakpoint":768, "settings": {"slidesToShow": 3} },
-                {"breakpoint":575, "settings": {"slidesToShow": 3} },
-                {"breakpoint":480, "settings": {"slidesToShow": 2} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-            <div class="single-slide">
-                <img src="image\others\brand-1.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-2.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-3.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-4.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-5.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-6.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-1.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="image\others\brand-2.jpg" alt="">
-            </div>
-        </div>
-    </div>
-</section>
+
 <!--=================================
 Footer Area
 ===================================== -->

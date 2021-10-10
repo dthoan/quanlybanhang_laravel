@@ -23,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layout.header', function($view){
-            $type_pro = type_products::all();
+            $type_pro = type_products::where('p_type_product','=',0)->get();
+
             $view->with('type_pro', $type_pro);
         });
 

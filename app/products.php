@@ -21,6 +21,7 @@ class products extends Model
         'images',
         'status',
         'alias',
+        'product_views',
         'created_at',
         'updated_at'
     ];

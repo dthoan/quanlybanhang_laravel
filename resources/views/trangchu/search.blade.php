@@ -1,5 +1,6 @@
 
 
+
 @extends("layout.layout")
 @section("title","Pustok - Search")
 @section("content")
@@ -40,7 +41,13 @@
                                             <a href="" class="author">
 
                                             </a>
-                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->name}}</a></h3>
+                                            <h3><a href="{{route('detail_product',$sp->id)}}"
+                                                   style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+
+                                                >{{$sp->name}}</a></h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
@@ -49,7 +56,7 @@
                                                         <div class="ribbon-sale">Sale</div>
                                                     </div>
                                                 @endif
-                                                <img src="images\products\{{$sp->image}}" alt="" height="180px" width="122px">
+                                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
                                                     @if($sp->promotion_price != 0)
                                                         <div class="ribbon-wrapper">
@@ -57,7 +64,7 @@
                                                         </div>
                                                     @endif
                                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                                        <img src="images\products\{{$sp->images}}" alt="">
+                                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">

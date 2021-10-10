@@ -36,9 +36,11 @@
                             <!-- Shop -->
                             <li class="menu-item has-children">
                                 <a href="javascript:void(0)">Shop <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu">
+                                <ul class="sub-menu zzzz">
                                     @foreach($type_pro as $type)
-                                        <li><a href="{{route("typecatelory",$type->id)}}">{{$type->name}}</a></li>
+                                        @if($type->id != 2)
+                                            <li><a href="{{route("typecatelory",$type->id)}}">{{$type->name}}</a></li>
+                                        @endif
                                     @endforeach
 
                                 </ul>

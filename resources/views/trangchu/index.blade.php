@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="home-content text-center text-sm-left position-relative">
                         <div class="hero-partial-image image-right">
-                            <img src="images\banner1.jpg" alt="">
+                            <img src="..\storage\app\public\uploals\banner1.jpg" alt="">
                         </div>
                         <div class="row no-gutters ">
                             <div class="col-xl-6 col-md-6 col-sm-7">
@@ -37,7 +37,7 @@
                 <div class="container">
                     <div class="home-content text-center text-sm-left position-relative">
                         <div class="hero-partial-image image-left">
-                            <img src="images\banner2.jpg" alt="">
+                            <img src="..\storage\app\public\uploals\banner2.jpg" alt="">
                         </div>
                         <div class="row align-items-center justify-content-start justify-content-md-end">
                             <div class="col-lg-6 col-xl-7 col-md-6 col-sm-7">
@@ -118,7 +118,7 @@
             <div class="row space-db--30">
                 <div class="col-lg-6 col-md-6 mb--30">
                     <a href="" class="promo-image promo-overlay">
-                        <img src="image\bg-images\promo-banner-with-text.jpg" alt="">
+                        <img src="..\storage\app\public\uploals\a2.jpg" alt="" style="height: 160px;">
                     </a>
                 </div>
                 <div class="col-lg-6 col-md-6 mb--30">
@@ -167,16 +167,21 @@
                                             <a href="" class="author">
 
                                             </a>
-                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->name}}</a></h3>
+                                            <h3><a href="{{route('detail_product',$sp->id)}}"
+                                                style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                                >{{$sp->name}}</a></h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
-                                                @if($sp->promotion_price != 0)
-                                                    <div class="ribbon-wrapper">
-                                                        <div class="ribbon-sale">Sale</div>
-                                                    </div>
-                                                @endif
-                                                <img src="images\products\{{$sp->image}}" alt="" height="180px" width="122px">
+{{--                                                @if($sp->promotion_price != 0)--}}
+{{--                                                    <div class="ribbon-wrapper">--}}
+{{--                                                        <div class="ribbon-sale">Sale</div>--}}
+{{--                                                    </div>--}}
+{{--                                                @endif--}}
+                                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
                                                     @if($sp->promotion_price != 0)
                                                         <div class="ribbon-wrapper">
@@ -184,7 +189,7 @@
                                                         </div>
                                                     @endif
                                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                                        <img src="images\products\{{$sp->images}}" alt="">
+                                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
@@ -1235,16 +1240,30 @@
                             {"breakpoint":320, "settings": {"slidesToShow": 1} }
                         ]'>
 
-                            @foreach($pro_product as $sp)
+                            @foreach($botca_product as $sp)
 
 
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="" class="author">
-                                                {{$sp->id_type}}
+                                            <a href="" class="author"
+                                               style="width: 200px;
+                                                    overflow: hidden;
+                                                    text-overflow: ellipsis;
+                                                    line-height: 25px;
+                                                    -webkit-line-clamp: 3;
+                                                    height: 75px;
+                                                    display: -webkit-box;
+                                                    -webkit-box-orient: vertical;"
+                                            >
+                                                {{$sp->typeName}}
                                             </a>
-                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->name}}</a></h3>
+                                            <h3><a href="{{route('detail_product',$sp->id)}}"
+                                                    style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                                >{{$sp->name}}</a></h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
@@ -1253,7 +1272,7 @@
                                                         <div class="ribbon-sale">Sale</div>
                                                     </div>
                                                 @endif
-                                                <img src="images\products\{{$sp->image}}" alt="" height="180px" width="122px">
+                                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
                                                     @if($sp->promotion_price != 0)
                                                         <div class="ribbon-wrapper">
@@ -1262,7 +1281,7 @@
                                                     @endif
                                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
 
-                                                        <img src="images\products\{{$sp->images}}" alt="">
+                                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
@@ -2308,7 +2327,7 @@
     <section class="section-margin">
         <div class="container-fluid">
             <div class="promo-section-heading">
-                <h2>ƯU ĐÃI SẢN PHẨM THỨC ĂN GIA CẦM</h2>
+                <h2>DANH MỤC MỌI NGƯỜI QUAN TÂM</h2>
                 <p>Tìm thấy {{count($sale_product)}} sản phẩm</p>
             </div>
             <div class="product-slider with-countdown  slider-border-single-row sb-slick-slider" data-slick-setting='{
@@ -2329,18 +2348,23 @@
                     <div class="product-card">
                         <div class="product-header">
                             <a href="" class="author">
-                                {{$sp->name}}
+                                {{$sp->typeName}}
                             </a>
-                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}
+                            <h3><a href="{{route('detail_product',$sp->id)}}"
+                                s style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                >{{$sp->name}}
                                 </a>
                             </h3>
                         </div>
                         <div class="product-card--body">
                             <div class="card-image">
-                                <img src="images\products\{{$sp->image}}" alt="">
+                                <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                 <div class="hover-contents">
                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                        <img src="images\products\{{$sp->images}}" alt="">
+                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                     </a>
                                     <div class="hover-btns">
                                         <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
@@ -2358,9 +2382,8 @@
                                     </div>
                                 </div>
                             </div>
-                            x
                             <div class="count-down-block">
-                                <div class="product-countdown" data-countdown="01/05/2020"></div>
+                                <div class="product-countdown" data-countdown="01/05/2020">fgdsgds</div>
                             </div>
                         </div>
                     </div>
@@ -2404,14 +2427,19 @@
                             <div class="single-slide">
                                 <div class="product-card card-style-list">
                                     <div class="card-image">
-                                        <img src="images\products\{{$sp->image}}" alt="">
+                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                     </div>
                                     <div class="product-card--body">
                                         <div class="product-header">
-                                            <a href="#" class="author">
+                                            <a href="#" class="author"
+                                               style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                            >
                                                 {{$sp->name}}
                                             </a>
-                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}
+                                            <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->typeName}}
                                                 </a></h3>
                                         </div>
                                         <div class="price-block">
@@ -2438,7 +2466,7 @@
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>SẢN PHẨM DÀNH CHO CÁ</h2>
+                <h2>SẢN PHẨM MỚI</h2>
             </div>
             <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
                                             "autoplay": true,
@@ -2458,11 +2486,16 @@
                 <div class="single-slide">
                     <div class="product-card card-style-list">
                         <div class="card-image">
-                            <img src="images\products\{{$sp->image}}" alt="">
+                            <img src="..\storage\app\public\{{$sp->image}}" alt="">
                         </div>
                         <div class="product-card--body">
                             <div class="product-header">
-                                <a href="#" class="author">
+                                <a href="#" class="author"
+                                   style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                >
                                     {{$sp->name}}
                                 </a>
                                 <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
@@ -2492,7 +2525,7 @@
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>THỨC ĂN DÀNH CHO CÁ</h2>
+                <h2>CHĂM SÓC CƠ THỂ</h2>
                 <p>Tìm thấy {{count($botca_product)}} sản phẩm</p>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
@@ -2515,15 +2548,20 @@
                                 <a href="{{route('detail_product',$sp->id)}}" class="author">
                                    {{$sp->name}}
                                 </a>
-                                <h3><a href="{{route('detail_product',$sp->id)}}">{{$sp->description}}
+                                <h3><a href="{{route('detail_product',$sp->id)}}"
+                                       style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                    >{{$sp->name}}
                                     </a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="images\products\{{$sp->image}}"  height="330px" alt="">
+                                    <img src="..\storage\app\public\{{$sp->image}}"  height="330px" alt="">
                                     <div class="hover-contents">
                                         <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                            <img src="images\products\{{$sp->images}}" height="330px" alt="">
+                                            <img src="..\storage\app\public\{{$sp->image}}" height="330px" alt="">
                                         </a>
                                         <div class="hover-btns">
                                             <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">

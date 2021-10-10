@@ -35,25 +35,60 @@ class quanlybanhangController extends Controller
 
     public function getIndex(){
         $sl_images      = slide::all();
-        $new_product    = products::where("new",1)->get();
-        $pro_product    = products::where("promotion_price","!=0",0)->paginate(2);
-        $sale_product   = products::where("new",0)->get();
-        $botca_product  = products::where("id_type",1)->get();
-//        $get_tenloai = type_products::where("id", "=", $type)->get();
+        $new_product    = products::where("new",0)->get();
+//        $pro_product    = products::where("promotion_price","!=0",0)->paginate(2);
+        $pro_product    = DB::table('products')
+            ->join('type_products', 'products.id_type', '=', 'type_products.id')
+            ->where("promotion_price","!=0",0)
+            ->select(
+                'products.*',
+                'type_products.name as typeName'
+
+            )
+            ->paginate(2);
+//        $sale_product   = products::where("new",0)->get();
+//        $botca_product  = products::where("id_type",1)->get();
+        $botca_product  = DB::table('products')
+            ->join('type_products', 'products.id_type', '=', 'type_products.id')
+            ->where("id_type",1)
+            ->select(
+                'products.*',
+                'type_products.name as typeName'
+
+            )
+            ->get();
+        $sale_product = DB::table('products')
+            ->join('type_products', 'products.id_type', '=', 'type_products.id')
+            ->where("new",0)
+            ->select(
+                'products.*',
+                'type_products.name as typeName'
+
+            )
+            ->get();
+
+//DD($sale_product);
         return view("trangchu.index", compact("sl_images","new_product","pro_product","sale_product", "botca_product", "get_tenloai"));
     }
     public function getTypeProduct($type){
-        $sp_theoloai    = products::where("id_type","=", $type)->paginate(3);
+        $sp_theoloai    = products::where("id_type","=", $type)->paginate(9);
+        $type_pro = type_products::where('p_type_product','=',0)->get();
+
         $tenloai        = type_products::where("id", "=", $type)->get();
         $sp_khac        = products::where("promotion_price", "!=0", $type)->paginate(3);
         $all_category   = type_products::all();
 //        $counts = DB::table("product")->groupby("id_type")->count("id");
-        return view("trangchu.type_product", compact("sp_theoloai","tenloai","sp_khac","all_category"));
+        return view("trangchu.type_product", compact("sp_theoloai","tenloai","sp_khac","all_category","type_pro"));
     }
 
     public function getProductDetails($id){
         // Lấy ra sản phẩm có id tương ứng vd id=5
         $detail_product = products::where('id', $id)->first();
+        $arr_image = $detail_product->images;
+// hình ảnh
+        $one_image = explode(",", $arr_image);
+
+
         // lấy ra tên loại sản phẩm {{$product_name[0]->name}}
         $product_name   = products::where("id", "=", $id)->get();
         // hiện bình luận
@@ -84,7 +119,7 @@ class quanlybanhangController extends Controller
 
 
 
-        return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'ten_hang','ten_chude','ten_post','post'));
+        return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'ten_hang','ten_chude','ten_post','post','one_image'));
     }
     // thêm bình luận
     public function postCommentProduct(Request $rq, posts $p,$id)
@@ -307,7 +342,31 @@ class quanlybanhangController extends Controller
                 $sl_images = slide::all();
                 $new_product = products::where("new", 1)->get();
                 $pro_product = products::where("promotion_price", "!=0", 0)->paginate(2);
-                $sale_product = products::where("new", 0)->get();
+
+//                $sale_product = products::where("new", 0)->get();
+                $sale_product = DB::table('products')
+                    ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                    ->select(
+                        'products.name',
+                        'products.quanlity',
+                        'products.id_type',
+                        'products.id_user',
+                        'products.id_post',
+                        'products.description',
+                        'products.unit_price',
+                        'products.promotion_price',
+                        'products.new',
+                        'products.image',
+                        'products.images',
+                        'products.status',
+                        'products.alias',
+                        'products.created_at',
+                        'products.updated_at',
+                        'tyoe_products.name'
+
+                    )
+                    ->get();
+//dd( $sale_product);
                 $botca_product = products::where("id_type", 1)->get();
 
                 return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "get_tenloai"));
@@ -333,6 +392,7 @@ class quanlybanhangController extends Controller
         Auth::logout();
         return redirect()->route('trangchu');
     }
+
     // tìm kiếm trang chủ
     public function getResearch(Request $rq ){
         if($rq->key=="khuyen mai"){
@@ -372,6 +432,8 @@ class quanlybanhangController extends Controller
 
         $ListProduct = products::orderBy('id', 'DESC')->where('id_user',Auth::user()->id)->paginate(5);
         $category = type_products::all();
+//        dd($ListProduct->product_views);
+//        $view = products::where('id',)->first();
         return view('product.list_product',compact('ListProduct','category'));
     }
 
@@ -473,6 +535,9 @@ class quanlybanhangController extends Controller
 
         $category_edit = type_products::find($id);
         $product = products::find($id);
+
+
+
         $isEdit = true;
         return view('product.edit_product',compact('category','product','category_edit','isEdit'));
     }
@@ -505,16 +570,34 @@ class quanlybanhangController extends Controller
         }
 
 
-        if(!is_null($rq->file('image')))
-        {
-            $imagePath1 = $rq->file('image')->store('uploals','public');
-            $product->image         = $imagePath1;
+
+
+            if ($rq->hasfile('image')) {
+
+                foreach ($rq->file('image') as $file) {
+                    $name = $file->getClientOriginalName();
+                    // tách chuỗi lấy đuôi file jpg
+                    $tach_chuoi  = explode(".",$name);
+                    $end = end($tach_chuoi);
+                    $mytime = md5(Carbon::now());
+                    // mã hóa md5
+                    $hinh = md5($name);
+                    // đường dẫn của file
+                    $file_name = $mytime.$hinh.'.'.$end;
+
+                    $file->move(public_path() . '/storage/uploals/', $file_name);
+
+                    $data[] = 'uploals/'.$file_name;
+
+                    $list_file = implode(",",$data);
+                }
+                $product->images          =  $list_file;
         }
-        if(!is_null($rq->file('images')))
-        {
-            $imagePath2 = $rq->file('images')->store('uploals','public');
-            $product->images          = $imagePath2;
-        }
+//        if(!is_null($rq->file('image')))
+//        {
+//            $imagePath2 = $rq->file('images')->store('uploals','public');
+//            $product->images          = $imagePath2;
+//        }
 
         if(!is_null($rq->id_type))
         {
@@ -527,21 +610,23 @@ class quanlybanhangController extends Controller
         $product->unit_price      = (double)$rq->unit_price;
         $product->promotion_price = (double)$rq->promotion_price;
         $product->new             = $rq->new;
-        $product->status             = $rq->status;
-        $product->id_user              =$rq->user_id;
-        $product->alias             = $rq->alias;
+        $product->status          = $rq->status;
+        $product->id_user         = $rq->user_id;
+        $product->alias           = $rq->alias;
         $product->updated_at      = Carbon::now();
 
         if($isEdit){
             //Edit
             $product->update();
+            return redirect('admin/list-product')->with("thongbao","Sửa thành công!");
         }else{
             //Create
             $product->created_at      = Carbon::now();
             $product->save();
+            return redirect('admin/list-product')->with("thongbao","Thêm thành công!");
         }
 
-        return redirect('admin/list-product')->with("thongbao","Sửa thành công!");
+
 
     }
 
@@ -683,9 +768,7 @@ class quanlybanhangController extends Controller
         if(!isset(Auth::user()->full_name)){
             return Redirect('login');
         }
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
-        }
+
 
         return view('layout.customer.add_customer',compact('item'));
     }
