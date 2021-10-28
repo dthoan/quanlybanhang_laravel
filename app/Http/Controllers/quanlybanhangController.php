@@ -68,7 +68,7 @@ class quanlybanhangController extends Controller
             ->get();
 
 //DD($sale_product);
-        return view("trangchu.index", compact("sl_images","new_product","pro_product","sale_product", "botca_product", "get_tenloai"));
+        return view("trangchu.index", compact("sl_images","new_product","pro_product","sale_product", "botca_product", "users"));
     }
     public function getTypeProduct($type){
         $sp_theoloai    = products::where("id_type","=", $type)->paginate(9);
@@ -85,21 +85,13 @@ class quanlybanhangController extends Controller
         // Lấy ra sản phẩm có id tương ứng vd id=5
         $detail_product = products::where('id', $id)->first();
         $arr_image = $detail_product->images;
-// hình ảnh
+        // hình ảnh
         $one_image = explode(",", $arr_image);
-
-
         // lấy ra tên loại sản phẩm {{$product_name[0]->name}}
         $product_name   = products::where("id", "=", $id)->get();
         // hiện bình luận
-        $show_comment= posts::where("id_product", "=", $id)->get();
-
-
-        $data['noidung'] = DB::table('type_products')->join('products', function ($join) {
-            $join->on('type_products.id', '=', 'products.id_type');
-        })->select(
-            'type_products.name'
-        )->first($id);
+        $show_comment= posts::leftJoin('users', 'users.id', '=', 'posts.id_user')
+            ->where("id_product", "=", $id)->select("posts.*",'users.full_name')->get();
 
         $ten_chude = DB::table('products')
             ->join('type_products', function ($join) {
@@ -107,41 +99,21 @@ class quanlybanhangController extends Controller
 
         })->select(
             'type_products.name'
-
-
         )->first($id);
-// lấy tên của người comment
-
-
-
         // sản phẩm tương tự
         $sp_tuongtu     = products::where('id_type',$detail_product->id_type)->paginate(4);
-
-
-
-        return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'ten_hang','ten_chude','ten_post','post','one_image'));
+        return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'ten_hang','ten_chude','ten_post','post','one_image','nguoi_cmt'));
     }
     // thêm bình luận
     public function postCommentProduct(Request $rq, posts $p,$id)
     {
 
-//        $idTinTuc = $id;
-//        $post = post::find($id);
-//        $post = new post();
-//        $p->id_post = $idTinTuc;
-//        $post->id_user = Auth::users()->id;
-
-//        $product= posts::where("id_product", "=", $id_product)->get();
-
-
-
+        $p->id_user = Auth::user()->id;
         $p->id_product = $rq->productId;
-//        $p->title_post = $rq->title_post;
         $p->body_post = $rq->body_post;
         $p->created_at      = Carbon::now();
         $p->updated_at      = Carbon::now();
         $p->deleted_at      = Carbon::now();
-//        $post->title_post = $rp->title_post;
 
         $p->save();
 
@@ -150,10 +122,12 @@ class quanlybanhangController extends Controller
     }
 
     public function getBlog(){
-        $blog_all = blogs::all();
-        $theme_all = theme::all();
 
-        return view("trangchu.blog",compact('blog_all','theme_all'));
+        $theme_all = theme::paginate(4);
+        $user_all = users::all();
+        $blog_all= blogs::leftJoin('users', 'users.id', '=', 'blogs.id_user')
+            ->select("blogs.*",'users.full_name')->orderBy('id', 'DESC')->get();
+        return view("trangchu.blog",compact('blog_all','theme_all','user_all'));
     }
 
     public function getBlogDetail($id){
@@ -208,16 +182,43 @@ class quanlybanhangController extends Controller
         return view("trangchu.checkout");
     }
     public function getCart(){
-        $product = products::All();
+
+        if(isset(Auth::user()->id))
+        {
+            $product = products::all();
+        }
+        else
+            $product = products::where('id_user',Auth::user()->id)->get();
+
         return view("trangchu.cart", compact('product'));
     }
     public function getAddtoCart(Request $rq, $id){
+//        $isRole = $this->checkRole(['Admin','User']);
+//        if(!$isRole){
+//            return redirect()->route('login');
+//        }
+
         $product = products::find($id);
-        $oldCart = Session('cart') ? Session::get('cart'):null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $id);
-        $rq->session()->put('cart', $cart);
-        return redirect()->back();
+        if(isset(Auth::user()->id)){
+            $oldCart = Session('cart') ? Session::get('cart'):null;
+            $cart = new Cart($oldCart);
+            $product->id_user = Auth::user()->id;
+            $cart->add($product, $id);
+            $rq->session()->put('cart', $cart);
+            return redirect()->back();
+        }
+        else
+        {
+            $product->id_user = Auth::user()->id;
+            $oldCart = Session('cart') ? Session::get('cart'):null;
+            $cart = new Cart($oldCart);
+
+            $cart->add($product, $id);
+            $rq->session()->put('cart', $cart);
+            return redirect()->back();
+
+        }
+
     }
 
     public function getDelItemCart($id){
@@ -252,7 +253,9 @@ class quanlybanhangController extends Controller
         $bill->time_order   = date('Y-m-d');
         $bill->total        =$cart->totalPrice;
         $bill->payment      = $req->payment_method;
-//        $bill->note = $req->note;
+        $bill->status       = 1;
+        $bill->id_user      = Auth::user()->id;
+//        $bill->note = $req->note;F
         $bill->save();
 
         foreach ($cart->items as $keys=>$value){
@@ -303,13 +306,16 @@ class quanlybanhangController extends Controller
         $user->password     = \Hash::make($rq->password);
         $user->phone        = $rq->phone_number;
         $user->address      = $rq->address;
+
         $user->save();
+        $user = users::find($user->id);
+        $user->assignRole('Admin');
         return redirect()->back()->with("thongbao","Đăng ký thành công! Hãy đăng nhập để tiếp tục sử dụng");
     }
 
     public function getLogin(){
 
-        return view("admin.login");
+            return view("admin.login");
     }
 
     public function postLogin(Request $rq)
@@ -332,52 +338,19 @@ class quanlybanhangController extends Controller
             'email' => $rq->email,
             'password' => $rq->password
         );
-        $role = users::where("email",$rq->email)->select("role")->get();
+//        $role = users::where("email",$rq->email)->get();
 
 //        $get_tenloai = type_products::where("id", "=", $type)->get();
 
-        if (Auth::attempt($arrLogin)) {
-            // nếu là 1 thì retunt trang chủ
-            if ($role=='1') {
-                $sl_images = slide::all();
-                $new_product = products::where("new", 1)->get();
-                $pro_product = products::where("promotion_price", "!=0", 0)->paginate(2);
 
-//                $sale_product = products::where("new", 0)->get();
-                $sale_product = DB::table('products')
-                    ->join('type_products', 'products.id_type', '=', 'type_products.id')
-                    ->select(
-                        'products.name',
-                        'products.quanlity',
-                        'products.id_type',
-                        'products.id_user',
-                        'products.id_post',
-                        'products.description',
-                        'products.unit_price',
-                        'products.promotion_price',
-                        'products.new',
-                        'products.image',
-                        'products.images',
-                        'products.status',
-                        'products.alias',
-                        'products.created_at',
-                        'products.updated_at',
-                        'tyoe_products.name'
-
-                    )
-                    ->get();
-//dd( $sale_product);
-                $botca_product = products::where("id_type", 1)->get();
-
-                return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "get_tenloai"));
-
-            }
-           else
-            {
-                return view("admin.index");
-            }
+//        if (Auth::attempt($arrLogin)) {
+//            // nếu là 1 thì retunt trang chủ
+//            return view("admin.index");
+//        }
+        $isRole = $this->checkRole(['Amin','User']);
+        if(!$isRole && Auth::attempt($arrLogin)){
+            return view("admin.index");
         }
-
         else
         {
             return redirect()->back()->with([
@@ -400,11 +373,14 @@ class quanlybanhangController extends Controller
         }
         else if($rq->key=="khong khuyen mai")
             $product = products::where("promotion_price",0)->paginate(8);
+//          else if
+//            $product = users::where("full_name", "like", "%".$rq->key."%")->paginate(8);
         else
-            $product = products::where("name", "like", "%", $rq->key)
+            $product = products::where("name", "like", "%".$rq->key."%")
                                 ->orwhere("unit_price", $rq->key)
                                 ->orwhere("promotion_price", $rq->key)
                                 ->paginate(8);
+
         return view("trangchu.search", compact("product"));
     }
     public function getResearchBlog(Request $rq ){
@@ -422,19 +398,39 @@ class quanlybanhangController extends Controller
     }
     // trang quản trị
     public function getAdminIndex(){
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
+        }
+
+
         return view('admin.index');
     }
 
     public function getAllProduct(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+
+
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
 
         $ListProduct = products::orderBy('id', 'DESC')->where('id_user',Auth::user()->id)->paginate(5);
+        $moi = products::orderBy('id', 'DESC')
+            ->where('id_user',Auth::user()->id)
+            ->where('status',0)
+            ->paginate(5);
+        $hetHang = products::orderBy('id', 'DESC')
+            ->where('id_user',Auth::user()->id)
+            ->where('status',1)
+            ->paginate(5);
+        $ngungBan = products::orderBy('id', 'DESC')
+            ->where('id_user',Auth::user()->id)
+            ->where('status',2)
+            ->paginate(5);
         $category = type_products::all();
-//        dd($ListProduct->product_views);
-//        $view = products::where('id',)->first();
-        return view('product.list_product',compact('ListProduct','category'));
+
+        return view('product.list_product',compact('ListProduct','category','moi','hetHang','ngungBan'));
     }
 
     public function getDeleteProduct($id){
@@ -449,10 +445,10 @@ class quanlybanhangController extends Controller
 
     public function getAddProduct()
     {
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
-
 
 
         $category = type_products::all();
@@ -549,7 +545,7 @@ class quanlybanhangController extends Controller
             'id_type'       => 'required',
             'unit_price'    => 'required',
             'promotion_price'=> 'required',
-            'new'            => 'required',
+            'status'            => 'required',
 
 
         ],
@@ -609,12 +605,12 @@ class quanlybanhangController extends Controller
         $product->description     = $rq->description;
         $product->unit_price      = (double)$rq->unit_price;
         $product->promotion_price = (double)$rq->promotion_price;
-        $product->new             = $rq->new;
+        $product->quanlity            = $rq->quanlity;
         $product->status          = $rq->status;
         $product->id_user         = $rq->user_id;
         $product->alias           = $rq->alias;
         $product->updated_at      = Carbon::now();
-
+//dd($product);
         if($isEdit){
             //Edit
             $product->update();
@@ -632,21 +628,20 @@ class quanlybanhangController extends Controller
 
     /// order
     public function getListOrder(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
 
-        $item = bills::all();
+        $item = bills::where('bills.id_user','=',Auth::user()->id)->get();
 //        dd($item);
         return view('order.list_order',compact('item'));
     }
 
     public function getaddOrder(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
-        }
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
         return view('order.add_order');
     }
@@ -693,7 +688,7 @@ class quanlybanhangController extends Controller
         $data = type_products::find($id);
         $data->delete();
 
-        return redirect('http://localhost:81/public/admin/list-order')->with('thongbao', 'Xóa thành công');
+        return redirect('admin/list-order')->with('thongbao', 'Xóa thành công');
     }
 
     public function getDetailOrder($id){
@@ -734,8 +729,9 @@ class quanlybanhangController extends Controller
     // customer
 
     public function getListCustomer(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
         $item = customer::all();
         return view('layout.customer.list_customer',compact('item'));
@@ -765,8 +761,9 @@ class quanlybanhangController extends Controller
     }
 
     public function getAddCustomer(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
 
 
@@ -807,8 +804,9 @@ class quanlybanhangController extends Controller
     }
     // category
     public function getAddCategory(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
         $category = type_products::all();
         return view('type_product.add_category',compact('category'));
@@ -850,8 +848,9 @@ class quanlybanhangController extends Controller
 
     }
     public function getListCategory(){
-        if(!isset(Auth::user()->full_name)){
-            return Redirect('login');
+        $isRole = $this->checkRole(['Admin','User']);
+        if(!$isRole){
+            return redirect()->route('login');
         }
 //        $item = type_products::orderBy('id', 'DESC')->paginate(5);
         $item = type_products::All();

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\blogs;
 use App\theme;
+use App\users;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class blogController extends Controller
 {
@@ -16,9 +18,9 @@ class blogController extends Controller
         return view('blog.add_blog', compact('chude'));
     }
 
-    public  function postAddBlog(blogs $blog,Request $rq )
+    public  function postAddBlog(Request $rq)
     {
-//
+
 //        $rq->validate([
 //            'id_theme' => 'required',
 //            'name' => 'required',
@@ -26,10 +28,23 @@ class blogController extends Controller
 //            'image' => 'required',
 //            'status' => 'required'
 //        ]);
+
+
+
+
+        $blog = new blogs();
+        if(!isset(Auth::user()->id)){
+            return Redirect('login');
+        }
+        else
+        {
+            $blog->id_user = Auth::user()->id;
+
+        }
         $blog->id_theme = $rq->id_theme;
         $blog->name = $rq->name;
         $blog->description = $rq->description;
-        $blog->image = $rq->image;
+//        $blog->image = $rq->image;
 //        $blog->content = $rq->content;
         $blog->status = $rq->status;
         $blog->created_at      = Carbon::now();

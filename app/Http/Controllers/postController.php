@@ -13,6 +13,13 @@ class postController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+    // thêm bài viết ở trang người dùng
+    public function getAddPostBlog(){
+        return view('blog.add_blog');
+    }
+    public  function postAddPostBlog(){
+
+    }
 
     public function create()
     {

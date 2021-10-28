@@ -49,6 +49,7 @@
                         <th>Mã Khách Hàng</th>
                         <th>Thành Tiền</th>
                         <th>Ngày Đặt Hàng</th>
+                        <th>Trạng thái</th>
                         <th>Thao Tác</th>
 
 
@@ -61,6 +62,13 @@
                            <th>{{$sp->id_customer}}</th>
                            <th>{{$sp->total}}</th>
                            <th>{{$sp->created_at->format('d/m/y')}}</th>
+                           <th>
+                               @if($sp->status == 2)
+                                   Chưa duyệt
+                               @else($sp->status == 1)
+                                   Đã xử lý
+                               @endif
+                           </th>
                             <th>
                                 <div class="table-data-feature">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Chi Tiết">

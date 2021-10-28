@@ -143,15 +143,18 @@
 
                     <div class="row form-group">
                         <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">New</label>
+                            <label for="text-input" class=" form-control-label">Trạng thái</label>
                         </div>
 
                         <div class="col-12 col-md-9">
-                            <select name="new" class="form-control">
+                            <select name="status" class="form-control">
+                                <option >---Select---</option>
                                 <option value="0">Hàng mới</option>
-                                <option value="1">Hàng qua sử dụng</option>
+                                <option value="1">Hàng tồn kho</option>
+                                <option value="1">Hết hàng</option>
+                                <option value="2">Ngưng bán</option>
                             </select>
-                            @if($errors->has("new"))
+                            @if($errors->has("status"))
                                 <small class="text-danger">{{$errors->first('new')}}</small>
                             @endif
                             {{--                            <input type="text" id="text-input" name="new" placeholder="Nhập Loại" class="form-control">--}}

@@ -22,6 +22,9 @@ class posts extends Model
         'deleted_at'
 
     ];
+    public function users(){
+        return $this->belongsTo("App\\user", "id_user", "id");
+    }
 //    protected $fillable = ['title_post', 'body_post'];
 
     /**

@@ -29,10 +29,12 @@ Route::get("/trangchu/product-details/{id}", "quanlybanhangController@getProduct
 Route::post("/trangchu/product-details/{id}", "quanlybanhangController@postCommentProduct")->name("detail_product");
 
 //blog-contact-about
-Route::get("/trangchu/blog", "quanlybanhangController@getBlog")->name("blog");
-Route::get("/trangchu/blog-detail/{id}", "quanlybanhangController@getBlogDetail")->name("blog_detail");
+Route::get("/blog", "quanlybanhangController@getBlog")->name("blog");
+Route::get("/add-post-blog", "postController@getAddPostBlog")->name("add_post_blog");
+Route::post("/add-post-blog", "postController@postAddPost")->name("add_post_blog");
+Route::get("/blog-detail/{id}", "quanlybanhangController@getBlogDetail")->name("blog_detail");
 // comment blog
-Route::post("/trangchu/blog-detail/{id}", "quanlybanhangController@postCommentBlog")->name("blog_detail");
+Route::post("/blog-detail/{id}", "quanlybanhangController@postCommentBlog")->name("blog_detail");
 
 Route::get("/trangchu/contact", "quanlybanhangController@getContact")->name("contact");
 Route::get("/trangchu/about", "quanlybanhangController@getabout")->name("about");
@@ -47,16 +49,16 @@ Route::get("/trangchu/add-to-cart/{id}","quanlybanhangController@getAddtoCart")-
 Route::get("/trangchu/del-item/{id}","quanlybanhangController@getDelItemCart")->name("delItem");
 
 // admin đăng nhập
-Route::get("/login", "quanlybanhangController@getLogin")->name('login');
-Route::post("/login", "quanlybanhangController@postLogin")->name('login');
+Route::get("admin/login", "quanlybanhangController@getLogin")->name('login');
+Route::post("admin/login", "quanlybanhangController@postLogin")->name('login');
 // comment
 //Route::get("/posts/index", "postController@index")->name('comment');
 Route::post("/posts/create", "postController@create")->name('create_comment');
 Route::post("/posts/show/{id}", "postController@show");
 //Route::post("/posts/show", "postController@show");
 // đăng ký
-Route::get("/register", "quanlybanhangController@getRegister")->name('register');
-Route::post("/register", "quanlybanhangController@postRegister")->name('register');
+Route::get("admin/register", "quanlybanhangController@getRegister")->name('register');
+Route::post("admin/register", "quanlybanhangController@postRegister")->name('register');
 // đăng xuất
 Route::get("/logout", "quanlybanhangController@getLogout")->name('logout');
 
@@ -113,8 +115,26 @@ Route::get("/admin/edit-promotion/{id}", "promotionController@getSearch")->name(
 //////////del promotion
 Route::get("/admin/del-promotion/{id}", "promotionController@getDelete")->name('del');
 
+// Đăng nhập trang người dùng
+Route::get("/login", "loginController@getLogin")->name('trangchuLogin');
+Route::post("/login", "loginController@postLogin")->name('trangchuLogin');
+// đăng ký trang chủ
+Route::get("/dangky", "loginController@getTrangchuRegister")->name('trangchuRegister');
+Route::post("/dangky", "loginController@postTrangchuRegister")->name('trangchuRegister');
 
+Route::get("/register-role", "loginController@createRolePermission");
+// role user
+Route::get("/admin/user", "userController@getUser")->name('role');
+Route::post("/admin/user", "userController@postRole")->name('role');
+//chat
+//Route::get('chat', 'chatsController@index');
+//Route::get('messages', 'chatController@fetchMessages');
+//Route::post('messages', 'chatController@sendMessage');
+//
+Route::group(['middleware' => ['role:Admin']], function () {
+//    Route::get("/admin/user", "userController@getUser");
 
+});
 
 
 

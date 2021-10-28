@@ -1,4 +1,4 @@
-@extends("layout.layout")
+@extends("layout.layout_blog")
 @section("title","Pustok - Thêm blog")
 @section("content")
 
@@ -9,14 +9,24 @@
                 <div class="breadcrumb-contents">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Blog</li>
+                            <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Thêm câu hỏi</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </section>
-        <form action="{{URL::to('/trangchu/cau-hoi')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        @if(Session::has("thongbao"))
+            <div class="alert alert-success">
+                {{Session::get("thongbao")}}
+            </div>
+        @endif
+        @if(Session::has("error"))
+            <div class="alert alert-success">
+                {{Session::get("error")}}
+            </div>
+        @endif
+        <form action="{{route('cau_hoi')}}" method="post" enctype="multipart/form-data" class="form-horizontal" style="margin: 50px;">
             @csrf
 
             <div class="form-group">
@@ -24,9 +34,9 @@
                 <input type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="Nhập câu hỏi">
             </div>
 
-            <div class="form-group" style="height: auto !important;">
+            <div class="form-group" >
                 <label for="exampleFormControlSelect1">Chủ đề</label>
-                <select class="form-control" id="p_theme">
+                <select class="form-control" id="p_theme" style="height: unset;">
                     <option class="form-group" value="0">--Danh mục cha--</option>
                     @foreach($chude as  $cate)
                         @if($cate->p_theme ==0)
@@ -35,7 +45,6 @@
                                 @if($cate_option->p_theme != 0 && $cate_option->p_theme == $cate->id_theme)
                                     <option class="form-group"  value="{{$cate_option->id_theme}}">{{'--'.$cate_option->theme_name}}</option>
                                 @endif
-
                             @endforeach
                         @endif
                     @endforeach
@@ -59,7 +68,7 @@
 
                 </script>
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">Lưu</button>
         </form>
     </div>
 

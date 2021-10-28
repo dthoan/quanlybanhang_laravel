@@ -14,8 +14,8 @@
     <!-- Title Page-->
     <title>@yield('title')</title>
 
-
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="admin/vendor/jquery-3.2.1.min.js"></script>
     <!-- Fontfaces CSS-->
     <link href="admin/css/font-face.css" rel="stylesheet" media="all">
 
@@ -29,6 +29,7 @@
     <link href="admin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
     <link href="admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
     <link href="admin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
 
     <link href="admin/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="admin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
@@ -127,6 +128,25 @@
 
                         </ul>
                     </li>
+                    <li class="active has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-tachometer-alt"></i>Quản lý tài khoản
+                            <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                <a href="{{route('role')}}">Duyệt tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="">Duyệt Đơn Hàng</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
 
 
                     <li class="active has-sub">
@@ -146,6 +166,18 @@
 
                         </ul>
                     </li>
+
+
+                    @can('Admin')
+                        <li>
+                            <a href="inbox.html">
+                                <a href="{{route('role')}}"> <i class="fas fa-chart-bar"></i>Duyệt tài khoản</a></a>
+
+                            <span class="inbox-num">3</span>
+                        </li>
+                    @endcan
+
+
 
                     <li>
                         <a href="inbox.html">
@@ -333,35 +365,19 @@
                                 <div class="account-dropdown__body">
                                     <div class="account-dropdown__item">
                                         <a href="#">
+                                            <i class="fa fa-home"></i>Trang chủ</a>
+                                    </div>
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
                                             <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                     <div class="account-dropdown__item">
                                         <a href="#">
                                             <i class="zmdi zmdi-settings"></i>Setting</a>
                                     </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
+
                                 </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-globe"></i>Language</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-pin"></i>Location</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-email"></i>Email</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-notifications"></i>Notifications</a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -552,7 +568,7 @@
 </div>
 
 <!-- Jquery JS-->
-<script src="admin/vendor/jquery-3.2.1.min.js"></script>
+
 <!-- Bootstrap JS-->
 <script src="admin/vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="admin/vendor/bootstrap-4.1/bootstrap.min.js"></script>

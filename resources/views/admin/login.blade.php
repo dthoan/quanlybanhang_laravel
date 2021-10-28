@@ -27,7 +27,8 @@
 
                                 <div class="form-group">
                                     <label>Email </label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Nhập Email">  @if($errors->has("email"))
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Nhập Email">
+                                    @if($errors->has("email"))
                                         <label class="text-danger">{{$errors->first('email')}}</label>
                                     @endif
                                 </div>
@@ -59,7 +60,7 @@
                             <div class="register-link">
                                 <p>
                                 Bạn có tài khoản không?
-                                    <a href="{{route('register')}}">Đăng Ký</a>
+                                    Cras fermentum est ac fermentum
                                 </p>
                             </div>
                         </div>

@@ -12,7 +12,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('trangchu')}}">Trang Chủ</a></li>
-                    <li class="breadcrumb-item active"><a href="">Loại Sản Phẩm: {{$ten_chude->name}}  </a></li>
+                    <li class="breadcrumb-item active"><a href="">{{$ten_chude->name}}  </a></li>
 
                 </ol>
             </nav>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-lg-7">
                 <div class="product-details-info pl-lg--30 ">
-                    <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
+{{--                    <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>--}}
                     <h3 class="product-title">{{$detail_product->name}}</h3>
                     <ul class="list-unstyled">
                         @if($detail_product->promotion_price == 0)
@@ -88,35 +88,39 @@
                         @endif
                     </div>
                     <div class="rating-widget">
-                        <div class="rating-block">
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star "></span>
-                        </div>
-                        <div class="review-widget">
-                            <a href="">(1 Reviews)</a> <span>|</span>
-                            <a href="">Write a review</a>
+{{--                        <div class="rating-block">--}}
+{{--                            <span class="fas fa-star star_on"></span>--}}
+{{--                            <span class="fas fa-star star_on"></span>--}}
+{{--                            <span class="fas fa-star star_on"></span>--}}
+{{--                            <span class="fas fa-star star_on"></span>--}}
+{{--                            <span class="fas fa-star "></span>--}}
+{{--                        </div>--}}
+                        <div class="review-widget" style="color: red">
+
+                            @if($detail_product->status==2)
+                                <del> Ngưng bán</del>
+
+                                @endif
+
                         </div>
                     </div>
-                    <article class="product-details-article">
-                        <h4 class="sr-only">Product Summery</h4>
-                        <p>
+{{--                    <article class="product-details-article">--}}
+{{--                        <h4 class="sr-only">Product Summery</h4>--}}
+{{--                        <p>--}}
 {{--                            {{$detail_product->description}} --}}
-                            Giới thiệu sản phẩm
-                        </p>
-                    </article>
+{{--                            Giới thiệu sản phẩm--}}
+{{--                        </p>--}}
+{{--                    </article>--}}
                     <div class="add-to-cart-row">
 
                         <div class="add-cart-btn">
                             <a href="{{route('themgiohang',$detail_product->id)}}" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm Vào Giỏ Hàng</a>
                         </div>
                     </div>
-                    <div class="compare-wishlist-row">
-                        <a href="" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
-                        <a href="" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
-                    </div>
+{{--                    <div class="compare-wishlist-row">--}}
+{{--                        <a href="" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>--}}
+{{--                        <a href="" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -151,15 +155,16 @@
                                 <img src="image\icon\author-logo.png" alt="">
                             </div>
                             <div class="text">
-                                <div class="rating-block mb--15">
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline"></span>
-                                    <span class="ion-android-star-outline"></span>
-                                </div>
 
-                                <h6 class="author">ADMIN – <span class="font-weight-400">March 23, 2015</span>
+
+                                <h6 class="author">
+                                    @if(empty($noidung_comment->full_name))
+                                        <b>Ẩn danh</b>
+                                    @else
+                                        {{$noidung_comment->full_name}}
+                                    @endif
+
+
                                 </h6>
 
                                 <p>{{$noidung_comment->body_post}}</p>
@@ -168,21 +173,9 @@
                         </div>
 
                         @endforeach
-                        <h2 class="title-lg mb--20 pt--15">ADD A REVIEW</h2>
+                        <h2 class="title-lg mb--20 pt--15">Thêm bình luận của bạn</h2>
                         <div class="rating-row pt-2">
-                            <p class="d-block">Your Rating</p>
-                            <span class="rating-widget-block">
-                                        <input type="radio" name="star" id="star1">
-                                        <label for="star1"></label>
-                                        <input type="radio" name="star" id="star2">
-                                        <label for="star2"></label>
-                                        <input type="radio" name="star" id="star3">
-                                        <label for="star3"></label>
-                                        <input type="radio" name="star" id="star4">
-                                        <label for="star4"></label>
-                                        <input type="radio" name="star" id="star5">
-                                        <label for="star5"></label>
-                                    </span>
+
 
 
                             <form action="{{route('detail_product',$detail_product->id)}}" class="mt--15 site-form " method="POST">
@@ -200,24 +193,8 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="name">Name *</label>
-                                            <input type="text" id="name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="email">Email *</label>
-                                            <input type="text" id="email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="website">Website</label>
-                                            <input type="text" id="website" class="form-control">
-                                        </div>
-                                    </div>
+
+
                                     <div class="col-lg-4">
                                         <button type="submit" class="btn btn-black">
                                             Post Comment

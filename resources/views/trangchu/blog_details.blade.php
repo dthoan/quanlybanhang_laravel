@@ -1,4 +1,4 @@
-@extends("layout.layout")
+@extends("layout.layout_blog")
 @section("title","Pustok - Blog Detail")
 @section("content")
     <section class="breadcrumb-section">
@@ -152,16 +152,7 @@
                                 <button><i class="fas fa-search"></i></button>
                             </div>
                         </div>
-                        <div class="single-block">
-                            <h2 class="sidebar-title mb--30">BLOG ARCHIVES</h2>
-                            <ul class="sidebar-list mb--30">
-                                <li><a href="#"> March 2015 (1)</a></li>
-                                <li><a href="#">December 2014 (3)</a></li>
-                                <li> <a href="#">November 2014 (4)</a></li>
-                                <li><a href="#">September 2014 (1)</a></li>
-                                <li><a href="#">August 2014 (1)</a></li>
-                            </ul>
-                        </div>
+
                         <div class="single-block ">
                             <h2 class="sidebar-title mb--30">RECENT POSTS</h2>
                             <ul class="sidebar-list">
@@ -172,27 +163,7 @@
                                 <li><a href="#">Maecenas ultricies</a></li>
                             </ul>
                         </div>
-                        <div class="single-block ">
-                            <h2 class="sidebar-title mb--30">Tags</h2>
-                            <ul class="sidebar-tag-list">
-                                <li><a href="#"> Chilled</a></li>
-                                <li><a href="#">Dark</a></li>
-                                <li> <a href="#">Euro</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Food</a></li>
-                                <li><a href="#">Hardware</a></li>
-                                <li><a href="#">Hat</a></li>
-                                <li><a href="#">Hipster</a></li>
-                                <li><a href="#">Holidays</a></li>
-                                <li><a href="#">Light</a></li>
-                                <li><a href="#">Mac</a></li>
-                                <li><a href="#">Place</a></li>
-                                <li><a href="#">T-Shirt</a></li>
-                                <li><a href="#">Travel</a></li>
-                                <li><a href="#">Video-2</a></li>
-                                <li><a href="#">White</a></li>
-                            </ul>
-                        </div>
+
                         <!-- Promo Block -->
                         <div class="single-block">
                             <a href="" class="promo-image sidebar">
@@ -204,45 +175,5 @@
             </div>
         </div>
     </section>
-    <section class="section-margin">
-        <h2 class="sr-only">Brand Slider</h2>
-        <div class="container">
-            <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 6
-                                            }' data-slick-responsive='[
-                {"breakpoint":992, "settings": {"slidesToShow": 4} },
-                {"breakpoint":768, "settings": {"slidesToShow": 3} },
-                {"breakpoint":575, "settings": {"slidesToShow": 3} },
-                {"breakpoint":480, "settings": {"slidesToShow": 2} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-                <div class="single-slide">
-                    <img src="image\others\brand-1.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-2.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-3.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-4.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-5.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-6.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-1.jpg" alt="">
-                </div>
-                <div class="single-slide">
-                    <img src="image\others\brand-2.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
+
 @endsection

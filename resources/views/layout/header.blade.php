@@ -24,14 +24,14 @@
                 <div class="col-lg-6">
                     <div class="main-navigation flex-lg-right">
                         <ul class="main-menu menu-right ">
-                            <li class="menu-item has-children">
-                                <a href="javascript:void(0)">Trang chủ <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                                <ul class="sub-menu">
-                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Mới</a></li>
-                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Bán Chạy</a></li>
-                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Khuyến Mãi</a></li>
+                            <li class="menu-item">
+                                <a href="javascript:void(0)">Trang chủ</a>
+{{--                                <ul class="sub-menu">--}}
+{{--                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Mới</a></li>--}}
+{{--                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Bán Chạy</a></li>--}}
+{{--                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Khuyến Mãi</a></li>--}}
 
-                                </ul>
+{{--                                </ul>--}}
                             </li>
                             <!-- Shop -->
                             <li class="menu-item has-children">
@@ -47,14 +47,14 @@
                             </li>
                             <!-- Pages -->
                             <li class="menu-item">
-                                <a href="{{route('blog')}}">Blog</a>
+                                <a href="{{route('blog')}}">Diễn đàn</a>
                             </li>
                             <!-- Blog -->
+{{--                            <li class="menu-item">--}}
+{{--                                <a href="{{route('about')}}">Diễn đàn</a>--}}
+{{--                            </li>--}}
                             <li class="menu-item">
-                                <a href="{{route('about')}}">Diễn đàn</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{route('contact')}}">liên hệ</a>
+                                <a href="{{route('contact')}}">Trợ giúp</a>
                             </li>
                         </ul>
                     </div>
@@ -95,13 +95,12 @@
                             <div class="login-block">
 
 
-
                         @if(Auth::check())
                                 <a href="{{route('logout')}}" class="font-weight-bold">Chào Bạn {{Auth::user()->full_name}}</a><br>
                                     <span>Hoặc</span><a href="{{route('logout')}}">Đăng Xuất</a>
                         @else
-                                 <a href="{{route('login')}}" class="font-weight-bold">Đăng Nhập</a> <br>
-                                 <span>Hoặc</span><a href="{{route('register')}}">Đăng Ký</a>
+                                 <a href="{{route('trangchuLogin')}}" class="font-weight-bold">Đăng Nhập</a> <br>
+                                 <span>Hoặc</span><a href="{{route('trangchuRegister')}}">Đăng Ký</a>
 
                         @endif
 

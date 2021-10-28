@@ -1,5 +1,5 @@
 @extends("admin.layout_admin")
-@section("title","Detail Customer")
+@section("title","Account")
 @section("content")
     <section class="au-breadcrumb m-t-75">
         <div class="section__content section__content--p30">
@@ -39,17 +39,17 @@
                 <div class="mb-60">
                     <div class="pt-60 wish-list">
 
-                      <br/>
+                        <br/>
 
-                        <div class="row mb-9">
-{{--                            <div class="col-md-5 col-lg-3 col-xl-3">--}}
-{{--                                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">--}}
-{{--                                    <img class="img-fluid w-100"--}}
-{{--                                         src="images/khachHang/{{$items->images}}" alt="Sample">--}}
+                        <div class="row mb-12">
+                            <div class="col-md-5 col-lg-3 col-xl-3">
+                                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                    <img class="img-fluid w-100"
+                                         src="images/khachHang/{{$items->images}}" alt="Sample">
 
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <div class="col-md-7 col-lg-9 col-xl-9" style="margin-left: 100px">
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-9 col-xl-9">
                                 <div>
                                     <div class="d-flex justify-content-between">
                                         <div>
@@ -99,3 +99,4 @@
 
 
 @endsection
+

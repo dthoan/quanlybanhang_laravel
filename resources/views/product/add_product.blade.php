@@ -6,7 +6,7 @@
         <div class="card">
             <button class="card-header">
 
-                    <strong>Thêm</strong> Sản Phẩm ABC
+                    <strong>Thêm</strong> Sản Phẩm
 
 
             </button>
