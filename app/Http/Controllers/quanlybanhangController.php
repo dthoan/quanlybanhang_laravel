@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\bill_detail;
 use App\Cart;
+use App\CartDb;
+use App\CartDetailDb;
 use App\comment;
 use App\posts;
 use App\customer;
@@ -84,6 +86,7 @@ class quanlybanhangController extends Controller
     public function getProductDetails($id){
         // Lấy ra sản phẩm có id tương ứng vd id=5
         $detail_product = products::where('id', $id)->first();
+        $items = users::where("id","=",$detail_product->id_user)->first();
         $arr_image = $detail_product->images;
         // hình ảnh
         $one_image = explode(",", $arr_image);
@@ -102,7 +105,7 @@ class quanlybanhangController extends Controller
         )->first($id);
         // sản phẩm tương tự
         $sp_tuongtu     = products::where('id_type',$detail_product->id_type)->paginate(4);
-        return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'ten_hang','ten_chude','ten_post','post','one_image','nguoi_cmt'));
+        return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'items','ten_chude','ten_post','post','one_image','nguoi_cmt'));
     }
     // thêm bình luận
     public function postCommentProduct(Request $rq, posts $p,$id)
@@ -185,31 +188,67 @@ class quanlybanhangController extends Controller
 
         if(isset(Auth::user()->id))
         {
-            $product = products::all();
+            $product = products::where('id_user', Auth::user()->id)->get();
+
         }
         else
-            $product = products::where('id_user',Auth::user()->id)->get();
+            $product = products::all();
+
 
         return view("trangchu.cart", compact('product'));
     }
+
+    public function reduceProductInCart($id){
+        $product = products::find($id);
+        if(isset(Auth::user()->id) && isset($product)){
+            $cart = CartDb::where('id_user','=', Auth::user()->id)->first();
+            $cartDetail = CartDetailDb::where([
+                ['id_cart','=',$cart->id],
+                ['id_product', '=', $product->id]
+            ])->first();
+            if($cartDetail -> quatity > 1){
+                $cartDetail -> quatity--;
+                $cartDetail->save();
+            }else{
+                $cartDetail -> delete();
+            }
+            return redirect()->back();
+        }
+
+    }
+
     public function getAddtoCart(Request $rq, $id){
-//        $isRole = $this->checkRole(['Admin','User']);
-//        if(!$isRole){
-//            return redirect()->route('login');
-//        }
 
         $product = products::find($id);
-        if(isset(Auth::user()->id)){
-            $oldCart = Session('cart') ? Session::get('cart'):null;
-            $cart = new Cart($oldCart);
-            $product->id_user = Auth::user()->id;
-            $cart->add($product, $id);
-            $rq->session()->put('cart', $cart);
-            return redirect()->back();
+        if(isset(Auth::user()->id) && isset($product)){
+            $cart = CartDb::where('id_user','=', Auth::user()->id)->first();
+            if(!isset($cart)){
+                $cart = new CartDb();
+                $cart-> id_user = Auth::user()->id;
+                $cart -> save();
+            }
+
+            $cartDetail = CartDetailDb::where([
+                ['id_cart','=',$cart->id],
+                ['id_product', '=', $product->id]
+                ])->first();
+
+            if(!isset($cartDetail)){
+                $cartDetail = new CartDetailDb();
+                $cartDetail -> id_cart = $cart->id;
+                $cartDetail -> id_product = $product->id;
+            }
+            if($cartDetail -> quatity == 0){
+                $cartDetail -> quatity = 0;
+            }
+            $cartDetail -> quatity = $cartDetail -> quatity + 1;
+            $cart -> save();
+            $cartDetail -> save();
+            return redirect('/');
         }
         else
         {
-            $product->id_user = Auth::user()->id;
+            $product->id_user = null;
             $oldCart = Session('cart') ? Session::get('cart'):null;
             $cart = new Cart($oldCart);
 
@@ -260,11 +299,16 @@ class quanlybanhangController extends Controller
 
         foreach ($cart->items as $keys=>$value){
             $db = new bill_detail;
+
             $db->id_bill    = $bill->id;
             $db->id_product = $keys;
             $db->quanlity   = $value["qty"];
             $db->unit_price = $value["price"] / $value["qty"];
             $db->save();
+
+            $product = products::where('id','=', $keys)->get();
+            $product->quanlity = $product->quanlity - $value["qty"];
+            $product -> save();
         }
         Session::forget('cart');
         return view('trangchu.thongbao');
@@ -375,11 +419,13 @@ class quanlybanhangController extends Controller
             $product = products::where("promotion_price",0)->paginate(8);
 //          else if
 //            $product = users::where("full_name", "like", "%".$rq->key."%")->paginate(8);
-        else
+        else{
             $product = products::where("name", "like", "%".$rq->key."%")
-                                ->orwhere("unit_price", $rq->key)
-                                ->orwhere("promotion_price", $rq->key)
-                                ->paginate(8);
+                ->orwhere("unit_price", $rq->key)
+                ->paginate(8);
+        }
+
+
 
         return view("trangchu.search", compact("product"));
     }
@@ -422,7 +468,7 @@ class quanlybanhangController extends Controller
             ->paginate(5);
         $hetHang = products::orderBy('id', 'DESC')
             ->where('id_user',Auth::user()->id)
-            ->where('status',1)
+            ->where('quanlity',0)
             ->paginate(5);
         $ngungBan = products::orderBy('id', 'DESC')
             ->where('id_user',Auth::user()->id)
@@ -472,56 +518,7 @@ class quanlybanhangController extends Controller
 
     }
 
-//    public function postAddProduct(Request $rq, products $product){
-//
-//
-////        $rq->validate([
-////
-////                'id_type'       => 'required',
-////                'unit_price'    => 'required',
-////                'promotion_price'=> 'required',
-////                'new'            => 'required',
-////                'new'            => 'required|iamge',
-////
-////        ],
-////        $messges = [
-////            'name.required' => 'Vui lòng nhập tên sản phẩm!',
-////            'id_type.required' => 'Vui lòng nhập loại sản phẩm!',
-////            'unit_price.required' => 'Vui lòng nhập giá gốc!',
-////            'promotion_price.required' => 'Vui lòng nhập giá khuyến mãi!',
-////        ]
-////        );
-//
-//        if(is_null($rq->file('image')) == false)
-//        {
-//            $imagePath1 = $rq->file('image')->store('uploals','public');
-//            $product->image         = $imagePath1;
-//        }
-//        if(is_null($rq->file('images')) == false)
-//        {
-//            $imagePath2 = $rq->file('images')->store('uploals','public');
-//            $product->images          = $imagePath2;
-//            $product->images          = $imagePath2;
-//        }
-//
-//        $product->name            = $rq->name;
-//        $product->id_type         = (int)$rq->id_type;
-//        $product->description     = $rq->description;
-//        $product->unit_price      = (double)$rq->unit_price;
-//        $product->promotion_price = (double)$rq->promotion_price;
-//        $product->new             = $rq->new;
-//        $product->status             = $rq->status;
-//        $product->alias             = $rq->alias;
-//        $product->created_at      = Carbon::now();
-//        $product->updated_at      = Carbon::now();
-//
-//        $product->save();
-//
-//
-//
-//       return redirect('admin/list-product')->with("thongbao","Thêm thành công!");
-//
-//    }
+
 
     public function getEditProduct($id){
         if(!isset(Auth::user()->full_name)){
@@ -537,6 +534,7 @@ class quanlybanhangController extends Controller
         $isEdit = true;
         return view('product.edit_product',compact('category','product','category_edit','isEdit'));
     }
+
 
     public function postEditProduct(Request $rq){
 
@@ -715,6 +713,7 @@ class quanlybanhangController extends Controller
             $join->on('bills.id_customer', '=', 'customer.id');
         })->select(
             'bills.id',
+            'bills.status',
             'customer.name',
             'customer.address'
         )->first($id);

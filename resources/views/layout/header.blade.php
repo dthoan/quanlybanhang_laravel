@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-lg-5">
                     <form action="{{route('search')}}" method="get" class="header-search-block">
-                        <input type="text" name="key" placeholder="Nhập Sản Phẩm Cần Tìm..">
+                        <input type="text" name="key" placeholder="Nhập Sản Phẩm Cần Tìm.." value="{{(isset($_GET['key']))?$_GET['key']:""}}">
                         <button type="submit">Tìm Kiếm</button>
                     </form>
                 </div>
@@ -103,81 +103,122 @@
                                  <span>Hoặc</span><a href="{{route('trangchuRegister')}}">Đăng Ký</a>
 
                         @endif
-
-
-
                             </div>
+
+
+
                             <div class="cart-block">
                                 <div class="cart-total">
                                             <span class="text-number">
-                                               @if(Session::has('cart')){{Session('cart')->totalQty}} @else  0 @endif
+                                              {{ $totalqty ?? ''}}
                                             </span>
                                     <span class="text-item">
                                                 Giỏ Hàng
                                             </span>
                                     <span class="price">
-                                        @if(Session::has('cart'))
-                                                ${{number_format(Session('cart')->totalPrice)}}
-                                        @else
-                                            $0
-                                        @endif
+                                        ${{number_format($totalprice ?? 0)}}
                                                 <i class="fas fa-chevron-down"></i>
                                             </span>
                                 </div>
 
+                                @if(isset(Auth::user()->id))
+                                        <div class="cart-dropdown-block">
+                                            @if(isset($product))
+                                                @foreach($product  as $sp)
+                                                    <div class=" single-cart-block ">
+                                                        <div class="cart-product">
+                                                            <a href="{{route('cart')}}" class="image">
+                                                                <img src="..\storage\app\public\{{$sp->image}}" alt="">
+                                                            </a>
+                                                            <div class="content">
+                                                                <h3 class="title" style=" width: 50px;
+                                                                                    overflow: hidden;
+                                                                                    white-space: nowrap;
+                                                                                    text-overflow: ellipsis;"
+                                                                ><a href="product-details.html">{{$sp->name}}</a></h3>
+                                                                <p class="price">
+                                                                    <span class="price">{{$sp->quatity}} × </span>
+                                                                    {{number_format($sp->price)}}
+                                                                </p>
+                                                            </div>
+                                                            <button class="pull-right"     >
+                                                                @if(isset(Auth::user()->id))
+                                                                    <a href="{{route('reduceItem',$sp->id )}}" style="margin-left: 5px;" class="fas fa-times"></a>
+                                                                @else
+                                                                    <a href="{{route('delItem',$sp->id )}}" style="margin-left: 5px;" class="fas fa-times"></a>
+                                                                @endif
+                                                                <a href="{{route('themgiohang',$sp->id )}}" class="fas fa-plus"></a>
+                                                            </button>
+                                                        </div>
 
-                                @if(Session::has('cart'))
-                                <div class="cart-dropdown-block">
+                                                    </div>
+                                                @endforeach
+                                            @endif
 
-                                    @foreach($product as $sp)
-                                    <div class=" single-cart-block ">
-                                        <div class="cart-product">
-                                            <a href="{{route('cart')}}" class="image">
-                                                <img src="images\products\{{$sp['item']['image']}}" alt="">
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title"><a href="product-details.html">{{$sp['item']['name']}}</a></h3>
-                                                <p class="price">
-                                                    <span class="price">{{$sp['qty']}} × </span>
-                                                    @if($sp['item']['promotion_price'] == 0)
-                                                        {{number_format($sp['item']['unit_price'])}}
-                                                    @else
-                                                        {{number_format($sp['item']['promotion_price'])}}
-                                                    @endif
-                                                </p>
+                                            <p>Tổng tiền: {{number_format($totalprice ?? 0)}}</p>
+                                            <div class=" single-cart-block ">
+                                                <div class="btn-block">
+                                                    <a href="{{route("cart")}}" class="btn">
 
+                                                        Giỏ Hàng ({{$totalqty ?? 0}})
 
+                                                        <i class="fas fa-chevron-right"></i></a>
+                                                    <a href="{{route('checkout')}}" class="btn btn--primary">Đặt Hàng<i class="fas fa-chevron-right"></i></a>
+                                                </div>
                                             </div>
-                                            <button class="pull-right"     >
-
-                                                <a href="{{route('delItem',$sp['item']['id'] )}}" style="margin-left: 5px;" class="fas fa-times"></a>
-                                                <a href="{{route('themgiohang',$sp['item']['id'] )}}" class="fas fa-plus"></a>
-
-
-                                            </button>
                                         </div>
+                                @elseif(Session('cart') !== null)
+                                        <div class="cart-dropdown-block">
 
-                                    </div>
-                                    @endforeach
-                                            <p>Tổng tiền: {{number_format(Session('cart')->totalPrice)}}</p>
-                                    <div class=" single-cart-block ">
-                                        <div class="btn-block">
-                                            <a href="{{route("cart")}}" class="btn">
+                                            @foreach($product as $sp)
+                                                <div class=" single-cart-block ">
+                                                    <div class="cart-product">
+                                                        <a href="{{route('cart')}}" class="image">
+                                                            <img src="..\storage\app\public\{{$sp['item']['image']}}" alt="">
+                                                        </a>
+                                                        <div class="content">
+                                                            <h3 class="title" style=" width: 50px;
+                                                                                    overflow: hidden;
+                                                                                    white-space: nowrap;
+                                                                                    text-overflow: ellipsis;"
+                                                            ><a href="product-details.html">{{$sp['item']['name']}}</a></h3>
+                                                            <p class="price">
+                                                                <span class="price">{{$sp['qty']}} × </span>
+                                                                @if($sp['item']['promotion_price'] == 0)
+                                                                    {{number_format($sp['item']['unit_price'])}}
+                                                                @else
+                                                                    {{number_format($sp['item']['promotion_price'])}}
+                                                                @endif
+                                                            </p>
 
-                                                Giỏ Hàng (@if(Session::has('cart')){{Session('cart')->totalQty}}) @else  Giỏ Hàng(0) @endif
 
-                                                <i class="fas fa-chevron-right"></i></a>
-                                            <a href="{{route('checkout')}}" class="btn btn--primary">Đặt Hàng<i class="fas fa-chevron-right"></i></a>
+                                                        </div>
+                                                        <button class="pull-right"     >
+
+                                                            <a href="{{route('delItem',$sp['item']['id'] )}}" style="margin-left: 5px;" class="fas fa-times"></a>
+                                                            <a href="{{route('themgiohang',$sp['item']['id'] )}}" class="fas fa-plus"></a>
+
+
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            @endforeach
+                                            <p>Tổng tiền: {{number_format($totalprice ?? '')}}</p>
+                                            <div class=" single-cart-block ">
+                                                <div class="btn-block">
+                                                    <a href="{{route("cart")}}" class="btn">
+
+                                                        Giỏ Hàng (@if(Session::has('cart')){{$totalqty ?? ''}}) @else  Giỏ Hàng(0) @endif
+
+                                                        <i class="fas fa-chevron-right"></i></a>
+                                                    <a href="{{route('checkout')}}" class="btn btn--primary">Đặt Hàng<i class="fas fa-chevron-right"></i></a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-
                                 @endif
 
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>

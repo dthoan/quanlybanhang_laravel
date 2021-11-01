@@ -7,7 +7,6 @@ class Cart
 	public $items = null;
 	public $totalQty = 0;
 	public $totalPrice = 0;
-
 	public function __construct($oldCart){
 		if($oldCart){
 			$this->items = $oldCart->items;
@@ -31,14 +30,14 @@ class Cart
 	}
 	//xóa 1
 	public function reduceByOne($id){
-	    $price = $this->items[$id]['price'] / $this->items[$id]['qty'];
-		$this->items[$id]['qty']--;
-		$this->items[$id]['price'] -= $price;
-		$this->totalQty--;
-		$this->totalPrice -= $price;
-		if($this->items[$id]['qty']<=0){
-			unset($this->items[$id]);
-		}
+        $price = $this->items[$id]['price'] / $this->items[$id]['qty'];
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -= $price;
+        $this->totalQty--;
+        $this->totalPrice -= $price;
+        if($this->items[$id]['qty']<=0){
+            unset($this->items[$id]);
+        }
 	}
 	//xóa nhiều
 	public function removeItem($id){

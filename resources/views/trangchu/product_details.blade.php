@@ -111,9 +111,18 @@
 {{--                            Giới thiệu sản phẩm--}}
 {{--                        </p>--}}
 {{--                    </article>--}}
+                    <a href="{{route('account',$detail_product->id_user)}}" data-toggle="tab" style="margin-left: 20px">
+                        <div class="row">
+                            <img src="..\storage\app\public\uploals\a1.png" style="width: 25px; height: 25px;">
+                            <a href="{{route('account',$detail_product->id_user)}}"> <h6 style="color: #62ab00; margin-left: 20px"><b>{{" ".$items->full_name}}</b></h6></a>
+
+                        </div>
+
+                    </a>
                     <div class="add-to-cart-row">
 
                         <div class="add-cart-btn">
+
                             <a href="{{route('themgiohang',$detail_product->id)}}" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm Vào Giỏ Hàng</a>
                         </div>
                     </div>

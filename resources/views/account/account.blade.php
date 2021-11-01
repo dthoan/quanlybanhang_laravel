@@ -1,130 +1,277 @@
-@extends("admin.layout_admin")
+@extends("layout.layout")
 @section("title","Account")
 @section("content")
-    <section class="au-breadcrumb m-t-75">
-        <div class="section__content section__content--p30">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="au-breadcrumb-content">
-                            <div class="au-breadcrumb-left">
-                                <span class="au-breadcrumb-span">You are here:</span>
-                                <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                    <li class="list-inline-item active">
-                                        <a href="{{route('index')}}">Trang Chủ</a>
-                                    </li>
-                                    <li class="list-inline-item seprate">
-                                        <span>/</span>
-                                    </li>
-                                    <li class="list-inline-item">Detail Customer</li>
-                                </ul>
-                            </div>
+    <section class="breadcrumb-section">
+        <h2 class="sr-only">Site Breadcrumb</h2>
+        <div class="container">
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
 
+                        <li class="breadcrumb-item active">
+
+                            <a href="{{route('account',$items->id)}}" data-toggle="tab" style="margin-left: 20px">
+                                <div class="row">
+                                    <img src="..\storage\app\public\uploals\a1.png" style="width: 25px; height: 25px;">
+                                    <a href="{{route('account',$items->id)}}"> <h6 style="color: #62ab00; margin-left: 20px"><b>{{" ".$items->full_name}}</b></h6></a>
+
+                                </div>
+
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <div class="col-lg-12 order-lg-2">
+        <div class="shop-toolbar with-sidebar mb--30">
+            <H3 class = "text-center" style="color: #62ab00"><b>SẢN PHẨM NỔI BẬT</b></H3>
+{{--            <div class="row align-items-center">--}}
+{{--                <div class="col-lg-2 col-md-2 col-sm-6">--}}
+{{--                    <!-- Product View shop-product-wrap with-pagination row space-db--30 shop-border listMode -->--}}
+{{--                    <div class="product-view-mode">--}}
+{{--                        <a href="#" class="sorting-btn active" data-target="grid"><i class="fas fa-th"></i></a>--}}
+{{--                        <a href="#" class="sorting-btn" data-target="grid-four">--}}
+{{--											<span class="grid-four-icon">--}}
+{{--												<i class="fas fa-grip-vertical"></i><i class="fas fa-grip-vertical"></i>--}}
+{{--											</span>--}}
+{{--                        </a>--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+
+
+
+{{--            </div>--}}
+        </div>
+        <div class="shop-toolbar d-none">
+            <div class="row align-items-center">
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <!-- Product View Mode -->
+                    <div class="product-view-mode">
+                        <a href="#" class="sorting-btn active" data-target="grid"><i class="fas fa-th"></i></a>
+                        <a href="#" class="sorting-btn" data-target="grid-four">
+											<span class="grid-four-icon">
+												<i class="fas fa-grip-vertical"></i><i class="fas fa-grip-vertical"></i>
+											</span>
+                        </a>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
+            @foreach($ListProduct as $sp)
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-grid-content">
+                            <div class="product-header">
+
+                                <h3
+                                    style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                ><a href="{{route('detail_product',$sp->id)}}"> {{$sp->name}}</a></h3>
+                            </div>
+                            <div class="product-card--body">
+
+                                <div class="card-image">
+                                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="" style="height: 200px; width: 150px;">
+                                    <div class="hover-contents">
+                                        <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
+                                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="" style="height: 200px; width: 150px;">
+                                        </a>
+                                        <div class="hover-btns">
+                                            <a href="cart.html" class="single-btn">
+                                                <i class="fas fa-shopping-basket"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="single-btn">
+                                                <i class="fas fa-heart"></i>
+                                            </a>
+                                            <a href="compare.html" class="single-btn">
+                                                <i class="fas fa-random"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="price-block">
+                                    @if($sp->promotion_price==0)
+                                        <span class="price">{{number_format($sp->unit_price)}}ngàn</span>
+                                    @else
+                                        <span class="price-old">{{number_format($sp->unit_price)}}ngàn</span>
+                                        <span class="price">{{number_format($sp->promotion_price)}}ngàn</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+        <!-- Pagination Block -->
+
+        <div class="row pt--30">
+
+            <div class="col-md-12">
+                <div class="pagination-block">
+                    <ul class="pagination-btns flex-center">
+                        <li><a href="" class="single-btn prev-btn ">|<i class="zmdi zmdi-chevron-left"></i> </a></li>
+                        <li><a href="" class="single-btn prev-btn "><i class="zmdi zmdi-chevron-left"></i> </a></li>
+
+                        {{$ListProduct->links()}}
+                        <li><a href="" class="single-btn next-btn"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                        <li><a href="" class="single-btn next-btn"><i class="zmdi zmdi-chevron-right"></i>|</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog" aria-labelledby="quickModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close modal-close-btn ml-auto" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="product-details-modal">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <!-- Product Details Slider Big Image-->
+                                <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
+                                                  "slidesToShow": 1,
+                                                  "arrows": false,
+                                                  "fade": true,
+                                                  "draggable": false,
+                                                  "swipe": false,
+                                                  "asNavFor": ".product-slider-nav"
+                                                  }'>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-1.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-2.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-3.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-4.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-5.jpg" alt="">
+                                    </div>
+                                </div>
+                                <!-- Product Details Slider Nav -->
+                                <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two" data-slick-setting='{
+            "infinite":true,
+              "autoplay": true,
+              "autoplaySpeed": 8000,
+              "slidesToShow": 4,
+              "arrows": true,
+              "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
+              "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
+              "asNavFor": ".product-details-slider",
+              "focusOnSelect": true
+              }'>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-1.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-2.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-3.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-4.jpg" alt="">
+                                    </div>
+                                    <div class="single-slide">
+                                        <img src="image\products\product-details-5.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 mt--30 mt-lg--30">
+                                <div class="product-details-info pl-lg--30 ">
+                                    <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
+                                    <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
+                                    <ul class="list-unstyled">
+                                        <li>Ex Tax: <span class="list-value"> £60.24</span></li>
+                                        <li>Brands: <a href="#" class="list-value font-weight-bold">
+                                                Canon</a></li>
+                                        <li>Product Code: <span class="list-value"> model1</span></li>
+                                        <li>Reward Points: <span class="list-value"> 200</span></li>
+                                        <li>Availability: <span class="list-value"> In Stock</span></li>
+                                    </ul>
+                                    <div class="price-block">
+                                        <span class="price-new">£73.79</span>
+                                        <del class="price-old">£91.86</del>
+                                    </div>
+                                    <div class="rating-widget">
+                                        <div class="rating-block">
+                                            <span class="fas fa-star star_on"></span>
+                                            <span class="fas fa-star star_on"></span>
+                                            <span class="fas fa-star star_on"></span>
+                                            <span class="fas fa-star star_on"></span>
+                                            <span class="fas fa-star "></span>
+                                        </div>
+                                        <div class="review-widget">
+                                            <a href="">(1 Reviews)</a> <span>|</span>
+                                            <a href="">Write a review</a>
+                                        </div>
+                                    </div>
+                                    <article class="product-details-article">
+                                        <h4 class="sr-only">Product Summery</h4>
+                                        <p>Long printed dress with thin adjustable straps. V-neckline
+                                            and wiring under the Dust with ruffles at the bottom
+                                            of the
+                                            dress.</p>
+                                    </article>
+                                    <div class="add-to-cart-row">
+                                        <div class="count-input-block">
+                                            <span class="widget-label">Qty</span>
+                                            <input type="number" class="form-control text-center" value="1">
+                                        </div>
+                                        <div class="add-cart-btn">
+                                            <a href="" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Add to Cart</a>
+                                        </div>
+                                    </div>
+                                    <div class="compare-wishlist-row">
+                                        <a href="" class="add-link"><i class="fas fa-heart"></i>Add to
+                                            Wish List</a>
+                                        <a href="" class="add-link"><i class="fas fa-random"></i>Add to
+                                            Compare</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="widget-social-share">
+                            <span class="widget-label">Share:</span>
+                            <div class="modal-social-share">
+                                <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--Section: Block Content-->
-    <section >
-
-        <!--Grid row-->
-        <div class="row">
-
-            <!--Grid column-->
-            <div class="col-lg-12">
-
-                <!-- Card -->
-                <div class="mb-60">
-                    <div class="pt-60 wish-list">
-
-                        <br/>
-
-                        <div class="row mb-12">
-                            <div class="col-md-5 col-lg-3 col-xl-3">
-
-                                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                    <img class="img-fluid w-100" id="blah"
-                                         src="images/khachHang/{{$items->images}}" alt="Sample">
-
-                                </div>
-                            </div>
-                            <div class="col-md-7 col-lg-9 col-xl-9">
-                                <div>
-                                    <div class="d-flex justify-content-between">
-                                        {{--                                        <div>--}}
-
-                                        {{--                                            <input  type='file' onchange="readURL(this);" style="padding:10px; background:#2d2d2d;"/>--}}
-                                        {{--                                            <img  id="blah" src="images/khachHang/image.jpeg" alt="your image" style=" max-width:180px;"/>--}}
-
-                                        {{--                                        </div>--}}
-                                        <div>
-
-                                            <h2 style="padding-bottom: 10px"><input value="{{$items->name}}"></h2>
-                                            <p class="mb-3 text-muted text-uppercase">
-                                                Email: <input  class="mb-3 text-muted text-uppercase" value="{{$items->email}}"></p>
-                                            <p class="mb-2 text-muted text-uppercase">
-                                                Số Điện Thoại: <input  class="mb-3 text-muted text-uppercase" value="{{$items->phone_number}}"></p>
-                                            <p class="mb-3 text-muted text-uppercase">
-                                                Địa Chỉ:  <input  class="mb-3 text-muted text-uppercase" value="{{$items->address}}"></p>
-                                            <p class="mb-3 text-muted text-uppercase">
-                                                Số đơn hàng: <input  class="mb-3 text-muted text-uppercase" value="1"></p>
-                                            <input  type='file' onchange="readURL(this);" style="padding:10px; background:#2d2d2d;"/>
-
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                                    class="fas fa-trash-alt mr-1"></i> Chỉnh sửa Thông tin</a>
-                                            <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                                                    class="fas fa-heart mr-1"></i> Cập Nhật </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- Card -->
-
-
-
-                <!-- Card -->
-
-                <!-- Card -->
-
-            </div>
-            <!--Grid column-->
-
-
-
-        </div>
-        <!-- Grid row -->
-        <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#blah')
-                            .attr('src', e.target.result);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        </script>
-    </section>
-    <!--Section: Block Content-->
-
+    </div>
+    <div class="col-lg-3  mt--40 mt-lg--0">
 
 @endsection
 

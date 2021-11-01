@@ -133,7 +133,16 @@
                                                 <h2 class="checkout-title">YOUR ORDER</h2>
                                                 <h4>Product <span>Total</span></h4>
                                                 <ul>
-                                                    @if(Session::has('cart'))
+                                                    @if($isLoadByDb == true)
+                                                        @foreach($product as $sp )
+                                                            <li>
+                                                            <span class="left">{{$sp->name}} x {{$sp->quatity}}
+                                                            </span>
+                                                                <span class="right">{{$sp->price}}
+                                                            </span>
+                                                            </li>
+                                                        @endforeach
+                                                    @elseif(Session::has('cart'))
                                                         @foreach($product as $sp )
                                                             <li>
                                                             <span class="left">{{$sp['item']['name']}} x {{$sp['qty']}}
@@ -148,18 +157,20 @@
 
                                                 <h4>Tổng Tiền:
                                                     <span>
-                                                  {{number_format(Session('cart')->totalPrice)}}
+
+                                                        {{number_format($totalprice)}}
+
                                                 </span>
                                                 </h4>
                                                 <div class="method-notice mt--25">
-                                                    <article>
-                                                        <h3 class="d-none sr-only">blog-article</h3>
-                                                        Sorry, it seems that there are no available payment methods for
-                                                        your state. Please contact us if you
-                                                        require
-                                                        assistance
-                                                        or wish to make alternate arrangements.
-                                                    </article>
+{{--                                                    <article>--}}
+{{--                                                        <h3 class="d-none sr-only">blog-article</h3>--}}
+{{--                                                        Sorry, it seems that there are no available payment methods for--}}
+{{--                                                        your state. Please contact us if you--}}
+{{--                                                        require--}}
+{{--                                                        assistance--}}
+{{--                                                        or wish to make alternate arrangements.--}}
+{{--                                                    </article>--}}
                                                 </div>
                                                 <div class="term-block">
                                                     <input type="checkbox" name="payment_method" id="accept_terms2">

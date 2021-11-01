@@ -167,7 +167,7 @@
                             <label for="text-input" class=" form-control-label">Hình 1</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <img style="width: 100px" src="..\storage\app\public\{{$product->image}}"/>
+{{--                            <img style="width: 100px" src="..\storage\app\public\{{$product->image}}"/>--}}
                             <input type="file" id="text-input" name="image[]"  multiple>
                             @if($errors->has("image"))
                                 <small class="text-danger">{{$errors->first('image')}}</small>
@@ -175,18 +175,18 @@
                         </div>
                     </div>
 
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="text-input" class=" form-control-label">Hình 2</label>
-                        </div>
-                        <div class="col-12 col-md-9">
-                            <img style="width: 100px"  src="..\storage\app\public\{{$product->images}}"/>
-                            <input type="file" id="text-input" name="images" value="..\storage\app\public\{{$product->images}}" >
-                            @if($errors->has("images"))
-                                <small class="text-danger">{{$errors->first('images')}}</small>
-                            @endif
-                        </div>
-                    </div>
+{{--                    <div class="row form-group">--}}
+{{--                        <div class="col col-md-3">--}}
+{{--                            <label for="text-input" class=" form-control-label">Hình 2</label>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-12 col-md-9">--}}
+{{--                            <img style="width: 100px"  src="..\storage\app\public\{{$product->images}}"/>--}}
+{{--                            <input type="file" id="text-input" name="images" value="..\storage\app\public\{{$product->images}}" >--}}
+{{--                            @if($errors->has("images"))--}}
+{{--                                <small class="text-danger">{{$errors->first('images')}}</small>--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">

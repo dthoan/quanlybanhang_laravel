@@ -39,20 +39,20 @@
                                         <label class="text-danger">{{$errors->first('password')}}</label>
                                     @endif
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Nhớ Mật Khẩu
-                                    </label>
-                                    <label>
-                                        <a href="#">Lấy Lại Mật Khẩu</a>
-                                    </label>
-                                </div>
+{{--                                <div class="login-checkbox">--}}
+{{--                                    <label>--}}
+{{--                                        <input type="checkbox" name="remember">Nhớ Mật Khẩu--}}
+{{--                                    </label>--}}
+{{--                                    <label>--}}
+{{--                                        <a href="#">Lấy Lại Mật Khẩu</a>--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Đăng Nhập</button>
                                 <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">Đăng nhập với facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">Đăng nhập với twitter</button>
-                                    </div>
+{{--                                    <div class="social-button">--}}
+{{--                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">Đăng nhập với facebook</button>--}}
+{{--                                        <button class="au-btn au-btn--block au-btn--blue2">Đăng nhập với twitter</button>--}}
+{{--                                    </div>--}}
                                 </div>
                             </form>
 
@@ -60,7 +60,7 @@
                             <div class="register-link">
                                 <p>
                                 Bạn có tài khoản không?
-                                    Cras fermentum est ac fermentum
+                                    <a href="{{route('register')}}">Đăng ký</a>
                                 </p>
                             </div>
                         </div>

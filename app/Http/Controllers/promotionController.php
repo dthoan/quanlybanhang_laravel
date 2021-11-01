@@ -131,7 +131,6 @@ class promotionController extends Controller
         if($isEdit){
             //Edit
 
-            dd($productSearch);
             $promotion->update();
             return redirect('admin/list-promotion',compact('productSearch'))->with("thongbao","Sửa thành công!");
         }else{

@@ -30,10 +30,28 @@
 
         <div class="col-md-12">
             <div style="margin-left: 30px;">
-                <label>Tên Khách Hàng: <b>{{$khachHang->name}}</b></label></br>
+                <label style="margin-top: 20px;">Tên Khách Hàng: <b>{{$khachHang->name}}</b></label></br>
                 <label>Địa Chỉ: <b>{{$khachHang ->address}}</b></label></br>
 
                 <label>Tổng Tiền: <b>{{number_format($hoaDon ->total)}} Ngàn Đồng</b></label></br>
+                <div class="row form-group">
+                    <label style="margin-left: 17px;">Trạng thái: </label>
+                        <b>
+                            <select class="form-control" style="margin-left: 100px;">
+                                <option class="" value="2"> Chưa duyệt</option>
+                                <option value="1">Đã xử lý</option>
+                                {{--                            <option data-id="{{$user->id}}" value="{{$role->id}}" {{($role->name == $user->role_name)?"selected":""}}  >{{$role->name}}</option>--}}
+                            </select>
+                            {{--                        @if($khachHang->status == 2)--}}
+                            {{--                            Chưa duyệt--}}
+                            {{--                        @else($khachHang->status == 1)--}}
+                            {{--                            Đã xử lý--}}
+                            {{--                        @endif--}}
+                        </b>
+
+                    </br>
+                </div>
+
 
             </div>
             <div class="table-responsive m-b-40">

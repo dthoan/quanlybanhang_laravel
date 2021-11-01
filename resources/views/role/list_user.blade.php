@@ -45,10 +45,10 @@
                         <thead>
                         <tr>
                             <td>
-                                <label class="au-checkbox">
-                                    <input type="checkbox">
-                                    <span class="au-checkmark"></span>
-                                </label>
+{{--                                <label class="au-checkbox">--}}
+{{--                                    <input type="checkbox">--}}
+{{--                                    <span class="au-checkmark"></span>--}}
+{{--                                </label>--}}
                             </td>
                             <td>name</td>
                             <td>role</td>

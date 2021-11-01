@@ -41,12 +41,13 @@ Route::get("/trangchu/about", "quanlybanhangController@getabout")->name("about")
 // cart
 Route::get("/trangchu/cart", "quanlybanhangController@getCart")->name("cart");
 // đặt hàng
-Route::get("/trangchu/ckeckout", "quanlybanhangController@getCheckout")->name("checkout");
-Route::post("/trangchu/ckeckout", "quanlybanhangController@postCheckout")->name("checkout");
+Route::get("/trangchu/checkout", "quanlybanhangController@getCheckout")->name("checkout");
+Route::post("/trangchu/checkout", "quanlybanhangController@postCheckout")->name("checkout");
 Route::get("/trangchu/type-product/{type}", "quanlybanhangController@getTypeProduct")->name("typecatelory");
 // giỏ hàng
 Route::get("/trangchu/add-to-cart/{id}","quanlybanhangController@getAddtoCart")->name("themgiohang");
 Route::get("/trangchu/del-item/{id}","quanlybanhangController@getDelItemCart")->name("delItem");
+Route::get("/trangchu/reduce-item/{id}","quanlybanhangController@reduceProductInCart")->name("reduceItem");
 
 // admin đăng nhập
 Route::get("admin/login", "quanlybanhangController@getLogin")->name('login');
@@ -126,6 +127,8 @@ Route::get("/register-role", "loginController@createRolePermission");
 // role user
 Route::get("/admin/user", "userController@getUser")->name('role');
 Route::post("/admin/user", "userController@postRole")->name('role');
+// my account
+Route::get("/account/{id}", "accountController@getAccount")->name('account');
 //chat
 //Route::get('chat', 'chatsController@index');
 //Route::get('messages', 'chatController@fetchMessages');
