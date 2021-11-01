@@ -12,6 +12,12 @@ class accountController extends Controller
     public function getAccount($id)
     {
 
+        // no bi sao a
+        // co nhieu file do thay doi , nay phai kiem tra lai xem dung ko , up len het hoi ghe
+        // up len het k dc ha
+        //dc ma co loi thi ko bik fix sao luon
+//        //hen xui nhe
+
             $items = users::where("id","=",$id)->find($id);
 
 
