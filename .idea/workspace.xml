@@ -19,7 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="" />
+    <list default="true" id="340f6706-9d12-445a-b4bc-6465fafd3cd4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/quanlybanhangController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/trangchu/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/trangchu/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,6 +295,7 @@
       <workItem from="1635512721057" duration="22891000" />
       <workItem from="1635564032117" duration="1945000" />
       <workItem from="1635780308674" duration="1994000" />
+      <workItem from="1635859435602" duration="8168000" />
     </task>
     <servers />
   </component>

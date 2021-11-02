@@ -143,7 +143,7 @@
                                                             </div>
                                                             <button class="pull-right"     >
                                                                 @if(isset(Auth::user()->id))
-                                                                    <a href="{{route('reduceItem',$sp->id )}}" style="margin-left: 5px;" class="fas fa-times"></a>
+                                                                    <a href="{{route('reduceItem',$sp->id )}}" style="margin-left: 5px;" class="fas fa-minus"></a>
                                                                 @else
                                                                     <a href="{{route('delItem',$sp->id )}}" style="margin-left: 5px;" class="fas fa-times"></a>
                                                                 @endif

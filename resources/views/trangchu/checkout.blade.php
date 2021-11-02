@@ -103,10 +103,6 @@
                                                 <label>Địa Chỉ</label>
                                                 <input type="text" name="address" placeholder="Nhập Địa Chỉ">
                                             </div>
-
-
-
-
                                             <div class="col-12 mb--20 ">
                                                 <div class="block-border check-bx-wrapper">
                                                     <div class="check-box">
@@ -136,6 +132,9 @@
                                                     @if($isLoadByDb == true)
                                                         @foreach($product as $sp )
                                                             <li>
+                                                                <input type="hidden" name="productId[]" value="{{$sp->id}}">
+                                                                <input type="hidden" name="productQuantity[]" value="{{$sp->quatity}}">
+                                                                <input type="hidden" name="productPrice[]" value="{{$sp->price}}">
                                                             <span class="left">{{$sp->name}} x {{$sp->quatity}}
                                                             </span>
                                                                 <span class="right">{{$sp->price}}
@@ -145,6 +144,7 @@
                                                     @elseif(Session::has('cart'))
                                                         @foreach($product as $sp )
                                                             <li>
+
                                                             <span class="left">{{$sp['item']['name']}} x {{$sp['qty']}}
                                                             </span>
                                                                 <span class="right">{{$sp['price']}}
@@ -156,7 +156,7 @@
                                                 </ul>
 
                                                 <h4>Tổng Tiền:
-                                                    <span>
+                                                    <span name="totalprice" >
 
                                                         {{number_format($totalprice)}}
 

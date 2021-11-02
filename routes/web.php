@@ -43,6 +43,7 @@ Route::get("/trangchu/cart", "quanlybanhangController@getCart")->name("cart");
 // đặt hàng
 Route::get("/trangchu/checkout", "quanlybanhangController@getCheckout")->name("checkout");
 Route::post("/trangchu/checkout", "quanlybanhangController@postCheckout")->name("checkout");
+Route::post("/trangchu/checkout", "quanlybanhangController@postCartSubmit")->name("cartSubmit");
 Route::get("/trangchu/type-product/{type}", "quanlybanhangController@getTypeProduct")->name("typecatelory");
 // giỏ hàng
 Route::get("/trangchu/add-to-cart/{id}","quanlybanhangController@getAddtoCart")->name("themgiohang");
@@ -129,6 +130,10 @@ Route::get("/admin/user", "userController@getUser")->name('role');
 Route::post("/admin/user", "userController@postRole")->name('role');
 // my account
 Route::get("/account/{id}", "accountController@getAccount")->name('account');
+
+
+
+
 //chat
 //Route::get('chat', 'chatsController@index');
 //Route::get('messages', 'chatController@fetchMessages');

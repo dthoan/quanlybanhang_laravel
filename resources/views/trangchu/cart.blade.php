@@ -10,7 +10,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form action="#" class="">
+                        <form action="{{route('cartSubmit')}}" method="post">
                             <!-- Cart Table -->
                             <div class="cart-table table-responsive mb--40">
                                 <table class="table">
@@ -18,304 +18,110 @@
                                     <thead>
                                     <tr>
                                         <th class="pro-remove"></th>
-                                        <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Product</th>
-                                        <th class="pro-price">Price</th>
-                                        <th class="pro-quantity">Quantity</th>
-                                        <th class="pro-subtotal">Total</th>
+                                        <th class="pro-thumbnail">Hình ảnh</th>
+                                        <th class="pro-title">Sản phẩm</th>
+                                        <th class="pro-price">Đơn giá</th>
+                                        <th class="pro-quantity">Số lượng</th>
+                                        <th class="pro-subtotal">Tổng tiền</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <!-- Product Row -->
-                                    @if(Session::has('cart'))
-                                        @foreach($product as $sp )
-                                    <tr>
+                                    @if(isset(Auth::user()->id))
+
+                                            @foreach($product as $sp )
+                                                <tr>
 
 
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-                                        </td>
-                                        <td class="pro-thumbnail"><a href="#"><img src="images\products\{{$sp['item']['image']}}" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">{{$sp['item']['name']}}</a></td>
-                                        <td class="pro-price" value="Norway"><span>{{number_format($sp['price'])}}</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <div class="count-input-block">
-                                                    <button><a href="{{route('delItem',$sp['item']['id'] )}}"  class="fas fa-times" ></a></button>
-                                                    <label type="number" class="form-control" readonly value="">{{$sp['qty']}}</label>
-                                                    <button><a href="{{route('themgiohang',$sp['item']['id'] )}}" class="fas fa-plus"></a></button>
+                                                    <td class="pro-remove">
+                                                        <input type="checkbox" name="checkBox[]" >
+                                                        <input type="hidden" name="productId" value="{{$sp->id}}">
 
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span> {{number_format($sp['qty']*$sp['price'])}}</span></td>
+                                                    </td>
+                                                    <td class="pro-thumbnail"><a href="#"><img src="..\storage\app\public\{{$sp->image}}" alt="Product"></a></td>
+                                                    <td class="pro-title"><a href="#">{{$sp->name}}</a></td>
+                                                    <td class="pro-price" value="Norway"><span>{{number_format($sp->price)}}</span></td>
+                                                    <td class="pro-quantity">
+                                                        <div class="pro-qty">
+                                                            <div class="count-input-block">
 
-                                    </tr>
-                                        @endforeach
+                                                                <button><a href="{{route('reduceItem',$sp->id )}}"  class="fas fa-minus" ></a></button>
+                                                                <label type="number" class="form-control" readonly value="">{{$sp->quatity}}</label>
+                                                                <button><a href="{{route('themgiohang',$sp->id )}}" class="fas fa-plus"></a></button>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="pro-subtotal"><span> {{number_format($sp->quatity*$sp->price)}}</span></td>
+
+                                                </tr>
+                                            @endforeach
+
+
+                                    @else
+                                        @if(Session::has('cart'))
+                                            @foreach($product as $sp )
+                                                <tr>
+
+
+                                                    <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
+                                                    </td>
+                                                    <td class="pro-thumbnail"><a href="#"><img src="images\products\{{$sp['item']['image']}}" alt="Product"></a></td>
+                                                    <td class="pro-title"><a href="#">{{$sp['item']['name']}}</a></td>
+                                                    <td class="pro-price" value="Norway"><span>{{number_format($sp['price'])}}</span></td>
+                                                    <td class="pro-quantity">
+                                                        <div class="pro-qty">
+                                                            <div class="count-input-block">
+                                                                <button><a href="{{route('delItem',$sp['item']['id'] )}}"  class="fas fa-times" ></a></button>
+                                                                <label type="number" class="form-control" readonly value="">{{$sp['qty']}}</label>
+                                                                <button><a href="{{route('themgiohang',$sp['item']['id'] )}}" class="fas fa-plus"></a></button>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="pro-subtotal"><span> {{number_format($sp['qty']*$sp['price'])}}</span></td>
+
+                                                </tr>
+                                            @endforeach
+                                        @endif
+
                                     @endif
                                     <!-- Product Row -->
 
                                     <!-- Discount Row  -->
-                                    <tr>
-                                        <td colspan="6" class="actions">
-                                            <div class="coupon-block">
-                                                <div class="coupon-text">
-                                                    <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã giảm giá">
-                                                </div>
-                                                <div class="coupon-btn">
-                                                    <input type="submit" class="btn btn-outlined" name="apply_coupon" value="Áp dụng phiếu giảm giá">
-                                                </div>
-                                            </div>
-                                            <div class="update-block text-right">
-                                                <input type="submit" class="btn btn-outlined" name="update_cart" value="Update cart">
-                                                <input type="hidden" id="_wpnonce" name="_wpnonce" value="05741b501f"><input type="hidden" name="_wp_http_referer" value="/petmark/cart/">
-                                            </div>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="cart-section-2">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12 mb--30 mb-lg--0">
+                                            <!-- slide Block 5 / Normal Slider -->
+
+                                        </div>
+                                        <!-- Cart Summary -->
+                                        <div class="col-lg-6 col-12 d-flex">
+                                            <div class="cart-summary">
+                                                <div class="cart-summary-wrap">
+
+                                                    <h2>Grand Total <span class="text-primary"> {{number_format($totalprice)}} VND</span></h2>
+                                                </div>
+                                                <div class="cart-summary-button">
+                                                    {{--                                <a href="{{route('checkout')}}" class="ckckout-btn c-btn btn--primary">Đặt Hàng</a>--}}
+                                                    <button type="submit" class="place-order w-100">Đặt Hàng</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="cart-section-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-12 mb--30 mb-lg--0">
-                        <!-- slide Block 5 / Normal Slider -->
-                        <div class="cart-block-title">
-                            <h2>YOU MAY BE INTERESTED IN…</h2>
-                        </div>
-                        <div class="product-slider sb-slick-slider" data-slick-setting='{
-							          "autoplay": true,
-							          "autoplaySpeed": 8000,
-							          "slidesToShow": 2
-									  }' data-slick-responsive='[
-                {"breakpoint":992, "settings": {"slidesToShow": 2} },
-                {"breakpoint":768, "settings": {"slidesToShow": 3} },
-                {"breakpoint":575, "settings": {"slidesToShow": 2} },
-                {"breakpoint":480, "settings": {"slidesToShow": 1} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-header">
-											<span class="author">
-												Lpple
-											</span>
-                                        <h3><a href="product-details.html">Revolutionize Your BOOK With These
-                                                Easy-peasy Tips</a></h3>
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="card-image">
-                                            <img src="image\products\product-10.jpg" alt="">
-                                            <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image\products\product-1.jpg" alt="">
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="single-btn">
-                                                        <i class="fas fa-heart"></i>
-                                                    </a>
-                                                    <a href="compare.html" class="single-btn">
-                                                        <i class="fas fa-random"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-header">
-											<span class="author">
-												Jpple
-											</span>
-                                        <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a></h3>
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="card-image">
-                                            <img src="image\products\product-2.jpg" alt="">
-                                            <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image\products\product-1.jpg" alt="">
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="single-btn">
-                                                        <i class="fas fa-heart"></i>
-                                                    </a>
-                                                    <a href="compare.html" class="single-btn">
-                                                        <i class="fas fa-random"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-header">
-											<span class="author">
-												Wpple
-											</span>
-                                        <h3><a href="product-details.html">3 Ways Create Better BOOK With</a></h3>
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="card-image">
-                                            <img src="image\products\product-3.jpg" alt="">
-                                            <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image\products\product-2.jpg" alt="">
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="single-btn">
-                                                        <i class="fas fa-heart"></i>
-                                                    </a>
-                                                    <a href="compare.html" class="single-btn">
-                                                        <i class="fas fa-random"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-header">
-											<span class="author">
-												Epple
-											</span>
-                                        <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
-                                        </h3>
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="card-image">
-                                            <img src="image\products\product-5.jpg" alt="">
-                                            <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image\products\product-4.jpg" alt="">
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="single-btn">
-                                                        <i class="fas fa-heart"></i>
-                                                    </a>
-                                                    <a href="compare.html" class="single-btn">
-                                                        <i class="fas fa-random"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-slide">
-                                <div class="product-card">
-                                    <div class="product-header">
-											<span class="author">
-												Hpple
-											</span>
-                                        <h3><a href="product-details.html">Simple Things You To Save BOOK</a></h3>
-                                    </div>
-                                    <div class="product-card--body">
-                                        <div class="card-image">
-                                            <img src="image\products\product-6.jpg" alt="">
-                                            <div class="hover-contents">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image\products\product-4.jpg" alt="">
-                                                </a>
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
-                                                        <i class="fas fa-shopping-basket"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" class="single-btn">
-                                                        <i class="fas fa-heart"></i>
-                                                    </a>
-                                                    <a href="compare.html" class="single-btn">
-                                                        <i class="fas fa-random"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="price-block">
-                                            <span class="price">£51.20</span>
-                                            <del class="price-old">£51.20</del>
-                                            <span class="price-discount">20%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Cart Summary -->
-                    <div class="col-lg-6 col-12 d-flex">
-                        <div class="cart-summary">
-                            <div class="cart-summary-wrap">
-                                <h4><span>Cart Summary</span></h4>
-                                <p>Sub Total <span class="text-primary">{{number_format(Session('cart')->totalPrice)}} </span></p>
-                                <p>Shipping Cost <span class="text-primary">$00.00</span></p>
-                                <h2>Grand Total <span class="text-primary">$1250.00</span></h2>
-                            </div>
-                            <div class="cart-summary-button">
-                                <a href="checkout.html" class="checkout-btn c-btn btn--primary">Checkout</a>
-                                <button class="update-btn c-btn btn-outlined">Update Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </main>
 
 

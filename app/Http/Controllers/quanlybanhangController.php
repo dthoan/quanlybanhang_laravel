@@ -181,21 +181,28 @@ class quanlybanhangController extends Controller
         return view("trangchu.contact");
     }
 
-    public function getCheckout(){
+    public function getCheckout(Request $rq){
+
         return view("trangchu.checkout");
     }
+
+    public function postCartSubmit(Request $rq){
+
+        return view("trangchu.checkout");
+    }
+
     public function getCart(){
 
-        if(isset(Auth::user()->id))
-        {
-            $product = products::where('id_user', Auth::user()->id)->get();
+//        if(isset(Auth::user()->id))
+//        {
+//            $product = products::where('id_user', Auth::user()->id)->get();
+//
+//        }
+//        else
+//            $product = products::all();
 
-        }
-        else
-            $product = products::all();
 
-
-        return view("trangchu.cart", compact('product'));
+        return view("trangchu.cart");
     }
 
     public function reduceProductInCart($id){
@@ -274,8 +281,6 @@ class quanlybanhangController extends Controller
     }
 
     public function postCheckout(Request $req){
-        $cart = Session::get('cart');
-
         // add customer
         $cus = new customer;
         $cus->name          = $req->name;
@@ -283,34 +288,65 @@ class quanlybanhangController extends Controller
         $cus->email         = $req->email;
         $cus->address       = $req->address;
         $cus->phone_number  = $req->phone_number;
-
         $cus->save();
+
+        $productList = array();
+        $index = 0;
+        $totalPrice = 0;
+
+        foreach ($req->productId as $item){
+            $product = products::where('id','=', $item)->first();
+            if(isset($product)){
+                if($product->quanlity <= $req->productQuantity[$index]){
+                    $product->quanlity -= $req->productQuantity[$index];
+                    $product->save();
+                    $totalPrice += $req->productPrice[$index] * $req->productQuantity[$index];
+                }
+            }
+
+            $newItem = (object) [
+                'quatity' => $req->productQuantity[$index],
+                'price' =>$req->productPrice[$index],
+                'id' => $item,
+            ];
+
+
+            array_push($productList, $newItem);
+            $index++;
+        }
 
         // add bill
         $bill = new bills;
         $bill->id_customer  = $cus->id;
         $bill->time_order   = date('Y-m-d');
-        $bill->total        =$cart->totalPrice;
+        $bill->total        = $totalPrice;
         $bill->payment      = $req->payment_method;
         $bill->status       = 1;
         $bill->id_user      = Auth::user()->id;
 //        $bill->note = $req->note;F
         $bill->save();
 
-        foreach ($cart->items as $keys=>$value){
+        foreach ($productList as $item){
             $db = new bill_detail;
 
             $db->id_bill    = $bill->id;
-            $db->id_product = $keys;
-            $db->quanlity   = $value["qty"];
-            $db->unit_price = $value["price"] / $value["qty"];
+            $db->id_product = $item->id;
+            $db->quanlity   = $item->quatity;
+            $db->unit_price = $item->price;
             $db->save();
 
-            $product = products::where('id','=', $keys)->get();
-            $product->quanlity = $product->quanlity - $value["qty"];
-            $product -> save();
+            $cart = CartDb::where('id_user','=', Auth::user()->id)->first();
+            if(isset($cart)){
+                $cartDetail = CartDetailDb::where([
+                    ['id_cart','=',$cart->id],
+                    ['id_product', '=',$item->id]
+                ])->first();
+                $cartDetail->delete();
+            }
+
+
         }
-        Session::forget('cart');
+        //Session::forget('cart');
         return view('trangchu.thongbao');
     }
 // admin
