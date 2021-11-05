@@ -59,7 +59,7 @@
                     @foreach($item as $sp)
                         <tr align="center">
                            <th>{{$sp->id}}</th>
-                           <th>{{$sp->id_customer}}</th>
+                           <th>{{$sp->full_name}}</th>
                            <th>{{$sp->total}}</th>
                            <th>{{$sp->created_at->format('d/m/y')}}</th>
                            <th>

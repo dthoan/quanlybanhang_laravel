@@ -22,9 +22,6 @@ class accountController extends Controller
                 $ListProduct[$key]['images'] = explode(",", $value->images);
             }
 
-
-            // hình ảnh
-//            $one_image = explode(",", $arr_image);
             return view('account.account',compact('items','ListProduct','one_image'));
 
 

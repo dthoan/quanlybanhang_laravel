@@ -253,14 +253,17 @@ RELATED PRODUCTS BOOKS
 {{--                                        text-overflow: ellipsis;">--}}
 {{--                               {{$sp->name}}--}}
 {{--                            </a>--}}
-                            <h3><a href="{{route('detail_product',$sp->id)}}"> {{$sp->name}}</a></h3>
+                            <h3   style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"><a href="{{route('detail_product',$sp->id)}}"> {{$sp->name}}</a></h3>
                         </div>
                         <div class="product-card--body">
                             <div class="card-image">
-                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="340px">
+                                <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" style="height: 340px;">
                                 <div class="hover-contents">
                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                        <img src="..\storage\app\public\{{$sp->image}}" alt="" height="340px">
+                                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="" style="height: 340px;;">
                                     </a>
                                     <div class="hover-btns">
                                         <a href="cart.html" class="single-btn">

@@ -3,7 +3,21 @@
 @section("content")
 
 
-{{--    and--}}
+<section class="breadcrumb-section">
+        <h2 class="sr-only"></h2>
+        <div class="container">
+            <div class="breadcrumb-contents">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('trangchu')}}">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active"><a href="">Đặt hàng</a></li>
+
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+<!-- welcome -->
     <main id="content" class="page-section inner-page-sec-padding-bottom space-db--20">
         <div class="container">
             <form action="{{route('checkout')}}" method="post">
@@ -14,20 +28,14 @@
                         <div class="checkout-form">
                             <div class="row row-40">
                                 <div class="col-12">
-                                    <h1 class="quick-title">Checkout</h1>
-                                    <!-- Slide Down Trigger  -->
-                                    <div class="checkout-quick-box">
-                                        <p><i class="far fa-sticky-note"></i>Returning customer? <a href="javascript:" class="slide-trigger" data-target="#quick-login">Click
-                                                here to login</a></p>
-                                    </div>
-                                    <!-- Slide Down Blox ==> Login Box  -->
+                                   
+                                   
                                     <div class="checkout-slidedown-box" id="quick-login">
-                                        <form action="./">
                                             <div class="quick-login-form">
                                                 <p>BẠN ĐÃ ĐẶT HÀNG THÀNH CÔNG</p>
                                                 <div class="form-group">
                                                     <label for="quick-user">Username or email *</label>
-                                                    <input type="text" placeholder="" id="quick-user">
+                                                    <input type="text" placeholder=""  id="quick-user">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="quick-pass">Password *</label>
@@ -46,21 +54,13 @@
                                                             password?</a></p>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
-                                    <!-- Slide Down Trigger  -->
-                                    <div class="checkout-quick-box">
-                                        <p><i class="far fa-sticky-note"></i>Have a coupon? <a href="javascript:" class="slide-trigger" data-target="#quick-cupon">
-                                                Click here to enter your code</a></p>
-                                    </div>
-                                    <!-- Slide Down Blox ==> Cupon Box -->
+                                   
                                     <div class="checkout-slidedown-box" id="quick-cupon">
-                                        <form action="./">
                                             <div class="checkout_coupon">
                                                 <input type="text" class="mb-0" placeholder="Coupon Code">
                                                 <a href="" class="btn btn-outlined">Apply coupon</a>
                                             </div>
-                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-lg-7 mb--20">
@@ -68,53 +68,48 @@
 
                                     <div id="billing-form" class="mb-40">
 
-                                        <h4 class="checkout-title">Billing Address</h4>
-                                        <div class="row">
+                                        <h4 class="checkout-title">NHẬP THÔNG TIN ĐỂ ĐẶT HÀNG</h4>
+                                        <div class="row"> 
                                             <div class="col-md-6 col-12 mb--20">
                                                 <label>Họ Và Tên</label>
-                                                <input type="text" name="name" placeholder="First Name">
+                                                <input type="text" name="name"  placeholder="First Name" value="{{$user_order->full_name}}"/>
+                                                @if($errors->has("name"))
+                                                <small class="text-danger">{{$errors->first('name')}}</small>
+                                                @endif
                                             </div>
+                                         
 
                                             <div class="col-12 mb--20">
                                                 <label>Email</label>
-                                                <input type="text" name="email" placeholder="Nhập Email">
+                                                <input type="text" name="email"  placeholder="Nhập Email" value="{{$user_order->email}}"/>
+                                                @if($errors->has("email"))
+                                                    <small class="text-danger">{{$errors->first('email')}}</small>
+                                                 @endif
                                             </div>
+                                           
 
-                                            <div class="col-12 mb--20 ">
-                                                <label>Giới Tính</label>
-                                                <div class="block-border check-bx-wrapper">
-                                                    <div class="check-box">
-                                                        <input type="checkbox" name="gender" id="create_account">
-                                                        <label for="create_account">Nam</label>
-                                                    </div>
-                                                    <div class="check-box">
-                                                        <input type="checkbox" name="gender" id="shiping_address" data-shipping="">
-                                                        <label for="shiping_address">Nữ</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
 
 
+   
+                                            
                                             <div class="col-md-6 col-12 mb--20">
                                                 <label>Số Điện Thoại</label>
-                                                <input type="text" name="phone_number" placeholder="Nhập Số Điện Thoại">
+                                                <input type="text" name="phone_number"  placeholder="Nhập Số Điện Thoại" value="{{$user_order->phone}}"/>
+                                                @if($errors->has("phone_number"))
+                                                    <small class="text-danger">{{$errors->first('phone_number')}}</small>
+                                                @endif
                                             </div>
+                                          
                                             <div class="col-12 mb--20">
                                                 <label>Địa Chỉ</label>
-                                                <input type="text" name="address" placeholder="Nhập Địa Chỉ">
+                                                <input type="text" name="address"  placeholder="Nhập Địa Chỉ" value="{{$user_order->address}}"/>
+                                                @if($errors->has("address"))
+                                                    <small class="text-danger">{{$errors->first('address')}}</small>
+                                                @endif
                                             </div>
-                                            <div class="col-12 mb--20 ">
-                                                <div class="block-border check-bx-wrapper">
-                                                    <div class="check-box">
-                                                        <input type="checkbox" id="create_account">
-                                                        <label for="create_account">Create an Acount?</label>
-                                                    </div>
-                                                    <div class="check-box">
-                                                        <input type="checkbox" id="shiping_address" data-shipping="">
-                                                        <label for="shiping_address">Ship to Different Address</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                         
+                                          
                                         </div>
                                     </div>
                                     <!-- Shipping Address -->
@@ -126,32 +121,53 @@
                                         <!-- Cart Total -->
                                         <div class="col-12">
                                             <div class="checkout-cart-total">
-                                                <h2 class="checkout-title">YOUR ORDER</h2>
+                                               
                                                 <h4>Product <span>Total</span></h4>
+
+                                                @if(!empty($productBill))
+                                                @if(empty($productBill['product']))
+                                                <h1>Khong co du lieu</h1>
+                                                @endif
                                                 <ul>
-                                                    @if($isLoadByDb == true)
-                                                        @foreach($product as $sp )
+                                                        @foreach($productBill['product'] as $sp )
                                                             <li>
                                                                 <input type="hidden" name="productId[]" value="{{$sp->id}}">
                                                                 <input type="hidden" name="productQuantity[]" value="{{$sp->quatity}}">
                                                                 <input type="hidden" name="productPrice[]" value="{{$sp->price}}">
                                                             <span class="left">{{$sp->name}} x {{$sp->quatity}}
                                                             </span>
-                                                                <span class="right">{{$sp->price}}
+                                                                <span class="right">{{number_format($sp->price * $sp->quatity)}}
                                                             </span>
                                                             </li>
                                                         @endforeach
-                                                    @elseif(Session::has('cart'))
+                                                </ul>
+
+                                                <h4>Tổng Tiền:
+                                                    <span name="totalprice" >
+
+                                                        {{number_format($productBill['totalprice'])}}
+
+                                                </span>
+                                                </h4>
+                                                @endif
+
+                                                @if(empty($productBill))
+                                                @if(empty($product))
+                                                <h1>Khong co du lieu</h1>
+                                                @endif
+                                                <ul>
                                                         @foreach($product as $sp )
                                                             <li>
-
-                                                            <span class="left">{{$sp['item']['name']}} x {{$sp['qty']}}
+                                                                <input type="hidden" name="productId[]" value="{{$sp->id}}">
+                                                                <input type="hidden" name="productQuantity[]" value="{{$sp->quatity}}">
+                                                                <input type="hidden" name="productPrice[]" value="{{$sp->price}}">
+                                                            <span class="left" >{{$sp->name}} x {{$sp->quatity}}
                                                             </span>
-                                                                <span class="right">{{$sp['price']}}
+                                                            <span class="right">{{number_format($sp->price * $sp->quatity)}}
                                                             </span>
                                                             </li>
                                                         @endforeach
-                                                    @endif
+                                                   
 
                                                 </ul>
 
@@ -162,20 +178,19 @@
 
                                                 </span>
                                                 </h4>
+                                                @endif
+
                                                 <div class="method-notice mt--25">
-{{--                                                    <article>--}}
-{{--                                                        <h3 class="d-none sr-only">blog-article</h3>--}}
-{{--                                                        Sorry, it seems that there are no available payment methods for--}}
-{{--                                                        your state. Please contact us if you--}}
-{{--                                                        require--}}
-{{--                                                        assistance--}}
-{{--                                                        or wish to make alternate arrangements.--}}
-{{--                                                    </article>--}}
+
                                                 </div>
                                                 <div class="term-block">
                                                     <input type="checkbox" name="payment_method" id="accept_terms2">
                                                     <label for="accept_terms2"  >Thanh Toán Khi Nhận Hàng</label>
+                                                   
                                                 </div>
+                                                @if($errors->has("payment_method"))
+                                                        <p class="text-danger">{{$errors->first('payment_method')}}</p>
+                                                    @endif
                                                 <button type="submit" class="place-order w-100">Đặt Hàng</button>
                                             </div>
                                         </div>

@@ -37,19 +37,21 @@ class quanlybanhangController extends Controller
 
     public function getIndex(){
         $sl_images      = slide::all();
-        $new_product    = products::where("new",0)->get();
-//        $pro_product    = products::where("promotion_price","!=0",0)->paginate(2);
+        $new_product    = products::where("status",0)->orderBy('id', 'DESC')->get();
+        foreach($new_product  as $key => $value){
+            $new_product [$key]['images'] = explode(",", $value->images);
+         }
         $pro_product    = DB::table('products')
             ->join('type_products', 'products.id_type', '=', 'type_products.id')
             ->where("promotion_price","!=0",0)
             ->select(
                 'products.*',
                 'type_products.name as typeName'
-
             )
-            ->paginate(2);
-//        $sale_product   = products::where("new",0)->get();
-//        $botca_product  = products::where("id_type",1)->get();
+            ->orderBy('products.id', 'DESC')->get();
+            foreach($pro_product as $key => $value){
+                $pro_product[$key]->images = explode(",", $value->images);
+            }
         $botca_product  = DB::table('products')
             ->join('type_products', 'products.id_type', '=', 'type_products.id')
             ->where("id_type",1)
@@ -58,18 +60,25 @@ class quanlybanhangController extends Controller
                 'type_products.name as typeName'
 
             )
+            ->orderBy('products.id', 'DESC')
             ->get();
+            foreach($botca_product as $key => $value){
+               $botca_product[$key]->images = explode(",", $value->images);
+            }
         $sale_product = DB::table('products')
             ->join('type_products', 'products.id_type', '=', 'type_products.id')
             ->where("new",0)
             ->select(
                 'products.*',
                 'type_products.name as typeName'
-
             )
+            ->orderBy('products.id', 'DESC')
             ->get();
+            foreach($sale_product as $key => $value){
+                $sale_product[$key]->images = explode(",", $value->images);
+             }
 
-//DD($sale_product);
+
         return view("trangchu.index", compact("sl_images","new_product","pro_product","sale_product", "botca_product", "users"));
     }
     public function getTypeProduct($type){
@@ -99,12 +108,14 @@ class quanlybanhangController extends Controller
         $ten_chude = DB::table('products')
             ->join('type_products', function ($join) {
             $join->on('products.id_type', '=', 'type_products.id');
-
         })->select(
             'type_products.name'
         )->first($id);
         // sản phẩm tương tự
         $sp_tuongtu     = products::where('id_type',$detail_product->id_type)->paginate(4);
+        foreach($sp_tuongtu  as $key => $value){
+            $sp_tuongtu[$key]['images'] = explode(",", $value->images);
+        }
         return view("trangchu.product_details", compact('show_comment',"detail_product", "product_name","sp_tuongtu",'items','ten_chude','ten_post','post','one_image','nguoi_cmt'));
     }
     // thêm bình luận
@@ -182,8 +193,50 @@ class quanlybanhangController extends Controller
     }
 
     public function getCheckout(Request $rq){
-
-        return view("trangchu.checkout");
+        $listProduct = $rq->checkBox;
+        $productBill =[];
+        $user_order = users::find(Auth::user()->id);
+        if(!empty($listProduct)){
+            if(isset(Auth::user()->id)){
+                $cart = CartDb::where('id_user','=', Auth::user()->id)->first();
+                if(isset($cart)){
+                    $cartDetail = CartDetailDb::where(
+                        'id_cart', '=', $cart->id
+                    )->get();
+    
+                    $totalprice = 0;
+                    $totalqty = 0;
+                    $productList = array();
+                    foreach ($cartDetail as $item){
+                        if(in_array($item->id_product,$listProduct)){
+                            $product = products::where('id','=', $item->id_product)->first();
+                            if(isset($product)){
+                                $totalprice = $totalprice + $item->quatity * $product->unit_price;
+                                $totalqty = $totalqty + $item->quatity;
+                            }
+        
+                            $newItem = (object) [
+                                'quatity' => $item->quatity,
+                                'name' => $product->name,
+                                'price' => $product->unit_price,
+                                'id' => $product->id,
+                                'image' => $product->image
+                            ];
+                            array_push($productList, $newItem);
+                        }
+                        
+                    }
+                    $productBill =[
+                        'cart'       => $cart,
+                        'product'   => $productList,
+                        'totalprice' => $totalprice,
+                        'totalqty' => $totalqty,
+                        'isLoadByDb' => true,
+                    ];
+                }
+            }
+        }
+        return view("trangchu.checkout",compact('user_order','productBill'));
     }
 
     public function postCartSubmit(Request $rq){
@@ -267,27 +320,49 @@ class quanlybanhangController extends Controller
 
     }
 
-    public function getDelItemCart($id){
-        $oldCart =  Session('cart') ? Session::get('cart'): null;
-        $cart = new Cart($oldCart);
-        $cart->reduceByOne($id);
-        if(count($cart->items)>0){
-            Session::put('cart', $cart);
-        }
-        else{
-            Session::forget('cart');
-        }
-        return redirect()->back();
-    }
+    // public function getDelItemCart($id){
+    //     $oldCart =  Session('cart') ? Session::get('cart'): null;
+    //     $cart = new Cart($oldCart);
+    //     $cart->reduceByOne($id);
+    //     if(count($cart->items)>0){
+    //         Session::put('cart', $cart);
+    //     }
+    //     else{
+    //         Session::forget('cart');
+    //     }
+    //     return redirect()->back();
+    // }
 
     public function postCheckout(Request $req){
-        // add customer
+        
+        $req->validate(
+            [
+            'email'         => 'required|email',          
+            'name'     =>  'required',
+            'phone_number'  =>  'required',
+            'address'       =>  'required',
+            'payment_method'       =>  'required',
+        ],
+        [
+            'email.required'        => 'Vui lòng nhập email!',
+            'email.email'           => 'Địa chỉ thư không đúng định dạng!',
+            'name.required'    => 'Chưa Nhập tên đăng nhập!',
+            'phone_number.required' => 'Chưa Nhập số điện thoại!',
+            'address.required'      => 'Chưa Nhập địa chỉ!',
+            'payment_method.required'        => 'Vui lòng xác nhận thanh toán',
+           
+        ]);
+        if(empty($req->productId)){
+            return view('trangchu.thongbao404');
+
+        }
         $cus = new customer;
         $cus->name          = $req->name;
-        $cus->gender        = $req->gender;
+        $cus->gender        = "";
         $cus->email         = $req->email;
         $cus->address       = $req->address;
         $cus->phone_number  = $req->phone_number;
+        
         $cus->save();
 
         $productList = array();
@@ -297,7 +372,7 @@ class quanlybanhangController extends Controller
         foreach ($req->productId as $item){
             $product = products::where('id','=', $item)->first();
             if(isset($product)){
-                if($product->quanlity <= $req->productQuantity[$index]){
+                if($product->quanlity >= $req->productQuantity[$index]){
                     $product->quanlity -= $req->productQuantity[$index];
                     $product->save();
                     $totalPrice += $req->productPrice[$index] * $req->productQuantity[$index];
@@ -314,7 +389,6 @@ class quanlybanhangController extends Controller
             array_push($productList, $newItem);
             $index++;
         }
-
         // add bill
         $bill = new bills;
         $bill->id_customer  = $cus->id;
@@ -484,9 +558,11 @@ class quanlybanhangController extends Controller
         if(!$isRole){
             return redirect()->route('login');
         }
+        $khachHang = customer::all();
+        $donHang = bills::all();
 
-
-        return view('admin.index');
+// dd( $khachHang,$donHang);
+        return view('admin.index',compact('khachHang','donHang'));
     }
 
     public function getAllProduct(){
@@ -662,13 +738,16 @@ class quanlybanhangController extends Controller
 
     /// order
     public function getListOrder(){
-        $isRole = $this->checkRole(['Admin','User']);
-        if(!$isRole){
+        if($this->checkRole(['Admin'])){
+            $item = bills::all();
+        }
+        elseif($this->checkRole(['User']))
+        {
+                $item = bills::where('bills.id_user','=',Auth::user()->id)->get();
+        }else{
             return redirect()->route('login');
         }
-
-        $item = bills::where('bills.id_user','=',Auth::user()->id)->get();
-//        dd($item);
+      
         return view('order.list_order',compact('item'));
     }
 
@@ -730,9 +809,7 @@ class quanlybanhangController extends Controller
             return Redirect('login');
         }
         $data = [];
-//        $data['tenKH'] = customer::select('name','address')->first($id);
 
-        // lấy nội dung đơn hàng
         $data['noidung'] = DB::table('bill_detail')->join('products', function ($join) {
                     $join->on('bill_detail.id_product', '=', 'products.id');
         })->select(

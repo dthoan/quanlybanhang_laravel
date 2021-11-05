@@ -38,7 +38,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
                             <h2 class="number">10,368</h2>
-                            <span class="desc">members online</span>
+                            <span class="desc">Tổng số đơn hàng</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-account-o"></i>
                             </div>
@@ -47,7 +47,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
                             <h2 class="number">388,688</h2>
-                            <span class="desc">items sold</span>
+                            <span class="desc">Số đơn chưa xử lý</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-shopping-cart"></i>
                             </div>
@@ -55,8 +55,9 @@
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
-                            <h2 class="number">1,086</h2>
-                            <span class="desc">this week</span>
+            
+                            <h2 class="number">sdasdsa</h2>
+                            <span class="desc">Số lượng khách hàng</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-calendar-note"></i>
                             </div>
@@ -65,7 +66,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
                             <h2 class="number">$1,060,386</h2>
-                            <span class="desc">total earnings</span>
+                            <span class="desc">Tổng doanh thu</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-money"></i>
                             </div>

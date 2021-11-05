@@ -181,7 +181,7 @@
 {{--                                                        <div class="ribbon-sale">Sale</div>--}}
 {{--                                                    </div>--}}
 {{--                                                @endif--}}
-                                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="180px" width="122px">
+                                                <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
                                                     @if($sp->promotion_price != 0)
                                                         <div class="ribbon-wrapper">
@@ -189,21 +189,13 @@
                                                         </div>
                                                     @endif
                                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
+                                                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                             <i class="fas fa-shopping-basket"></i>
                                                         </a>
-                                                        <a href="wishlist.html" class="single-btn">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                        <a href="compare.html" class="single-btn">
-                                                            <i class="fas fa-random"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                            <i class="fas fa-eye"></i>
-                                                        </a>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -1272,7 +1264,7 @@
                                                         <div class="ribbon-sale">Sale</div>
                                                     </div>
                                                 @endif
-                                                <img src="..\storage\app\public\{{$sp->image}}" alt="" height="180px" width="122px">
+                                                <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
                                                     @if($sp->promotion_price != 0)
                                                         <div class="ribbon-wrapper">
@@ -1281,21 +1273,13 @@
                                                     @endif
                                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
 
-                                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
+                                                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                             <i class="fas fa-shopping-basket"></i>
                                                         </a>
-                                                        <a href="wishlist.html" class="single-btn">
-                                                            <i class="fas fa-heart"></i>
-                                                        </a>
-                                                        <a href="compare.html" class="single-btn">
-                                                            <i class="fas fa-random"></i>
-                                                        </a>
-                                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                            <i class="fas fa-eye"></i>
-                                                        </a>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -1356,7 +1340,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1364,7 +1348,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1396,7 +1380,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1404,7 +1388,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1436,7 +1420,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1444,7 +1428,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1476,7 +1460,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1484,7 +1468,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1516,7 +1500,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1524,7 +1508,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1556,7 +1540,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1564,7 +1548,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1596,7 +1580,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1604,7 +1588,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1636,7 +1620,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1644,7 +1628,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1676,7 +1660,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1684,7 +1668,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1716,7 +1700,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1724,7 +1708,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1756,7 +1740,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1764,7 +1748,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1796,7 +1780,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1804,7 +1788,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1851,7 +1835,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1859,7 +1843,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1891,7 +1875,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1899,7 +1883,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1931,7 +1915,7 @@
                                                     <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -1939,7 +1923,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -2361,10 +2345,10 @@
 {{--                        </div>--}}
 {{--                        <div class="product-card--body">--}}
 {{--                            <div class="card-image">--}}
-{{--                                <img src="..\storage\app\public\{{$sp->image}}" alt="">--}}
+{{--                                <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">--}}
 {{--                                <div class="hover-contents">--}}
 {{--                                    <a href="{{route('detail_product',$sp->id)}}" class="hover-image">--}}
-{{--                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">--}}
+{{--                                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">--}}
 {{--                                    </a>--}}
 {{--                                    <div class="hover-btns">--}}
 {{--                                        <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">--}}
@@ -2427,7 +2411,7 @@
                             <div class="single-slide">
                                 <div class="product-card card-style-list">
                                     <div class="card-image">
-                                        <img src="..\storage\app\public\{{$sp->image}}" alt="">
+                                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
                                     </div>
                                     <div class="product-card--body">
                                         <div class="product-header">
@@ -2486,7 +2470,7 @@
                 <div class="single-slide">
                     <div class="product-card card-style-list">
                         <div class="card-image">
-                            <img src="..\storage\app\public\{{$sp->image}}" alt="">
+                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
                         </div>
                         <div class="product-card--body">
                             <div class="product-header">
@@ -2549,7 +2533,7 @@
                                    {{$sp->name}}
                                 </a>
                                 <h3><a href="{{route('detail_product',$sp->id)}}"
-                                       style="  width: 200px;
+                                style="  width: 200px;
                                                         overflow: hidden;
                                                         white-space: nowrap;
                                                         text-overflow: ellipsis;"
@@ -2558,24 +2542,16 @@
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="..\storage\app\public\{{$sp->image}}"  height="330px" alt="">
+                                    <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}"  height="330px" alt="">
                                     <div class="hover-contents">
                                         <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                            <img src="..\storage\app\public\{{$sp->image}}" height="330px" alt="">
+                                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" height="330px" alt="">
                                         </a>
                                         <div class="hover-btns">
                                             <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                 <i class="fas fa-shopping-basket"></i>
                                             </a>
-                                            <a href="wishlist.html" class="single-btn">
-                                                <i class="fas fa-heart"></i>
-                                            </a>
-                                            <a href="compare.html" class="single-btn">
-                                                <i class="fas fa-random"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
+                                          
                                         </div>
                                     </div>
                                 </div>

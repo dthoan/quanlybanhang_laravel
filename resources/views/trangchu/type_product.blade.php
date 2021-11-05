@@ -81,10 +81,11 @@
                                                     <img src="..\storage\app\public\{{$sp->image}}" alt="">
                                                 </a>
                                                 <div class="hover-btns">
-                                                    <a href="cart.html" class="single-btn">
+                                                
+                                                    <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
                                                         <i class="fas fa-shopping-basket"></i>
                                                     </a>
-                                                    <a href="wishlist.html" class="single-btn">
+                                                    <!-- <a href="wishlist.html" class="single-btn">
                                                         <i class="fas fa-heart"></i>
                                                     </a>
                                                     <a href="compare.html" class="single-btn">
@@ -92,7 +93,7 @@
                                                     </a>
                                                     <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                         <i class="fas fa-eye"></i>
-                                                    </a>
+                                                    </a> -->
                                                 </div>
                                             </div>
                                         </div>

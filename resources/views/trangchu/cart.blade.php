@@ -10,7 +10,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{route('cartSubmit')}}" method="post">
+                        <form action="{{route('checkout')}}" method="get">
                             <!-- Cart Table -->
                             <div class="cart-table table-responsive mb--40">
                                 <table class="table">
@@ -34,8 +34,8 @@
 
 
                                                     <td class="pro-remove">
-                                                        <input type="checkbox" name="checkBox[]" >
-                                                        <input type="hidden" name="productId" value="{{$sp->id}}">
+                                                        <input class="check-box" value="{{$sp->id}}" checked data-total="{{$sp->quatity*$sp->price}}" type="checkbox" name="checkBox[]" >
+                                                      
 
                                                     </td>
                                                     <td class="pro-thumbnail"><a href="#"><img src="..\storage\app\public\{{$sp->image}}" alt="Product"></a></td>
@@ -43,10 +43,10 @@
                                                     <td class="pro-price" value="Norway"><span>{{number_format($sp->price)}}</span></td>
                                                     <td class="pro-quantity">
                                                         <div class="pro-qty">
-                                                            <div class="count-input-block">
+                                                            <div class="count-input-block" >
 
                                                                 <button><a href="{{route('reduceItem',$sp->id )}}"  class="fas fa-minus" ></a></button>
-                                                                <label type="number" class="form-control" readonly value="">{{$sp->quatity}}</label>
+                                                                <label type="number" class="form-control" readonly value="" >{{$sp->quatity}}</label>
                                                                 <button><a href="{{route('themgiohang',$sp->id )}}" class="fas fa-plus"></a></button>
 
                                                             </div>
@@ -105,7 +105,7 @@
                                             <div class="cart-summary">
                                                 <div class="cart-summary-wrap">
 
-                                                    <h2>Grand Total <span class="text-primary"> {{number_format($totalprice)}} VND</span></h2>
+                                                    <h2>Tổng Tiền <span id="total-price" class="text-primary"> {{number_format($totalprice)}} VND</span></h2>
                                                 </div>
                                                 <div class="cart-summary-button">
                                                     {{--                                <a href="{{route('checkout')}}" class="ckckout-btn c-btn btn--primary">Đặt Hàng</a>--}}
@@ -126,6 +126,33 @@
 
 
 
+<script>
+    $(".check-box").change(function(){
+        updateTotal();
+    })
+    function updateTotal(){
+        let total = 0 ;
+        $('.check-box').each(function(){
+            if(this.checked){
+                let price = $(this).data('total');
+                total = parseInt(total) + parseInt(price) 
+            }  
+        })
+        $("#total-price").html(addPeriod(total) + " VND")
+    }
+    function addPeriod(nStr)
+    {
+        nStr += '';
+        x = nStr.split(',');
+        x1 = x[0];
+        x2 = x.length > 1 ? ',' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    }
+</script>
 
 
 @endsection

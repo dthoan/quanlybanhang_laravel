@@ -80,7 +80,6 @@
                                         <select class="js-select2" name="property">
 
                                             @foreach($listRole as $role )
-
                                                 <option data-id="{{$user->id}}" value="{{$role->id}}" {{($role->name == $user->role_name)?"selected":""}}  >{{$role->name}}</option>
                                             @endforeach
 
@@ -119,7 +118,7 @@
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
-                        url : "/admin/user",
+                        url : "/public/admin/user",
                         type : "post",
                         data : {
                             role_id :roleId,

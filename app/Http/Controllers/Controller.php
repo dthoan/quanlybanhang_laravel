@@ -27,6 +27,5 @@ class Controller extends BaseController
             }
         }
         return $isRole;
-
     }
 }

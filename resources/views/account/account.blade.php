@@ -76,7 +76,9 @@
                                                         overflow: hidden;
                                                         white-space: nowrap;
                                                         text-overflow: ellipsis;"
-                                ><a href="{{route('detail_product',$sp->id)}}"> {{$sp->name}}</a></h3>
+                                ><a href="{{route('detail_product',$sp->id)}}"
+                                    
+                                > {{$sp->name}}</a></h3>
                             </div>
                             <div class="product-card--body">
 

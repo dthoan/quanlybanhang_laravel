@@ -1,6 +1,7 @@
 @extends("layout.layout_blog")
 @section("title","Pustok - Blog Detail")
 @section("content")
+
     <section class="breadcrumb-section">
         <h2 class="sr-only">Site Breadcrumb</h2>
         <div class="container">
