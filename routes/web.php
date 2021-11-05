@@ -83,6 +83,8 @@ Route::get("/admin/update-order", "quanlybanhangController@getAddOrder")->name('
 Route::post("/admin/update-order", "quanlybanhangController@postAddOrder")->name('update_order');
 Route::get("/admin/delete-order/{id}", "quanlybanhangController@getDeleteOrder")->name('del_order');
 Route::get("/admin/detail/{id}", "quanlybanhangController@getDetailOrder")->name('detail_order');
+
+Route::post("/detail/{id}", "quanlybanhangController@postOrderStatus")->name('detail_order');
 // customer
 Route::get("/admin/list-customer", "quanlybanhangController@getListCustomer")->name('list_customer');
 Route::get("/admin/detail-customer/{id}", "quanlybanhangController@getDetailCustomer")->name('detail_customer');
@@ -130,6 +132,9 @@ Route::get("/admin/user", "userController@getUser")->name('role');
 Route::post("/admin/user", "userController@postRole")->name('role');
 // my account
 Route::get("/account/{id}", "accountController@getAccount")->name('account');
+
+// order
+
 
 
 

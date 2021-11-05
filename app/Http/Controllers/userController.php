@@ -37,10 +37,6 @@ class userController extends Controller
             ->update(['role_id' => $rq->role_id]);
         return ['data'=>$role, 'status' =>200];
 
-//        $role->created_at           = Carbon::now();
-//        $role->updated_at           = Carbon::now();
-
-//        $role->save();
 
     }
 }
