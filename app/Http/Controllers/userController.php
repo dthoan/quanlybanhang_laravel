@@ -6,6 +6,7 @@ use App\users;
 use App\roles;
 use App\model_has_roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function Sodium\compare;
 
 class userController extends Controller
@@ -13,8 +14,9 @@ class userController extends Controller
     public function getUser()
     {
         // nếu k phải admin thì k được vào
-        $isRole = $this->checkRole(['Client','User']);
+        $isRole = $this->checkRole(['Admin','User']);
         if($isRole){
+            Auth::logout();
             return redirect()->route('login');
         }
 

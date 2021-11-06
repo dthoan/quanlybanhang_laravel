@@ -475,7 +475,7 @@ class quanlybanhangController extends Controller
 
     public function getLogin()
     {
-
+        Auth::logout();
         return view("admin.login");
     }
 
@@ -561,10 +561,10 @@ class quanlybanhangController extends Controller
     // trang quản trị
     public function getAdminIndex()
     {
-        $isRole = $this->checkRole(['Admin', 'User']);
-        if (!$isRole) {
-            return redirect()->route('login');
-        }
+        // $isRole = $this->checkRole(['Client','User']);
+        // if($isRole){
+        //     return redirect()->route('login');
+        // }
         $khachHang = customer::all();
         $donHang = bills::all();
 
@@ -576,11 +576,11 @@ class quanlybanhangController extends Controller
     {
 
 
-        $isRole = $this->checkRole(['Admin', 'User']);
-        if (!$isRole) {
+        $isRole = $this->checkRole(['Admin','User']);
+         if($isRole){
+            Auth::logout();
             return redirect()->route('login');
         }
-
         $ListProduct = products::orderBy('id', 'DESC')->where('id_user', Auth::user()->id)->paginate(5);
         $moi = products::orderBy('id', 'DESC')
             ->where('id_user', Auth::user()->id)
@@ -768,16 +768,26 @@ class quanlybanhangController extends Controller
                 $item[$key]->sum_quantity = $totalQuantity;
             }
         } elseif ($this->checkRole(['User'])) {
-            // $item = bills::where('bills.id_user', '=', Auth::user()->id)->get();
-            $item  = DB::table('bills')->join('customer', function ($join) {
-                $join->on('bills.id_customer', '=', 'customer.id');
+            $item  = DB::table('bills')
+            ->join('customer', function ($join) {$join->on('bills.id_customer', '=', 'customer.id');
+            
             })->select(
-                'bills.id',
+                'bills.id as bill_id',
                 'bills.status',
-                'customer.name',
-                'customer.address'
-            )->get();
-            dd($item);
+                'customer.name as ten_khach_hang',
+                'customer.address',
+                'bills.total',
+                'bills.created_at',
+                'bills.id_user as user_id'
+            )->where('id_user', Auth::user()->id)->get();
+
+            foreach ($item as $key => $value) {
+                $totalQuantity = DB::table('bill_detail')
+                    ->where('bill_detail.id_bill', '=', $value->bill_id)
+                    ->sum('bill_detail.quanlity');
+                $item[$key]->sum_quantity = $totalQuantity;
+            }
+   
         } else {
             return redirect()->route('login');
         }
