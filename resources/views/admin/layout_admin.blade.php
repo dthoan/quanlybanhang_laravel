@@ -556,7 +556,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="copyright">
-                            <p>Copyright © 2021 <b>Đoàn Thị Hoàn</b>. All rights reserved. Template by Colorlib.</p>
+                            <p>Copyright © 2021 <b>Đoàn Thị Hoàn</b>. All rights reserved </p>
                         </div>
                     </div>
                 </div>

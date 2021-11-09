@@ -21,8 +21,7 @@
                                     <li class="list-inline-item">List Customer</li>
                                 </ul>
                             </div>
-                            <button class="au-btn au-btn-icon au-btn--green">
-                                <i class="zmdi zmdi-plus"></i>Thêm Khách Hàng</button>
+                           
                         </div>
                     </div>
                 </div>
@@ -47,7 +46,7 @@
                     <tr>
                         <th>Họ Tên</th>
                         <th>Email</th>
-                        <th>Giới Tính</th>
+               
                         <th>Số Điện Thoại</th>
                         <th>Địa Chỉ</th>
                         <th>Action</th>
@@ -61,7 +60,7 @@
 
                             <th class="text-left" >{{$sp->name}}</th>
                             <th class="text-left">{{$sp->email}}</th>
-                            <th>{{$sp->gender}}</th>
+                    
                             <th class="text-left">{{$sp->phone_number}}</th>
                             <th class="text-left">{{$sp->address}}</th>
                             <th>

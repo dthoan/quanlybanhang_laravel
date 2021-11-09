@@ -77,7 +77,7 @@
 {{--                <img src="image\icon\payment.png" alt="">--}}
 {{--            </a>--}}
 
-            <p class="copyright-text">Copyright © 2021 <a href="#" class="author">Pustok</a>. All Right Reserved.
+            <p class="copyright-text">Copyright © 2021 <a href="#" class="author">SHOPBEAUTY</a>. All Right Reserved.
                 <br>
                 Design By Đoan Thi Hoan</p>
         </div>

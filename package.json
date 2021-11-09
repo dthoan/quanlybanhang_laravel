@@ -19,6 +19,8 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
+        "datatables.net": "^1.11.3",
+        "datatables.net-dt": "^1.11.3",
         "laravel-echo": "^1.11.2",
         "pusher-js": "^7.0.3"
     }

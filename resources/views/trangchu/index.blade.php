@@ -3,109 +3,26 @@
 @extends("layout.layout")
 @section("content")
 @section("title","Pustok - Book Store")
-    <section class="hero-area hero-slider-1">
-        <div class="sb-slick-slider" data-slick-setting='{
-                            "autoplay": true,
-                            "fade": true,
-                            "autoplaySpeed": 3000,
-                            "speed": 3000,
-                            "slidesToShow": 1,
-                            "dots":true
-                            }'>
-            <div class="single-slide bg-shade-whisper  ">
-                <div class="container">
-                    <div class="home-content text-center text-sm-left position-relative">
-                        <div class="hero-partial-image image-right">
-                            <img src="..\storage\app\public\uploals\banner1.jpg" alt="">
-                        </div>
-                        <div class="row no-gutters ">
-                            <div class="col-xl-6 col-md-6 col-sm-7">
-                                <div class="home-content-inner content-left-side">
-                                    <h1>H.G. Wells<br>
-                                        De Vengeance</h1>
-                                    <h2>Cover Up Front Of Books and Leave Summary</h2>
-                                    <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                        $78.09 - Order Now!
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slide bg-ghost-white">
-                <div class="container">
-                    <div class="home-content text-center text-sm-left position-relative">
-                        <div class="hero-partial-image image-left">
-                            <img src="..\storage\app\public\uploals\banner2.jpg" alt="">
-                        </div>
-                        <div class="row align-items-center justify-content-start justify-content-md-end">
-                            <div class="col-lg-6 col-xl-7 col-md-6 col-sm-7">
-                                <div class="home-content-inner content-right-side">
-                                    <h1>J.D. Kurtness <br>
-                                        De Vengeance</h1>
-                                    <h2>Cover Up Front Of Books and Leave Summary</h2>
-                                    <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                        $78.09 - Learn More
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ 
     <!--=================================
         Home Features Section
         ===================================== -->
-    <section class="mb--30">
+    <section class="mb--5">
         <div class="container">
             <div class="row">
-                <div class="col-xl-3 col-md-6 mt--30">
-                    <div class="feature-box h-100">
-                        <div class="icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <div class="text">
-                            <h5>Free Shipping Item</h5>
-                            <p> Orders over $500</p>
-                        </div>
-                    </div>
+            @foreach($type_pro as $type)
+                @if($type->id != 2)
+                <div style="margin: 5px;">
+                    <a href="{{route("typecatelory",$type->id)}}" style="padding: 10px;border-radius: 5px;color: yellowgreen;">      
+                        <h6 >{{$type->name}}</h5>
+                    </a>      
                 </div>
-                <div class="col-xl-3 col-md-6 mt--30">
-                    <div class="feature-box h-100">
-                        <div class="icon">
-                            <i class="fas fa-redo-alt"></i>
-                        </div>
-                        <div class="text">
-                            <h5>Money Back Guarantee</h5>
-                            <p>100% money back</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mt--30">
-                    <div class="feature-box h-100">
-                        <div class="icon">
-                            <i class="fas fa-piggy-bank"></i>
-                        </div>
-                        <div class="text">
-                            <h5>Cash On Delivery</h5>
-                            <p>Lorem ipsum dolor amet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 mt--30">
-                    <div class="feature-box h-100">
-                        <div class="icon">
-                            <i class="fas fa-life-ring"></i>
-                        </div>
-                        <div class="text">
-                            <h5>Help & Support</h5>
-                            <p>Call us : + 0123.4567.89</p>
-                        </div>
-                    </div>
-                </div>
+              
+                @endif
+           @endforeach
+               
+               
+                
             </div>
         </div>
     </section>
@@ -1238,16 +1155,7 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="" class="author"
-                                               style="width: 200px;
-                                                    overflow: hidden;
-                                                    text-overflow: ellipsis;
-                                                    line-height: 25px;
-                                                    -webkit-line-clamp: 3;
-                                                    height: 75px;
-                                                    display: -webkit-box;
-                                                    -webkit-box-orient: vertical;"
-                                            >
+                                            <a href=""
                                                 {{$sp->typeName}}
                                             </a>
                                             <h3><a href="{{route('detail_product',$sp->id)}}"
@@ -2389,7 +2297,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-6">
                         <div class="author-image">
-                            <img src="image\others\best-seller-author.jpg" alt="">
+                            <img src="image\aa.png" alt="">
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-6">
@@ -2407,7 +2315,7 @@
                                     {"breakpoint":490, "settings": {"slidesToShow": 1} }
                                 ]'>
 
-                            @foreach($new_product as $sp)
+                            @foreach($new_product1 as $sp)
                             <div class="single-slide">
                                 <div class="product-card card-style-list">
                                     <div class="card-image">
@@ -2450,7 +2358,7 @@
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>SẢN PHẨM MỚI</h2>
+                <h2>SẢN PHẨM CHĂM SÓC DA</h2>
             </div>
             <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
                                             "autoplay": true,
@@ -2465,7 +2373,7 @@
                                             {"breakpoint":575, "settings": {"slidesToShow": 1} },
                                             {"breakpoint":490, "settings": {"slidesToShow": 1} }
                                         ]'>
-                @foreach($new_product as $sp)
+                @foreach($new_product2 as $sp)
 
                 <div class="single-slide">
                     <div class="product-card card-style-list">
@@ -2502,93 +2410,235 @@
     <!--=================================
         Promotion Section Two
         ===================================== -->
-
-    <!--=================================
-        ARTS & PHOTOGRAPHY BOOKS
+ <!--=================================
+        CHILDREN’S BOOKS
         ===================================== -->
-    <section class="section-margin">
+        <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>CHĂM SÓC CƠ THỂ</h2>
-                <p>Tìm thấy {{count($botca_product)}} sản phẩm</p>
+                <h2>SKINCARE</h2>
             </div>
-            <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
-                "autoplay": true,
-                "autoplaySpeed": 8000,
-                "slidesToShow": 5,
-                "dots":true
-            }' data-slick-responsive='[
-                {"breakpoint":1500, "settings": {"slidesToShow": 4} },
-                {"breakpoint":992, "settings": {"slidesToShow": 3} },
-                {"breakpoint":768, "settings": {"slidesToShow": 2} },
-                {"breakpoint":480, "settings": {"slidesToShow": 1} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-                @foreach($botca_product as $sp)
-                    <div class="single-slide">
-                        <div class="product-card">
+            <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
+                                            "autoplay": true,
+                                            "autoplaySpeed": 8000,
+                                            "slidesToShow":3,
+                                            "rows":2,
+                                            "dots":true
+                                        }' data-slick-responsive='[
+                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                        ]'>
+                @foreach($new_product3 as $sp)
+
+                <div class="single-slide">
+                    <div class="product-card card-style-list">
+                        <div class="card-image">
+                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
+                        </div>
+                        <div class="product-card--body">
                             <div class="product-header">
-                                <a href="{{route('detail_product',$sp->id)}}" class="author">
-                                <a href="{{route('detail_product',$sp->id)}}" class="author">
-                                   {{$sp->name}}
-                                </a>
-                                <h3><a href="{{route('detail_product',$sp->id)}}"
-                                style="  width: 200px;
+                                <a href="#" class="author"
+                                   style="  width: 200px;
                                                         overflow: hidden;
                                                         white-space: nowrap;
                                                         text-overflow: ellipsis;"
-                                    >{{$sp->name}}
-                                    </a></h3>
+                                >
+                                    {{$sp->name}}
+                                </a>
+                                <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
                             </div>
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}"  height="330px" alt="">
-                                    <div class="hover-contents">
-                                        <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
-                                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" height="330px" alt="">
-                                        </a>
-                                        <div class="hover-btns">
-                                            <a href="{{route('themgiohang',$sp->id)}}" class="single-btn">
-                                                <i class="fas fa-shopping-basket"></i>
-                                            </a>
-                                          
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="price-block">
-                                    <div class="price-block">
-                                        @if($sp->promotion_price == 0)
-                                            <span class="price">{{number_format($sp->unit_price)}}</span>
-                                        @else
-                                            <span class="price-old">{{number_format($sp->unit_price)}}</span>
-                                            <span class="price-discount">{{number_format($sp->promotion_price)}}</span>
-                                        @endif
-                                    </div>
-                                </div>
+                            <div class="price-block">
+                                @if($sp->promotion_price == 0)
+                                    <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
+                                @else
+                                    <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
+                                    <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
+                                @endif
                             </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </div>
         </div>
     </section>
     <!--=================================
-            Promotion Section Three
+        Promotion Section Two
         ===================================== -->
+         <!--=================================
+        CHILDREN’S BOOKS
+        ===================================== -->
+    <section class="section-margin">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>SẢN PHẨM CHĂM SÓC DA</h2>
+            </div>
+            <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
+                                            "autoplay": true,
+                                            "autoplaySpeed": 8000,
+                                            "slidesToShow":3,
+                                            "rows":2,
+                                            "dots":true
+                                        }' data-slick-responsive='[
+                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                        ]'>
+                @foreach($new_product4 as $sp)
 
-    <!--=================================
-        Home Blog Slider
+                <div class="single-slide">
+                    <div class="product-card card-style-list">
+                        <div class="card-image">
+                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
+                        </div>
+                        <div class="product-card--body">
+                            <div class="product-header">
+                                <a href="#" class="author"
+                                   style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                >
+                                    {{$sp->name}}
+                                </a>
+                                <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
+                            </div>
+                            <div class="price-block">
+                                @if($sp->promotion_price == 0)
+                                    <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
+                                @else
+                                    <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
+                                    <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    
+     <!--=================================
+        CHILDREN’S BOOKS
         ===================================== -->
-    <!--=================================
-        Home Blog
-        ===================================== -->
+        <section class="section-margin">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>SẢN PHẨM ĐẶC TRỊ</h2>
+            </div>
+            <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
+                                            "autoplay": true,
+                                            "autoplaySpeed": 8000,
+                                            "slidesToShow":3,
+                                            "rows":2,
+                                            "dots":true
+                                        }' data-slick-responsive='[
+                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                        ]'>
+                @foreach($new_product5 as $sp)
 
+                <div class="single-slide">
+                    <div class="product-card card-style-list">
+                        <div class="card-image">
+                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
+                        </div>
+                        <div class="product-card--body">
+                            <div class="product-header">
+                                <a href="#" class="author"
+                                   style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                >
+                                    {{$sp->name}}
+                                </a>
+                                <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
+                            </div>
+                            <div class="price-block">
+                                @if($sp->promotion_price == 0)
+                                    <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
+                                @else
+                                    <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
+                                    <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <!--=================================
-        Footer
+        Promotion Section Two
         ===================================== -->
-    <!-- Modal -->
+         <!--=================================
+        CHILDREN’S BOOKS
+        ===================================== -->
+    <section class="section-margin">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>TRANG ĐIỂM</h2>
+            </div>
+            <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
+                                            "autoplay": true,
+                                            "autoplaySpeed": 8000,
+                                            "slidesToShow":3,
+                                            "rows":2,
+                                            "dots":true
+                                        }' data-slick-responsive='[
+                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
+                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
+                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
+                                        ]'>
+                @foreach($new_product1 as $sp)
+
+                <div class="single-slide">
+                    <div class="product-card card-style-list">
+                        <div class="card-image">
+                            <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
+                        </div>
+                        <div class="product-card--body">
+                            <div class="product-header">
+                                <a href="#" class="author"
+                                   style="  width: 200px;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;"
+                                >
+                                    {{$sp->name}}
+                                </a>
+                                <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
+                            </div>
+                            <div class="price-block">
+                                @if($sp->promotion_price == 0)
+                                    <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
+                                @else
+                                    <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
+                                    <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <!--=================================
-        Brands Slider
+        Promotion Section Two
         ===================================== -->
 
 

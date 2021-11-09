@@ -37,11 +37,39 @@ class quanlybanhangController extends Controller
 
     public function getIndex()
     {
+        $type_pro = type_products::where('p_type_product','=',0)->get();
+       
         $sl_images      = slide::all();
         $new_product    = products::where("status", 0)->orderBy('id', 'DESC')->get();
         foreach ($new_product  as $key => $value) {
             $new_product[$key]['images'] = explode(",", $value->images);
         }
+        //
+        $new_product1    =products::where("status", 0)->inRandomOrder()->get();
+        foreach ($new_product1 as $key => $value) {
+            $new_product1[$key]->images = explode(",", $value->images);
+        }
+        //
+        $new_product2    = products::where("status", 0)->inRandomOrder()->get();
+        foreach ($new_product2 as $key => $value) {
+            $new_product2[$key]->images = explode(",", $value->images);
+        }
+        //
+        $new_product3    = products::where("status", 0)->inRandomOrder()->get();
+        foreach ($new_product3 as $key => $value) {
+            $new_product3[$key]->images = explode(",", $value->images);
+        }
+        //
+        $new_product4    = products::where("status", 0)->inRandomOrder()->get();
+        foreach ($new_product4 as $key => $value) {
+            $new_product4[$key]->images = explode(",", $value->images);
+        }
+        //
+        $new_product5    = products::where("status", 0)->inRandomOrder()->get();
+        foreach ($new_product5 as $key => $value) {
+            $new_product5[$key]->images = explode(",", $value->images);
+        }
+       //
         $pro_product    = DB::table('products')
             ->join('type_products', 'products.id_type', '=', 'type_products.id')
             ->where("promotion_price", "!=0", 0)
@@ -80,7 +108,7 @@ class quanlybanhangController extends Controller
         }
 
 
-        return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users"));
+        return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users","type_pro","new_product1","new_product2","new_product3","new_product4","new_product5"));
     }
     public function getTypeProduct($type)
     {
@@ -367,7 +395,6 @@ class quanlybanhangController extends Controller
         $cus->email         = $req->email;
         $cus->address       = $req->address;
         $cus->phone_number  = $req->phone_number;
-
         $cus->save();
 
         $productList = array();
@@ -475,7 +502,7 @@ class quanlybanhangController extends Controller
 
     public function getLogin()
     {
-        Auth::logout();
+       
         return view("admin.login");
     }
 
@@ -571,6 +598,12 @@ class quanlybanhangController extends Controller
         // dd( $khachHang,$donHang);
         return view('admin.index', compact('khachHang', 'donHang'));
     }
+    // public function getResearchProduct(Require $rq){
+    //     $product = products::where("name", "like", "%" . $rq->key . "%")
+    //     ->orwhere("unit_price", $rq->key)
+    //     ->paginate(5);
+    //     return view('', compact('product'));
+    // }
 
     public function getAllProduct()
     {
@@ -592,7 +625,7 @@ class quanlybanhangController extends Controller
             ->paginate(5);
         $ngungBan = products::orderBy('id', 'DESC')
             ->where('id_user', Auth::user()->id)
-            ->where('status', 2)
+            ->where('status', 1)
             ->paginate(5);
         $category = type_products::all();
 
@@ -903,7 +936,16 @@ class quanlybanhangController extends Controller
         if (!$isRole) {
             return redirect()->route('login');
         }
-        $item = customer::all();
+        $item    = DB::table('customer')
+        ->join('bills', 'bills.id_customer', '=', 'customer.id')
+        ->where("bills.id_user", Auth::user()->id)
+        ->select(
+            'bills.*',
+            'customer.*'
+        )
+        ->get();
+    
+     
         return view('layout.customer.list_customer', compact('item'));
     }
     public function getDetailCustomer($id)

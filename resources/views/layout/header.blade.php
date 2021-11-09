@@ -7,7 +7,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
                     <a href="{{route('trangchu')}}" class="site-brand">
-                        <img src="image\logo.png" alt="">
+                        <img src="image\logo1.png" alt="">
                     </a>
                 </div>
                 <div class="col-lg-3">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="text">
                             <p>Liên hệ: </p>
-                            <p class="font-weight-bold number">+01-202-555-0181</p>
+                            <p class="font-weight-bold number">0767885794</p>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="main-navigation flex-lg-right">
                         <ul class="main-menu menu-right ">
                             <li class="menu-item">
-                                <a href="javascript:void(0)">Trang chủ</a>
+                                <a href="{{route('trangchu')}}">Trang chủ</a>
 {{--                                <ul class="sub-menu">--}}
 {{--                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Mới</a></li>--}}
 {{--                                    <li> <a href="{{route('trangchu')}}">Sản Phẩm Bán Chạy</a></li>--}}
@@ -65,25 +65,8 @@
     <div class="header-bottom pb--10">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-3">
-                    <nav class="category-nav   ">
-                        <div>
-                            <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>
-                                Phân Loại Sản Phẩm</a>
-                            <ul class="category-menu">
-
-                                @foreach($type_pro as $type)
-                                    <li class="cat-item ">
-                                        <a href="{{route("typecatelory",$type->id)}}">{{$type->name}}</a>
-                                    </li>
-                                @endforeach
-
-
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-lg-5">
+              
+                <div class="col-lg-8">
                     <form action="{{route('search')}}" method="get" class="header-search-block">
                         <input type="text" name="key" placeholder="Nhập Sản Phẩm Cần Tìm.." value="{{(isset($_GET['key']))?$_GET['key']:""}}">
                         <button type="submit">Tìm Kiếm</button>
@@ -110,7 +93,7 @@
                             <div class="cart-block">
                                 <div class="cart-total">
                                             <span class="text-number">
-                                              {{ $totalqty ?? ''}}
+                                              {{ $totalqty ?? 0}}
                                             </span>
                                     <span class="text-item">
                                                 Giỏ Hàng
