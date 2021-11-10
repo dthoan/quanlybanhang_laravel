@@ -53,15 +53,21 @@
         </div>
     </div>
 </main>
+<form action="{{route('loginfb')}}" id="formFb" method="get">
+  <input type="hidden" name="fbid" id="fbid" />
+  <input type="hidden" name="name" id="loginfbname" />
+</form>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 <script>
 function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
     console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
+    console.log(response);           
     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();  
-    } else {                                 // Not logged into your webpage or we are unable to tell.
+      testAPI(); 
+          // The current login status of the person.
+
+    } else {      
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this webpage.';
     }
@@ -92,9 +98,10 @@ function statusChangeCallback(response) {  // Called with the results from FB.ge
   function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+      $("#loginfbname").val(response.name)
+      $("#fbid").val(response.id)
+      $('#formFb').submit();
+
     });
   }
 

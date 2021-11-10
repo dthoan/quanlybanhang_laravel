@@ -7,6 +7,7 @@ use App\CartDetailDb;
 use App\CartDb;
 use App\products;
 use App\type_products;
+use App\users;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\ServiceProvider;
@@ -37,8 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer(['layout.header','layout.header_blog'], function($view){
             $type_pro = type_products::where('p_type_product','=',0)->get();
-            // lấy tất cả bài viết của user
-//            $blog_user = blogs::where("blog.id_user",Auth::user()->id)->get;
+
             $view->with('type_pro', $type_pro);
         });
 
@@ -92,6 +92,23 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
 
+        });
+
+        view()->composer('admin.layout_admin', function($view){
+            $user = users::where('id',Auth::user()->id)->get();
+
+            $isLogin = \Auth::check();
+            $isRole  = false;
+            if($isLogin){
+                $roles = users::find(\Auth::user()->id)->roles;
+
+                // $role_user = $roles[0]->name;
+                // dd($roles[0]->name);
+               
+
+                $view->with('roles',$roles);
+            }
+           
         });
 
        

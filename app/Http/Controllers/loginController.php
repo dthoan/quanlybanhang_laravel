@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\products;
+use App\type_products;
 use App\slide;
 use App\users;
 use Illuminate\Http\Request;
@@ -42,44 +43,78 @@ class loginController extends Controller
 //        $get_tenloai = type_products::where("id", "=", $type)->get();
 
         if (Auth::attempt($arrLogin)) {
-            // nếu là 1 thì retunt trang chủ
-
-
+            $type_pro = type_products::where('p_type_product','=',0)->get();
+       
             $sl_images      = slide::all();
-            $new_product    = products::where("new",0)->get();
-//        $pro_product    = products::where("promotion_price","!=0",0)->paginate(2);
+            $new_product    = products::where("status", 0)->orderBy('id', 'DESC')->get();
+            foreach ($new_product  as $key => $value) {
+                $new_product[$key]['images'] = explode(",", $value->images);
+            }
+            //
+            $new_product1    =products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product1 as $key => $value) {
+                $new_product1[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product2    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product2 as $key => $value) {
+                $new_product2[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product3    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product3 as $key => $value) {
+                $new_product3[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product4    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product4 as $key => $value) {
+                $new_product4[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product5    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product5 as $key => $value) {
+                $new_product5[$key]->images = explode(",", $value->images);
+            }
+           //
             $pro_product    = DB::table('products')
                 ->join('type_products', 'products.id_type', '=', 'type_products.id')
-                ->where("promotion_price","!=0",0)
+                ->where("promotion_price", "!=0", 0)
                 ->select(
                     'products.*',
                     'type_products.name as typeName'
-
                 )
-                ->paginate(2);
-//        $sale_product   = products::where("new",0)->get();
-//        $botca_product  = products::where("id_type",1)->get();
+                ->orderBy('products.id', 'DESC')->get();
+            foreach ($pro_product as $key => $value) {
+                $pro_product[$key]->images = explode(",", $value->images);
+            }
             $botca_product  = DB::table('products')
                 ->join('type_products', 'products.id_type', '=', 'type_products.id')
-                ->where("id_type",1)
+                ->where("id_type", 1)
                 ->select(
                     'products.*',
                     'type_products.name as typeName'
-
+    
                 )
+                ->orderBy('products.id', 'DESC')
                 ->get();
+            foreach ($botca_product as $key => $value) {
+                $botca_product[$key]->images = explode(",", $value->images);
+            }
             $sale_product = DB::table('products')
                 ->join('type_products', 'products.id_type', '=', 'type_products.id')
-                ->where("new",0)
+                ->where("new", 0)
                 ->select(
                     'products.*',
                     'type_products.name as typeName'
-
                 )
+                ->orderBy('products.id', 'DESC')
                 ->get();
-
-//DD($sale_product);
-            return view("trangchu.index", compact("sl_images","new_product","pro_product","sale_product", "botca_product", "get_tenloai"));
+            foreach ($sale_product as $key => $value) {
+                $sale_product[$key]->images = explode(",", $value->images);
+            }
+    
+    
+            return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users","type_pro","new_product1","new_product2","new_product3","new_product4","new_product5"));
 
 
         }
@@ -128,6 +163,7 @@ class loginController extends Controller
         $user->password     = \Hash::make($rq->password);
         $user->phone        = $rq->phone_number;
         $user->address      = $rq->address;
+        $user->active       = 0;
 
 
         $user->save();
@@ -135,7 +171,174 @@ class loginController extends Controller
         $user->assignRole('Client');
         return redirect()->back()->with("thongbao","Đăng ký thành công! Hãy đăng nhập để tiếp tục sử dụng");
     }
+    public function loginFb(Request $rq){
+        $fbId = $rq->fbid;
+        $name = $rq->name;
+        $user = $this->checkUserByFb($fbId);
+        if(!empty($user)){
+            Auth::loginUsingId($user->id, true);
+            $type_pro = type_products::where('p_type_product','=',0)->get();
+       
+            $sl_images      = slide::all();
+            $new_product    = products::where("status", 0)->orderBy('id', 'DESC')->get();
+            foreach ($new_product  as $key => $value) {
+                $new_product[$key]['images'] = explode(",", $value->images);
+            }
+            //
+            $new_product1    =products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product1 as $key => $value) {
+                $new_product1[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product2    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product2 as $key => $value) {
+                $new_product2[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product3    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product3 as $key => $value) {
+                $new_product3[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product4    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product4 as $key => $value) {
+                $new_product4[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product5    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product5 as $key => $value) {
+                $new_product5[$key]->images = explode(",", $value->images);
+            }
+           //
+            $pro_product    = DB::table('products')
+                ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                ->where("promotion_price", "!=0", 0)
+                ->select(
+                    'products.*',
+                    'type_products.name as typeName'
+                )
+                ->orderBy('products.id', 'DESC')->get();
+            foreach ($pro_product as $key => $value) {
+                $pro_product[$key]->images = explode(",", $value->images);
+            }
+            $botca_product  = DB::table('products')
+                ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                ->where("id_type", 1)
+                ->select(
+                    'products.*',
+                    'type_products.name as typeName'
+    
+                )
+                ->orderBy('products.id', 'DESC')
+                ->get();
+            foreach ($botca_product as $key => $value) {
+                $botca_product[$key]->images = explode(",", $value->images);
+            }
+            $sale_product = DB::table('products')
+                ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                ->where("new", 0)
+                ->select(
+                    'products.*',
+                    'type_products.name as typeName'
+                )
+                ->orderBy('products.id', 'DESC')
+                ->get();
+            foreach ($sale_product as $key => $value) {
+                $sale_product[$key]->images = explode(",", $value->images);
+            }
+    
+    
+            return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users","type_pro","new_product1","new_product2","new_product3","new_product4","new_product5"));
 
+        }else{
+            $user = new users;
+            $user->full_name    = $name;
+            $user->fb_id    = $fbId;
+            $user->active       = 0;
+            $user->save();
+            $user = users::find($user->id);
+            $user->assignRole('Client');
+            Auth::loginUsingId($user->id, true);
+            $type_pro = type_products::where('p_type_product','=',0)->get();
+       
+            $sl_images      = slide::all();
+            $new_product    = products::where("status", 0)->orderBy('id', 'DESC')->get();
+            foreach ($new_product  as $key => $value) {
+                $new_product[$key]['images'] = explode(",", $value->images);
+            }
+            //
+            $new_product1    =products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product1 as $key => $value) {
+                $new_product1[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product2    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product2 as $key => $value) {
+                $new_product2[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product3    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product3 as $key => $value) {
+                $new_product3[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product4    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product4 as $key => $value) {
+                $new_product4[$key]->images = explode(",", $value->images);
+            }
+            //
+            $new_product5    = products::where("status", 0)->inRandomOrder()->get();
+            foreach ($new_product5 as $key => $value) {
+                $new_product5[$key]->images = explode(",", $value->images);
+            }
+           //
+            $pro_product    = DB::table('products')
+                ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                ->where("promotion_price", "!=0", 0)
+                ->select(
+                    'products.*',
+                    'type_products.name as typeName'
+                )
+                ->orderBy('products.id', 'DESC')->get();
+            foreach ($pro_product as $key => $value) {
+                $pro_product[$key]->images = explode(",", $value->images);
+            }
+            $botca_product  = DB::table('products')
+                ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                ->where("id_type", 1)
+                ->select(
+                    'products.*',
+                    'type_products.name as typeName'
+    
+                )
+                ->orderBy('products.id', 'DESC')
+                ->get();
+            foreach ($botca_product as $key => $value) {
+                $botca_product[$key]->images = explode(",", $value->images);
+            }
+            $sale_product = DB::table('products')
+                ->join('type_products', 'products.id_type', '=', 'type_products.id')
+                ->where("new", 0)
+                ->select(
+                    'products.*',
+                    'type_products.name as typeName'
+                )
+                ->orderBy('products.id', 'DESC')
+                ->get();
+            foreach ($sale_product as $key => $value) {
+                $sale_product[$key]->images = explode(",", $value->images);
+            }
+    
+    
+            return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users","type_pro","new_product1","new_product2","new_product3","new_product4","new_product5"));
+
+        
+        }
+    }
+    public function checkUserByFb($fbId){
+        $user = users::where('fb_id',$fbId)->first();
+        return $user ;
+    }
     public function createRolePermission()
     {
         $userModel = new users();

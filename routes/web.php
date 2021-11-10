@@ -128,12 +128,15 @@ Route::post("/dangky", "loginController@postTrangchuRegister")->name('trangchuRe
 
 Route::get("/register-role", "loginController@createRolePermission");
 // role user
-Route::get("/admin/user", "userController@getUser")->name('role');
-Route::post("/admin/user", "userController@postRole")->name('role');
+Route::get("/admin/active", "userController@getUser")->name('role');
+Route::post("/admin/active", "userController@postRole")->name('role');
 // my account
 Route::get("/account/{id}", "accountController@getAccount")->name('account');
-
-// order
+Route::get("admin/list-account", "accountController@getListAccount")->name('list_taikhoan');
+// yêu cầu active
+Route::get("trangchu/active", "accountController@getActive")->name('q_active');
+Route::post("trangchu/active", "accountController@postActive")->name('q_active');
+Route::get("loginfb", "loginController@loginFb")->name('loginfb');
 
 
 

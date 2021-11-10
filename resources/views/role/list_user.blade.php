@@ -1,6 +1,6 @@
 
 @extends("admin.layout_admin")
-@section("title","User")
+@section("title","Active")
 @section("content")
 
 
@@ -19,11 +19,10 @@
                                         <li class="list-inline-item seprate">
                                             <span>/</span>
                                         </li>
-                                        <li class="list-inline-item">List User</li>
+                                        <li class="list-inline-item">Active</li>
                                     </ul>
                                 </div>
-                                <button >
-                                    <a href="{{route('add_category')}}" class="au-btn au-btn-icon au-btn--green" ><i class="zmdi zmdi-plus"></i>Thêm User</button></a>
+                              
 
 
 
@@ -38,7 +37,7 @@
             <!-- USER DATA-->
             <div class="user-data m-b-40">
                 <h3 class="title-3 m-b-30">
-                    <i class="zmdi zmdi-account-calendar"></i>user data</h3>
+                    <i class="zmdi zmdi-account-calendar"></i>ACTIVE</h3>
 
                 <div class="table-responsive table-data">
                     <table class="table" >
@@ -118,7 +117,7 @@
                         headers: {
                             'X-CSRF-TOKEN': "{{ csrf_token() }}"
                         },
-                        url : "/public/admin/user",
+                        url : "/public/admin/active",
                         type : "post",
                         data : {
                             role_id :roleId,

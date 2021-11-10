@@ -37,15 +37,15 @@ class quanlybanhangController extends Controller
 
     public function getIndex()
     {
-        $type_pro = type_products::where('p_type_product','=',0)->get();
-       
+        $type_pro = type_products::where('p_type_product', '=', 0)->get();
+
         $sl_images      = slide::all();
         $new_product    = products::where("status", 0)->orderBy('id', 'DESC')->get();
         foreach ($new_product  as $key => $value) {
             $new_product[$key]['images'] = explode(",", $value->images);
         }
         //
-        $new_product1    =products::where("status", 0)->inRandomOrder()->get();
+        $new_product1    = products::where("status", 0)->inRandomOrder()->get();
         foreach ($new_product1 as $key => $value) {
             $new_product1[$key]->images = explode(",", $value->images);
         }
@@ -69,7 +69,7 @@ class quanlybanhangController extends Controller
         foreach ($new_product5 as $key => $value) {
             $new_product5[$key]->images = explode(",", $value->images);
         }
-       //
+        //
         $pro_product    = DB::table('products')
             ->join('type_products', 'products.id_type', '=', 'type_products.id')
             ->where("promotion_price", "!=0", 0)
@@ -108,15 +108,25 @@ class quanlybanhangController extends Controller
         }
 
 
-        return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users","type_pro","new_product1","new_product2","new_product3","new_product4","new_product5"));
+        return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users", "type_pro", "new_product1", "new_product2", "new_product3", "new_product4", "new_product5"));
     }
     public function getTypeProduct($type)
     {
-        $sp_theoloai    = products::where("id_type", "=", $type)->paginate(9);
+        $sp_theoloai    = products::where("id_type", "=", $type)->paginate(6);
+        foreach ($sp_theoloai  as $key => $value) {
+            $sp_theoloai[$key]['images'] = explode(",", $value->images);
+        }
         $type_pro = type_products::where('p_type_product', '=', 0)->get();
+        foreach ($type_pro   as $key => $value) {
+            $type_pro[$key]['images'] = explode(",", $value->images);
+        }
 
         $tenloai        = type_products::where("id", "=", $type)->get();
-        $sp_khac        = products::where("promotion_price", "!=0", $type)->paginate(3);
+
+        $sp_khac        = products::where("promotion_price", "!=0", $type)->paginate(6);
+        foreach ($sp_khac    as $key => $value) {
+            $sp_khac[$key]['images'] = explode(",", $value->images);
+        }
         $all_category   = type_products::all();
         //        $counts = DB::table("product")->groupby("id_type")->count("id");
         return view("trangchu.type_product", compact("sp_theoloai", "tenloai", "sp_khac", "all_category", "type_pro"));
@@ -502,7 +512,7 @@ class quanlybanhangController extends Controller
 
     public function getLogin()
     {
-       
+
         return view("admin.login");
     }
 
@@ -537,7 +547,7 @@ class quanlybanhangController extends Controller
         //        }
         $isRole = $this->checkRole(['Amin', 'User']);
         if (!$isRole && Auth::attempt($arrLogin)) {
-            return view("admin.index");
+            return redirect()->route('index');
         } else {
             return redirect()->back()->with([
                 'matb' => '0',
@@ -588,29 +598,56 @@ class quanlybanhangController extends Controller
     // trang quản trị
     public function getAdminIndex()
     {
-        // $isRole = $this->checkRole(['Client','User']);
-        // if($isRole){
-        //     return redirect()->route('login');
-        // }
-        $khachHang = customer::all();
-        $donHang = bills::all();
+        $isRole = $this->checkRole(['Admin', 'User']);
+        if (!$isRole) {
+            return redirect()->route('login');
+        }
+        if ($this->checkRole(['User'])) {
+            $khach_hang = DB::table('bills')->join('customer', function ($join) {
+                $join->on('bills.id_customer', '=', 'customer.id');
+            })->select(
+                'bills.id as bill_id',
+                'bills.status',
+                'customer.name as ten_khach_hang',
+                'customer.address',
+                'bills.total',
+                'bills.created_at',
+                'bills.id_user'
+            )->where('bills.id_customer', '=', Auth::user()->id)->count();
+            // $don_hang = bills::where('id_user', '=', Auth::user()->id)->count();
+            $don_hang =  DB::table('bills')->join('customer', function ($join) {
+                $join->on('bills.id_customer', '=', 'customer.id');
+            })->select(
+                'bills.id as bill_id',
+                'bills.status',
+                'customer.name as ten_khach_hang',
+                'customer.address',
+                'bills.total',
+                'bills.created_at',
+                'bills.id_user'
+            )->where('bills.id_user', '=', Auth::user()->id)->count();
+      // 1 là chưa xử lý
+            $chua_xu_ly = bills::where('status', 1)->where('id_user', '=', Auth::user()->id)->count();
+            $doanh_thu = bills::where('id_user', '=', Auth::user()->id)->sum('total');
+        } else {
+            $khach_hang = customer::count();
+            $don_hang = bills::count();
+            $chua_xu_ly = bills::where('status', 1)->count();
+            $doanh_thu = bills::sum('total');
+        }
 
-        // dd( $khachHang,$donHang);
-        return view('admin.index', compact('khachHang', 'donHang'));
+
+
+        return view('admin.index', compact('khach_hang', 'don_hang', 'doanh_thu', 'chua_xu_ly'));
     }
-    // public function getResearchProduct(Require $rq){
-    //     $product = products::where("name", "like", "%" . $rq->key . "%")
-    //     ->orwhere("unit_price", $rq->key)
-    //     ->paginate(5);
-    //     return view('', compact('product'));
-    // }
+
 
     public function getAllProduct()
     {
 
 
-        $isRole = $this->checkRole(['Admin','User']);
-         if($isRole){
+        $isRole = $this->checkRole(['Admin', 'User']);
+        if (!$isRole) {
             Auth::logout();
             return redirect()->route('login');
         }
@@ -802,17 +839,17 @@ class quanlybanhangController extends Controller
             }
         } elseif ($this->checkRole(['User'])) {
             $item  = DB::table('bills')
-            ->join('customer', function ($join) {$join->on('bills.id_customer', '=', 'customer.id');
-            
-            })->select(
-                'bills.id as bill_id',
-                'bills.status',
-                'customer.name as ten_khach_hang',
-                'customer.address',
-                'bills.total',
-                'bills.created_at',
-                'bills.id_user as user_id'
-            )->where('id_user', Auth::user()->id)->get();
+                ->join('customer', function ($join) {
+                    $join->on('bills.id_customer', '=', 'customer.id');
+                })->select(
+                    'bills.id as bill_id',
+                    'bills.status',
+                    'customer.name as ten_khach_hang',
+                    'customer.address',
+                    'bills.total',
+                    'bills.created_at',
+                    'bills.id_user as user_id'
+                )->where('id_user', Auth::user()->id)->get();
 
             foreach ($item as $key => $value) {
                 $totalQuantity = DB::table('bill_detail')
@@ -820,7 +857,6 @@ class quanlybanhangController extends Controller
                     ->sum('bill_detail.quanlity');
                 $item[$key]->sum_quantity = $totalQuantity;
             }
-   
         } else {
             return redirect()->route('login');
         }
@@ -937,15 +973,15 @@ class quanlybanhangController extends Controller
             return redirect()->route('login');
         }
         $item    = DB::table('customer')
-        ->join('bills', 'bills.id_customer', '=', 'customer.id')
-        ->where("bills.id_user", Auth::user()->id)
-        ->select(
-            'bills.*',
-            'customer.*'
-        )
-        ->get();
-    
-     
+            ->join('bills', 'bills.id_customer', '=', 'customer.id')
+            ->where("bills.id_user", Auth::user()->id)
+            ->select(
+                'bills.*',
+                'customer.*'
+            )
+            ->get();
+
+
         return view('layout.customer.list_customer', compact('item'));
     }
     public function getDetailCustomer($id)

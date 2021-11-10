@@ -13,7 +13,7 @@
             @foreach($type_pro as $type)
                 @if($type->id != 2)
                 <div style="margin: 5px;">
-                    <a href="{{route("typecatelory",$type->id)}}" style="padding: 10px;border-radius: 5px;color: yellowgreen;">      
+                    <a href="{{route('typecatelory',$type->id)}}" style="padding: 10px;border-radius: 5px;color: yellowgreen;">      
                         <h6 >{{$type->name}}</h5>
                     </a>      
                 </div>

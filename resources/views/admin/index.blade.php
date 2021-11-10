@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
-                            <h2 class="number">10,368</h2>
+                            <h2 class="number">{{$don_hang}}</h2>
                             <span class="desc">Tổng số đơn hàng</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-account-o"></i>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
-                            <h2 class="number">388,688</h2>
+                            <h2 class="number">{{$chua_xu_ly }}</h2>
                             <span class="desc">Số đơn chưa xử lý</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-shopping-cart"></i>
@@ -56,7 +56,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
             
-                            <h2 class="number">sdasdsa</h2>
+                            <h2 class="number">{{$khach_hang}}</h2>
                             <span class="desc">Số lượng khách hàng</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-calendar-note"></i>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="statistic__item">
-                            <h2 class="number">$1,060,386</h2>
+                            <h2 class="number">{{number_format($doanh_thu)}}</h2>
                             <span class="desc">Tổng doanh thu</span>
                             <div class="icon">
                                 <i class="zmdi zmdi-money"></i>

@@ -17,7 +17,7 @@ class Controller extends BaseController
         $isRole  = false;
         if($isLogin){
             $roles = users::find(\Auth::user()->id)->roles;
-
+           
             foreach($roles as $role){
                 if( in_array($role['name'], $roleUser)){
                     $isRole = true;

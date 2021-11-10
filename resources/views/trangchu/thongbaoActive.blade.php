@@ -10,7 +10,7 @@
 
 
             <div class="" role="alert">
-                <h4 class="">Giỏ Hàng Rỗng</h4>
+                <h4 class="">Yêu cầu bán hàng thành công, bạn vui lòng đợi hệ thống active tài khoản bán hàng!</h4>
              
             </div>
         </div>
