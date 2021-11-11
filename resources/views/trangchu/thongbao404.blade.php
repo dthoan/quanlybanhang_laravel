@@ -23,8 +23,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="order-complete-message text-center">
-                        <h1>Thank you !</h1>
-                        <p>Your order has been received.</p>
+                        <h1>Không tìm thấy sản phẩm!</h1>
+                        <p>Giỏ Hàng Rỗng! Vui lòng thêm sản phẩm vào giỏ hàng,</p>
                     </div>
 
                 </div>

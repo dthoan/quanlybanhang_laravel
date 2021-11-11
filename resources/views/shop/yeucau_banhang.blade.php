@@ -12,16 +12,6 @@
 
 
 
-                    <div class="method-notice mt--25">
-                        <article>
-                            <h3 class="d-none sr-only">blog-article</h3>
-                            Sorry, it seems that there are no available payment methods for
-                            your state. Please contact us if you
-                            require
-                            assistance
-                            or wish to make alternate arrangements.
-                        </article>
-                    </div>
                     <form method="post" action="{{route('q_active')}}">
                     {{csrf_field()}}
                         <div class="term-block">

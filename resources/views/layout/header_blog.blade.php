@@ -5,18 +5,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
                     <a href="/" class="site-brand">
-                        <img src="image\logo.png" alt="">
+                        <img src="image\logo1.png" alt="">
                     </a>
                 </div>
                 <div class="col-lg-3">
                     <div class="header-phone ">
-                        <div class="icon">
-                            <i class="fas fa-headphones-alt"></i>
-                        </div>
-                        <div class="text">
-                            <p>Liên hệ: </p>
-                            <p class="font-weight-bold number">+01-202-555-0181</p>
-                        </div>
+                        
+                        
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -39,9 +34,9 @@
                                 <div class="btn btn-outline-primary ">
                                     <a href="{{route('cau_hoi')}}">Đặt câu hỏi</a>
                                 </div>
-                                <div class="text-center">
+                                <!-- <div class="text-center">
                                     <a href="{{route('cau_hoi')}}">Câu hỏi của bạn</a>
-                                </div>
+                                </div> -->
 
                             </li>
                             <!-- Blog -->

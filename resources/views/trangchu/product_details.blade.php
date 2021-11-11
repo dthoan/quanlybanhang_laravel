@@ -156,7 +156,7 @@
                 </div>
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
                     <div class="review-wrapper">
-                        <h2 class="title-lg mb--20">Đánh Giá của khách hàng</h2>
+                        
 
                         @foreach($show_comment as $noidung_comment)
                         <div class="review-comment mb--20">

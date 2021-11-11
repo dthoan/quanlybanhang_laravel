@@ -131,7 +131,7 @@
 
                     </tbody>
                 </table>
-{{--                <span>{{$item->render()}}</span>--}}
+                <span>{{ $item->links() }}</span>
             </div>
             <!-- END DATA TABLE-->
         </div>

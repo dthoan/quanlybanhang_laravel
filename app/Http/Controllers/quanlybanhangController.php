@@ -506,7 +506,7 @@ class quanlybanhangController extends Controller
 
         $user->save();
         $user = users::find($user->id);
-        $user->assignRole('Admin');
+        $user->assignRole('User');
         return redirect()->back()->with("thongbao", "Đăng ký thành công! Hãy đăng nhập để tiếp tục sử dụng");
     }
 
@@ -1107,7 +1107,7 @@ class quanlybanhangController extends Controller
             return redirect()->route('login');
         }
         //        $item = type_products::orderBy('id', 'DESC')->paginate(5);
-        $item = type_products::All();
+        $item = type_products::paginate(10);
         //        dd($item);
         return view('type_product.list_category', compact('item'));
     }
