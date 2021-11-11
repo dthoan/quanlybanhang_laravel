@@ -26,6 +26,7 @@ class userController extends Controller
             ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
             ->select('users.*', 'model_has_roles.*', 'roles.name as role_name')
             ->where('roles.id', 3)
+            ->where('active', 1)
             ->get();
         $listRole = DB::table('roles')
             ->select('*')
