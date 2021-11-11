@@ -1131,8 +1131,8 @@
                     </div>
                 </div>
                 <div class="promo-section-heading">
-                    <h2>SẢN PHẨM KHUYẾN MÃI</h2>
-                    <p>Tìm thấy {{count($pro_product)}} sản phẩm khuyến mãi</p>
+                    <h2>SẢN PHẨM BÁN CHẠY</h2>
+                    
                 </div>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
@@ -1167,18 +1167,14 @@
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
-                                                @if($sp->promotion_price != 0)
-                                                    <div class="ribbon-wrapper">
-                                                        <div class="ribbon-sale">Sale</div>
-                                                    </div>
-                                                @endif
+                                              
                                                 <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="" height="180px" width="122px">
                                                 <div class="hover-contents">
-                                                    @if($sp->promotion_price != 0)
+                                                    <!-- @if($sp->promotion_price != 0)
                                                         <div class="ribbon-wrapper">
                                                             <div class="ribbon-sale">Sale</div>
                                                         </div>
-                                                    @endif
+                                                    @endif -->
                                                     <a href="{{route('detail_product',$sp->id)}}" class="hover-image">
 
                                                         <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
@@ -1195,8 +1191,8 @@
                                                 @if($sp->promotion_price==0)
                                                     <span class="price">{{number_format($sp->unit_price)}}ngàn</span>
                                                 @else
-                                                    <span class="price-old">{{number_format($sp->unit_price)}}ngàn</span>
-                                                    <span class="price">{{number_format($sp->promotion_price)}}ngàn</span>
+                                                    <span class="price">{{number_format($sp->unit_price)}}ngàn</span>
+                                                    <span class="price-old">{{number_format($sp->promotion_price)}}ngàn</span>
                                                 @endif
 
 

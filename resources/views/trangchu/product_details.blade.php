@@ -61,15 +61,15 @@
                     <h3 class="product-title">{{$detail_product->name}}</h3>
                     <ul class="list-unstyled">
                         @if($detail_product->promotion_price == 0)
-                            <span class="list-value text-danger"><b>Giá Bán:  {{number_format($detail_product->unit_price)}}</b></span>
+                            <span class="list-value text-danger"><b>Giá Bán:  {{number_format($detail_product->unit_price)}} ngàn</b></span>
                         @else
 
-                            <span class="list-value text-danger"><b>Giá Bán: {{number_format($detail_product->promotion_price)}}</b></span>
+                            <span class="list-value text-danger"><b>Giá Bán: {{number_format($detail_product->promotion_price)}} ngàn</b></span>
                         @endif
 
 
                         <li>Loại Sản Phẩm:  <span class="list-value ">{{$ten_chude->name}} </span></li>
-                        <li>Đánh Giá:  <span class="list-value"> 200</span></li>
+                        
                         <li>số Lượng có sẵn:
                                 @if($detail_product->quanlity <= 0)
                                     <span class="list-value text-danger">Hết hàng</span>
@@ -81,10 +81,10 @@
                     </ul>
                     <div class="price-block">
                         @if($detail_product->promotion_price == 0)
-                            <span class="price">{{number_format($detail_product->unit_price)}}</span>
+                            Giá bán: <span class="price">{{number_format($detail_product->unit_price)}} ngàn</span>
                         @else
-                            <span class="price-old">{{number_format($detail_product->unit_price)}}</span>
-                            <span class="price-discount">{{number_format($detail_product->promotion_price)}}</span>
+                            Giá bán: <span class="price-old">{{number_format($detail_product->unit_price)}} ngàn</span>
+                            Giá Khuyến mãi: <span class="price-discount">{{number_format($detail_product->promotion_price)}} ngàn</span>
                         @endif
                     </div>
                     <div class="rating-widget">

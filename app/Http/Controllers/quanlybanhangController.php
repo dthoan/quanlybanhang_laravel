@@ -39,8 +39,8 @@ class quanlybanhangController extends Controller
     {
         $type_pro = type_products::where('p_type_product', '=', 0)->get();
 
-        $sl_images      = slide::all();
-        $new_product    = products::where("status", 0)->orderBy('id', 'DESC')->get();
+        // $sl_images      = slide::all();
+        $new_product    = products::where("status", 0)->inRandomOrder()->get();
         foreach ($new_product  as $key => $value) {
             $new_product[$key]['images'] = explode(",", $value->images);
         }
@@ -81,16 +81,7 @@ class quanlybanhangController extends Controller
         foreach ($pro_product as $key => $value) {
             $pro_product[$key]->images = explode(",", $value->images);
         }
-        $botca_product  = DB::table('products')
-            ->join('type_products', 'products.id_type', '=', 'type_products.id')
-            ->where("id_type", 1)
-            ->select(
-                'products.*',
-                'type_products.name as typeName'
-
-            )
-            ->orderBy('products.id', 'DESC')
-            ->get();
+        $botca_product  = products::where("status", 0)->inRandomOrder()->get();
         foreach ($botca_product as $key => $value) {
             $botca_product[$key]->images = explode(",", $value->images);
         }
@@ -736,7 +727,7 @@ class quanlybanhangController extends Controller
                 'name'          => 'required',
                 'id_type'       => 'required',
                 'unit_price'    => 'required',
-                'promotion_price' => 'required',
+                
                 'status'            => 'required',
 
 
@@ -745,7 +736,8 @@ class quanlybanhangController extends Controller
                 'name.required' => 'Vui lòng nhập tên sản phẩm!',
                 'id_type.required' => 'Vui lòng nhập loại sản phẩm!',
                 'unit_price.required' => 'Vui lòng nhập giá gốc!',
-                'promotion_price.required' => 'Vui lòng nhập giá khuyến mãi!',
+                
+                'status.required' => 'Vui lòng chọn trạng thái!',
             ]
         );
 
@@ -795,7 +787,7 @@ class quanlybanhangController extends Controller
         $product->id_type         = (int)$rq->id_type;
         $product->description     = $rq->description;
         $product->unit_price      = (float)$rq->unit_price;
-        $product->promotion_price = (float)$rq->promotion_price;
+        $product->promotion_price = (float)$rq->promotion_price ?? 0;
         $product->quanlity            = $rq->quanlity;
         $product->status          = $rq->status;
         $product->id_user         = $rq->user_id;

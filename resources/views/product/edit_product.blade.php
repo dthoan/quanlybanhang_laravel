@@ -142,14 +142,14 @@
 
                     <div class="col-12 col-md-9">
                         <select name="status" class="form-control" value="{{$cate->status}}">
-                        <option>---Select---</option>
+                      
                             <option value="0">Hàng mới</option>
                             <option value="1">Ngưng bán</option>
                           
                        
                         </select>
                         @if($errors->has("status"))
-                        <small class="text-danger">{{$errors->first('new')}}</small>
+                        <small class="text-danger">{{$errors->first('status')}}</small>
                         @endif
                         {{-- <input type="text" id="text-input" name="new" placeholder="Nhập Loại" class="form-control">--}}
 
