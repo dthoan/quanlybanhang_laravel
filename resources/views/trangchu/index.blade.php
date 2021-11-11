@@ -2,7 +2,7 @@
 
 @extends("layout.layout")
 @section("content")
-@section("title","Pustok - Book Store")
+@section("title","Shop Beauty")
  
     <!--=================================
         Home Features Section

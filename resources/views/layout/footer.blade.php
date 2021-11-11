@@ -71,11 +71,16 @@
             {{-- <p class="copyright-heading">Suspendisse in auctor augue. Cras fermentum est ac fermentum tempor. Etiam--}}
             {{-- vel--}}
             {{-- magna volutpat, posuere eros</p>--}}
-            <p class="copyright-heading " style="color: #62ab00"><a href="{{route('login')}}" class="author">Đăng Nhập Nhà Bán Hàng</a> <br></p>
-            @if(Auth::check())
-            <p style="color: #62ab00"><a href="{{route('q_active')}}" class="author">Yêu cầu bán hàng</a> <br></p>
-            @else
-            <p style="color: #62ab00"><a href="{{route('register')}}" class="author">Đăng ký bán hàng</a> <br></p>
+            
+            @if(Auth::check()&& Auth::user()->active == 0)
+                <p style="color: #62ab00"><a href="{{route('q_active')}}" class="author">Yêu cầu bán hàng</a> <br></p>
+       
+
+            @elseif(Auth::check() && Auth::user()->active == 1)
+                <p style="color: #62ab00"><a href="{{route('index')}}" class="author">Nhà bán hàng</a> <br></p>
+            @elseif(Auth::check() == null)
+                <p class="copyright-heading " style="color: #62ab00"><a href="{{route('login')}}" class="author">Đăng Nhập Nhà Bán Hàng</a> <br></p>
+                <p style="color: #62ab00"><a href="{{route('register')}}" class="author">Đăng ký bán hàng</a> <br></p>
             @endif
 
 
