@@ -62,11 +62,16 @@
                                 <h3 class="d-none sr-only">blob-article</h3>
                                 <p class="p-0"></p>
                                 <blockquote>
-                                    <p>{{$blog_detail->description}}
+                                <p class="your_textarea"> {!! $blog_detail->description !!}</p>
+              
                                     </p>
                                 </blockquote>
-                                <p>{{$blog_detail->content}}</p>
-                                <p>assssss</p>
+                                <p class="your_textarea"> {!! $blog_detail->description !!}</p>
+                                <p class="your_textarea"> {!! $blog_detail->description !!}</p>
+                                <br/>
+                                <p class="your_textarea"> {!! $blog_detail->description !!}</p>
+                                
+                                
                             </article>
                             <footer class="blog-meta">
                                 <div> <a href="#">3 comments </a> / TAGS: <a href="#">fashion</a>, <a href="#">t-shirt</a>, <a href="#">white</a></div>

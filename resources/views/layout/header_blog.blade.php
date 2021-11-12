@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
-                    <a href="/" class="site-brand">
+                <a href="{{route('trangchu')}}" class="site-brand">
                         <img src="image\logo1.png" alt="">
                     </a>
                 </div>
@@ -21,7 +21,7 @@
                             <!-- Shop -->
 
                             <li class="menu-item">
-                                <a href="{{route('blog')}}">Bài viết</a>
+                                <a href="{{route('trangchu')}}">Trang chủ</a>
                             </li>
                             <li class="menu-item">
                                 <a href="{{route('blog')}}">Hỏi đáp</a>

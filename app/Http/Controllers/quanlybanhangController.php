@@ -49,57 +49,23 @@ class quanlybanhangController extends Controller
         foreach ($new_product1 as $key => $value) {
             $new_product1[$key]->images = explode(",", $value->images);
         }
-        //
-        $new_product2    = products::where("status", 0)->inRandomOrder()->get();
-        foreach ($new_product2 as $key => $value) {
-            $new_product2[$key]->images = explode(",", $value->images);
-        }
-        //
-        $new_product3    = products::where("status", 0)->inRandomOrder()->get();
-        foreach ($new_product3 as $key => $value) {
-            $new_product3[$key]->images = explode(",", $value->images);
-        }
+      
         //
         $new_product4    = products::where("status", 0)->inRandomOrder()->get();
         foreach ($new_product4 as $key => $value) {
             $new_product4[$key]->images = explode(",", $value->images);
         }
+        
         //
-        $new_product5    = products::where("status", 0)->inRandomOrder()->get();
-        foreach ($new_product5 as $key => $value) {
-            $new_product5[$key]->images = explode(",", $value->images);
-        }
-        //
-        $pro_product    = DB::table('products')
-            ->join('type_products', 'products.id_type', '=', 'type_products.id')
-            ->where("promotion_price", "!=0", 0)
-            ->select(
-                'products.*',
-                'type_products.name as typeName'
-            )
-            ->orderBy('products.id', 'DESC')->get();
-        foreach ($pro_product as $key => $value) {
-            $pro_product[$key]->images = explode(",", $value->images);
-        }
+      
         $botca_product  = products::where("status", 0)->inRandomOrder()->get();
         foreach ($botca_product as $key => $value) {
             $botca_product[$key]->images = explode(",", $value->images);
         }
-        $sale_product = DB::table('products')
-            ->join('type_products', 'products.id_type', '=', 'type_products.id')
-            ->where("new", 0)
-            ->select(
-                'products.*',
-                'type_products.name as typeName'
-            )
-            ->orderBy('products.id', 'DESC')
-            ->get();
-        foreach ($sale_product as $key => $value) {
-            $sale_product[$key]->images = explode(",", $value->images);
-        }
+      
 
 
-        return view("trangchu.index", compact("sl_images", "new_product", "pro_product", "sale_product", "botca_product", "users", "type_pro", "new_product1", "new_product2", "new_product3", "new_product4", "new_product5"));
+        return view("trangchu.index", compact( "new_product",  "sale_product", "botca_product",  "type_pro", "new_product1", "new_product2", "new_product3", "new_product4", "new_product5"));
     }
     public function getTypeProduct($type)
     {
