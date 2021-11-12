@@ -38,7 +38,7 @@
                                                       
 
                                                     </td>
-                                                    <td class="pro-thumbnail"><a href="#"><img src="..\storage\app\public\{{$sp->image}}" alt="Product"></a></td>
+                                                    <td class="pro-thumbnail"><a href="#"><img src="..\storage\app\public\{{$sp->images}}" alt="Product"></a></td>
                                                     <td class="pro-title"><a href="#">{{$sp->name}}</a></td>
                                                     <td class="pro-price" value="Norway"><span>{{number_format($sp->price)}}</span></td>
                                                     <td class="pro-quantity">

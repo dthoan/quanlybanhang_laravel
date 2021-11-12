@@ -65,8 +65,9 @@ class AppServiceProvider extends ServiceProvider
                             'name' => $product->name,
                             'price' => $product->unit_price,
                             'id' => $product->id,
-                            'image' => $product->image
+                            'images' => $product->images
                         ];
+                       
 
                         array_push($productList, $newItem);
                     }

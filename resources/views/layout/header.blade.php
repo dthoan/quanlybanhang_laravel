@@ -111,7 +111,7 @@
                                                     <div class=" single-cart-block ">
                                                         <div class="cart-product">
                                                             <a href="{{route('cart')}}" class="image">
-                                                                <img src="..\storage\app\public\{{$sp->image}}" alt="">
+                                                                <img src="..\storage\app\public\{{$sp->images}}" alt="">
                                                             </a>
                                                             <div class="content">
                                                                 <h3 class="title" style=" width: 50px;

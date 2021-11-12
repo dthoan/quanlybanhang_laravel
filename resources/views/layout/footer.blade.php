@@ -72,11 +72,11 @@
             {{-- vel--}}
             {{-- magna volutpat, posuere eros</p>--}}
             
-            @if(Auth::check()&& Auth::user()->active == 0)
+            @if(Auth::check()&& Auth::user()->active == 1)
                 <p style="color: #62ab00"><a href="{{route('q_active')}}" class="author">Yêu cầu bán hàng</a> <br></p>
        
 
-            @elseif(Auth::check() && Auth::user()->active == 1)
+            @elseif(Auth::check() && Auth::user()->active == 0)
                 <p style="color: #62ab00"><a href="{{route('index')}}" class="author">Nhà bán hàng</a> <br></p>
             @elseif(Auth::check() == null)
                 <p class="copyright-heading " style="color: #62ab00"><a href="{{route('login')}}" class="author">Đăng Nhập Nhà Bán Hàng</a> <br></p>
