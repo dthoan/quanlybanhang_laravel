@@ -106,7 +106,7 @@
 
                             </ul>
                         </li>
-                        @if($roles[0]->name=='Admin')
+                       
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Quản lý Đơn Hàng
@@ -124,8 +124,8 @@
 
                             </ul>
                         </li>
-                        @endif
-
+                    
+                        @if($roles[0]->name=='Admin')
                         <li class="active has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Quản lý tài khoản
@@ -143,7 +143,7 @@
 
                             </ul>
                         </li>
-
+                        @endif
 
 
 
