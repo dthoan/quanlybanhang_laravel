@@ -153,7 +153,7 @@
 
                                                 @if(empty($productBill))
                                                 @if(empty($product))
-                                                <h1>Khong co du lieu</h1>
+                                                <p>Không có sản phẩm!</p>
                                                 @endif
                                                 <ul>
                                                         @foreach($product as $sp )

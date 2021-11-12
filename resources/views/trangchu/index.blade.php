@@ -2243,64 +2243,8 @@
     </div>
 </section>
 
-        CHILDREN’S BOOKS
-        ===================================== -->
-<section class="section-margin">
-    <div class="container">
-        <div class="section-title section-title--bordered">
-            <h2>SKINCARE</h2>
-        </div>
-        <div class="product-list-slider slider-two-column product-slider multiple-row sb-slick-slider slider-border-multiple-row" data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow":3,
-                                            "rows":2,
-                                            "dots":true
-                                        }' data-slick-responsive='[
-                                            {"breakpoint":1200, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":992, "settings": {"slidesToShow": 2} },
-                                            {"breakpoint":768, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":575, "settings": {"slidesToShow": 1} },
-                                            {"breakpoint":490, "settings": {"slidesToShow": 1} }
-                                        ]'>
-            @foreach($new_product3 as $sp)
+     
 
-            <div class="single-slide">
-                <div class="product-card card-style-list">
-                    <div class="card-image">
-                        <img src="..\storage\app\public\{{(isset($sp->images[0])?$sp->images[0]:"banner1.jpg")}}" alt="">
-                    </div>
-                    <div class="product-card--body">
-                        <div class="product-header">
-                            <a href="#" class="author" style="  width: 200px;
-                                                        overflow: hidden;
-                                                        white-space: nowrap;
-                                                        text-overflow: ellipsis;">
-                                {{$sp->name}}
-                            </a>
-                            <h3><a href="{{route('detail_product',$sp->id)}}">Revolutionize Your BOOK With</a></h3>
-                        </div>
-                        <div class="price-block">
-                            @if($sp->promotion_price == 0)
-                            <span class="price">{{number_format($sp->unit_price)}} ngàn</span>
-                            @else
-                            <span class="price-old">{{number_format($sp->unit_price)}} ngàn</span>
-                            <span class="price-discount">{{number_format($sp->promotion_price)}} ngàn</span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-<!--=================================
-        Promotion Section Two
-        ===================================== -->
-<!--=================================
-        CHILDREN’S BOOKS
-        ===================================== -->
 <section class="section-margin">
     <div class="container">
         <div class="section-title section-title--bordered">
